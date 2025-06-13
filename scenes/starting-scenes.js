@@ -1,5 +1,5 @@
 // Starting scenes for each character class
-const STARTING_SCENES = {
+export const STARTING_SCENES = {
     // Starting scene
     start: {
         emojis: '🏰✨🌟',

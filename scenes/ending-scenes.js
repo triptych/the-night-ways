@@ -1,5 +1,5 @@
 // All ending scenes
-const ENDING_SCENES = {
+export const ENDING_SCENES = {
     // Victory endings
     victory_knight: {
         emojis: '🏰👑✨',

@@ -1,5 +1,5 @@
 // Location-based scenes (Library, Forest, Temple, etc.)
-const LOCATION_SCENES = {
+export const LOCATION_SCENES = {
     // Library scene
     library: {
         emojis: '📚✨📜',

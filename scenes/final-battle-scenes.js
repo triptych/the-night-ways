@@ -1,5 +1,5 @@
 // Final battle and climax scenes
-const FINAL_BATTLE_SCENES = {
+export const FINAL_BATTLE_SCENES = {
     // Crystal convergence - major story point
     crystal_convergence: {
         emojis: '💎💎💎',

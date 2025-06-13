@@ -1,5 +1,5 @@
 // Quest progression and trial scenes
-const QUEST_SCENES = {
+export const QUEST_SCENES = {
     // Helper scenes for flow
     trial_success: {
         emojis: '🏆💎🌟',

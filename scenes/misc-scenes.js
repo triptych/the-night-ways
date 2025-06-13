@@ -1,5 +1,5 @@
 // Miscellaneous scenes (elves, healing, investigation, etc.)
-const MISC_SCENES = {
+export const MISC_SCENES = {
     // Elf rescue and related scenes
     elf_rescue: {
         emojis: '🧝‍♀️💕🌟',

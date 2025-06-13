@@ -1,5 +1,5 @@
 // Combat and battle-related scenes
-const COMBAT_SCENES = {
+export const COMBAT_SCENES = {
     // Shadow battle
     shadow_battle: {
         emojis: '⚔️👹⚡',
