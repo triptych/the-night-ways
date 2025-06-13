@@ -47,20 +47,58 @@ class EmojiQuestEngine {
             }
         });
 
-        // Restart button
+        // Game control buttons
+        const saveButton = document.getElementById('save-button');
+        const loadButton = document.getElementById('load-button');
         const restartButton = document.getElementById('restart-button');
+
+        if (saveButton) {
+            saveButton.addEventListener('click', () => {
+                this.showSaveDialog();
+            });
+        }
+
+        if (loadButton) {
+            loadButton.addEventListener('click', () => {
+                this.showLoadDialog();
+            });
+        }
+
         if (restartButton) {
             restartButton.addEventListener('click', () => {
                 this.restartGame();
             });
         }
 
-        // Inventory slots (for future item interactions)
+        // Inventory slots (for item interactions)
         document.addEventListener('click', (e) => {
             if (e.target.classList.contains('inventory-slot') && !e.target.classList.contains('empty')) {
                 this.showItemInfo(e.target);
             }
         });
+
+        // Keyboard shortcuts
+        document.addEventListener('keydown', (e) => {
+            if (e.ctrlKey || e.metaKey) {
+                switch (e.key.toLowerCase()) {
+                    case 's':
+                        e.preventDefault();
+                        this.quickSave();
+                        break;
+                    case 'l':
+                        e.preventDefault();
+                        this.quickLoad();
+                        break;
+                    case 'r':
+                        e.preventDefault();
+                        this.restartGame();
+                        break;
+                }
+            }
+        });
+
+        // Auto-save every scene change
+        this.enableAutoSave();
     }
 
     // Make a choice and transition to the next scene
@@ -158,6 +196,9 @@ class EmojiQuestEngine {
 
         this.currentScene = sceneId;
         this.gameState.visitedScenes.push(sceneId);
+
+        // Trigger auto-save
+        this.performAutoSave();
 
         // Add transition effect
         this.addTransitionEffect();
@@ -394,28 +435,321 @@ class EmojiQuestEngine {
         console.log('🔄 Game restarted!');
     }
 
-    // Save game state (for future localStorage implementation)
-    saveGame() {
+    // Enhanced save game with multiple slots
+    saveGame(slotNumber = 1, slotName = '') {
+        const timestamp = new Date().toLocaleString();
         const saveData = {
             currentScene: this.currentScene,
-            gameState: this.gameState
+            gameState: { ...this.gameState },
+            timestamp: timestamp,
+            slotName: slotName || `Save ${slotNumber}`,
+            playerClass: this.gameState.playerClass,
+            sceneTitle: this.getSceneTitle(this.currentScene)
         };
-        localStorage.setItem('emojiQuest_save', JSON.stringify(saveData));
-        console.log('💾 Game saved!');
+
+        const saveKey = `nightWays_save_${slotNumber}`;
+        try {
+            localStorage.setItem(saveKey, JSON.stringify(saveData));
+            this.showNotification(`💾 Game saved to slot ${slotNumber}!`, 'success');
+            console.log(`💾 Game saved to slot ${slotNumber}!`);
+            return true;
+        } catch (error) {
+            this.showNotification('❌ Save failed! Storage may be full.', 'error');
+            console.error('Save failed:', error);
+            return false;
+        }
     }
 
-    // Load game state (for future localStorage implementation)
-    loadGame() {
-        const saveData = localStorage.getItem('emojiQuest_save');
-        if (saveData) {
-            const parsed = JSON.parse(saveData);
-            this.currentScene = parsed.currentScene;
-            this.gameState = parsed.gameState;
-            this.updateDisplay();
-            console.log('📁 Game loaded!');
-            return true;
+    // Enhanced load game with slot selection
+    loadGame(slotNumber = 1) {
+        const saveKey = `nightWays_save_${slotNumber}`;
+        try {
+            const saveData = localStorage.getItem(saveKey);
+            if (saveData) {
+                const parsed = JSON.parse(saveData);
+                this.currentScene = parsed.currentScene;
+                this.gameState = { ...parsed.gameState };
+                this.updateDisplay();
+                this.showNotification(`📁 Game loaded from slot ${slotNumber}!`, 'success');
+                console.log(`📁 Game loaded from slot ${slotNumber}!`);
+                return true;
+            } else {
+                this.showNotification(`❌ No save found in slot ${slotNumber}`, 'error');
+                return false;
+            }
+        } catch (error) {
+            this.showNotification('❌ Load failed! Save file may be corrupted.', 'error');
+            console.error('Load failed:', error);
+            return false;
         }
-        return false;
+    }
+
+    // Quick save to slot 1 (Ctrl+S)
+    quickSave() {
+        this.saveGame(1, 'Quick Save');
+    }
+
+    // Quick load from slot 1 (Ctrl+L)
+    quickLoad() {
+        if (this.loadGame(1)) {
+            // Success notification handled by loadGame
+        }
+    }
+
+    // Auto-save functionality
+    enableAutoSave() {
+        this.autoSaveEnabled = true;
+        this.autoSaveInterval = 5; // Auto-save every 5 scene changes
+        this.scenesSinceAutoSave = 0;
+    }
+
+    // Perform auto-save if conditions are met
+    performAutoSave() {
+        if (!this.autoSaveEnabled) return;
+
+        this.scenesSinceAutoSave++;
+        if (this.scenesSinceAutoSave >= this.autoSaveInterval) {
+            this.saveGame(0, 'Auto Save');
+            this.scenesSinceAutoSave = 0;
+        }
+    }
+
+    // Show save dialog with multiple slots
+    showSaveDialog() {
+        const saves = this.getAllSaves();
+        const dialogHTML = this.createSaveDialogHTML(saves);
+        this.showModal('💾 Save Game', dialogHTML, this.handleSaveDialogActions.bind(this));
+    }
+
+    // Show load dialog with multiple slots
+    showLoadDialog() {
+        const saves = this.getAllSaves();
+        const dialogHTML = this.createLoadDialogHTML(saves);
+        this.showModal('📁 Load Game', dialogHTML, this.handleLoadDialogActions.bind(this));
+    }
+
+    // Get all save slots
+    getAllSaves() {
+        const saves = {};
+        for (let i = 0; i <= 5; i++) { // Slots 0-5 (0 is auto-save)
+            const saveKey = `nightWays_save_${i}`;
+            const saveData = localStorage.getItem(saveKey);
+            if (saveData) {
+                try {
+                    saves[i] = JSON.parse(saveData);
+                } catch (error) {
+                    console.error(`Error parsing save slot ${i}:`, error);
+                }
+            }
+        }
+        return saves;
+    }
+
+    // Create save dialog HTML
+    createSaveDialogHTML(saves) {
+        let html = '<div class="save-slots">';
+
+        for (let i = 1; i <= 5; i++) {
+            const save = saves[i];
+            const slotName = save ? save.slotName : `Empty Slot ${i}`;
+            const timestamp = save ? save.timestamp : '';
+            const playerClass = save ? this.getPlayerClassEmoji(save.playerClass) : '';
+            const sceneTitle = save ? save.sceneTitle : '';
+
+            html += `
+                <div class="save-slot" data-slot="${i}">
+                    <div class="slot-header">
+                        <span class="slot-number">Slot ${i}</span>
+                        <span class="slot-class">${playerClass}</span>
+                    </div>
+                    <div class="slot-name">${slotName}</div>
+                    <div class="slot-scene">${sceneTitle}</div>
+                    <div class="slot-timestamp">${timestamp}</div>
+                    <button class="save-button" data-slot="${i}">💾 Save Here</button>
+                </div>
+            `;
+        }
+
+        html += '</div>';
+        return html;
+    }
+
+    // Create load dialog HTML
+    createLoadDialogHTML(saves) {
+        let html = '<div class="save-slots">';
+
+        // Auto-save slot
+        if (saves[0]) {
+            const autoSave = saves[0];
+            html += `
+                <div class="save-slot auto-save" data-slot="0">
+                    <div class="slot-header">
+                        <span class="slot-number">Auto Save</span>
+                        <span class="slot-class">${this.getPlayerClassEmoji(autoSave.playerClass)}</span>
+                    </div>
+                    <div class="slot-name">${autoSave.slotName}</div>
+                    <div class="slot-scene">${autoSave.sceneTitle}</div>
+                    <div class="slot-timestamp">${autoSave.timestamp}</div>
+                    <button class="load-button" data-slot="0">📁 Load</button>
+                </div>
+            `;
+        }
+
+        // Manual save slots
+        for (let i = 1; i <= 5; i++) {
+            const save = saves[i];
+            if (save) {
+                html += `
+                    <div class="save-slot" data-slot="${i}">
+                        <div class="slot-header">
+                            <span class="slot-number">Slot ${i}</span>
+                            <span class="slot-class">${this.getPlayerClassEmoji(save.playerClass)}</span>
+                        </div>
+                        <div class="slot-name">${save.slotName}</div>
+                        <div class="slot-scene">${save.sceneTitle}</div>
+                        <div class="slot-timestamp">${save.timestamp}</div>
+                        <button class="load-button" data-slot="${i}">📁 Load</button>
+                        <button class="delete-button" data-slot="${i}">🗑️ Delete</button>
+                    </div>
+                `;
+            } else {
+                html += `
+                    <div class="save-slot empty" data-slot="${i}">
+                        <div class="slot-header">
+                            <span class="slot-number">Slot ${i}</span>
+                        </div>
+                        <div class="slot-name">Empty Slot</div>
+                        <div class="slot-scene">No save data</div>
+                        <div class="slot-timestamp"></div>
+                    </div>
+                `;
+            }
+        }
+
+        html += '</div>';
+        return html;
+    }
+
+    // Handle save dialog button clicks
+    handleSaveDialogActions(event) {
+        if (event.target.classList.contains('save-button')) {
+            const slotNumber = parseInt(event.target.dataset.slot);
+            const slotName = prompt(`Enter a name for save slot ${slotNumber}:`, `Save ${slotNumber}`);
+            if (slotName !== null) {
+                this.saveGame(slotNumber, slotName);
+                this.closeModal();
+            }
+        }
+    }
+
+    // Handle load dialog button clicks
+    handleLoadDialogActions(event) {
+        if (event.target.classList.contains('load-button')) {
+            const slotNumber = parseInt(event.target.dataset.slot);
+            if (confirm(`Load game from slot ${slotNumber}? Current progress will be lost.`)) {
+                this.loadGame(slotNumber);
+                this.closeModal();
+            }
+        } else if (event.target.classList.contains('delete-button')) {
+            const slotNumber = parseInt(event.target.dataset.slot);
+            if (confirm(`Delete save in slot ${slotNumber}? This cannot be undone.`)) {
+                this.deleteSave(slotNumber);
+                this.showLoadDialog(); // Refresh the dialog
+            }
+        }
+    }
+
+    // Delete a save slot
+    deleteSave(slotNumber) {
+        const saveKey = `nightWays_save_${slotNumber}`;
+        localStorage.removeItem(saveKey);
+        this.showNotification(`🗑️ Save slot ${slotNumber} deleted`, 'info');
+    }
+
+    // Get scene title for display
+    getSceneTitle(sceneId) {
+        const sceneData = this.scenes[sceneId];
+        if (sceneData && sceneData.text) {
+            // Return first 50 characters of scene text
+            return sceneData.text.substring(0, 50).trim() + '...';
+        }
+        return sceneId.replace(/_/g, ' ').toUpperCase();
+    }
+
+    // Get player class emoji with fallback
+    getPlayerClassEmoji(playerClass) {
+        switch (playerClass) {
+            case 'wizard': return '🧙‍♂️';
+            case 'archer': return '🏹';
+            case 'knight': return '🛡️';
+            default: return '👤';
+        }
+    }
+
+    // Show modal dialog
+    showModal(title, content, actionHandler) {
+        // Remove existing modal if any
+        this.closeModal();
+
+        const modal = document.createElement('div');
+        modal.className = 'modal-overlay';
+        modal.innerHTML = `
+            <div class="modal-dialog">
+                <div class="modal-header">
+                    <h3>${title}</h3>
+                    <button class="modal-close">✕</button>
+                </div>
+                <div class="modal-content">
+                    ${content}
+                </div>
+                <div class="modal-footer">
+                    <button class="modal-cancel">Cancel</button>
+                </div>
+            </div>
+        `;
+
+        // Add event listeners
+        modal.addEventListener('click', (e) => {
+            if (e.target.classList.contains('modal-overlay') ||
+                e.target.classList.contains('modal-close') ||
+                e.target.classList.contains('modal-cancel')) {
+                this.closeModal();
+            } else if (actionHandler) {
+                actionHandler(e);
+            }
+        });
+
+        document.body.appendChild(modal);
+    }
+
+    // Close modal dialog
+    closeModal() {
+        const modal = document.querySelector('.modal-overlay');
+        if (modal) {
+            modal.remove();
+        }
+    }
+
+    // Show notification
+    showNotification(message, type = 'info') {
+        // Remove existing notification
+        const existingNotification = document.querySelector('.notification');
+        if (existingNotification) {
+            existingNotification.remove();
+        }
+
+        const notification = document.createElement('div');
+        notification.className = `notification ${type}`;
+        notification.textContent = message;
+
+        document.body.appendChild(notification);
+
+        // Auto-remove after 3 seconds
+        setTimeout(() => {
+            if (notification.parentNode) {
+                notification.remove();
+            }
+        }, 3000);
     }
 
     // Get game statistics

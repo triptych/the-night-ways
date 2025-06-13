@@ -220,7 +220,13 @@ body {
     color: white;
 }
 
-.restart-button {
+.game-controls {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+.game-button {
     background: linear-gradient(135deg, #fd79a8 0%, #e84393 100%);
     color: white;
     border: none;
@@ -233,9 +239,286 @@ body {
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
 }
 
-.restart-button:hover {
+.game-button:hover {
     transform: translateY(-2px);
     box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+}
+
+#save-button {
+    background: linear-gradient(135deg, #00b894 0%, #00a085 100%);
+}
+
+#load-button {
+    background: linear-gradient(135deg, #0984e3 0%, #74b9ff 100%);
+}
+
+#restart-button {
+    background: linear-gradient(135deg, #fd79a8 0%, #e84393 100%);
+}
+
+/* Modal Styles */
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.7);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+    backdrop-filter: blur(5px);
+    animation: fadeIn 0.3s ease-out;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+.modal-dialog {
+    background: white;
+    border-radius: 15px;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+    max-width: 600px;
+    width: 90%;
+    max-height: 80vh;
+    overflow: hidden;
+    animation: slideInScale 0.3s ease-out;
+}
+
+@keyframes slideInScale {
+    from {
+        opacity: 0;
+        transform: scale(0.9) translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1) translateY(0);
+    }
+}
+
+.modal-header {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    padding: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.modal-header h3 {
+    margin: 0;
+    font-size: 1.5em;
+}
+
+.modal-close {
+    background: none;
+    border: none;
+    color: white;
+    font-size: 1.5em;
+    cursor: pointer;
+    padding: 5px;
+    border-radius: 50%;
+    transition: background 0.3s ease;
+}
+
+.modal-close:hover {
+    background: rgba(255, 255, 255, 0.2);
+}
+
+.modal-content {
+    padding: 0;
+    max-height: 60vh;
+    overflow-y: auto;
+}
+
+.modal-footer {
+    padding: 15px 20px;
+    background: #f8f9fa;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.modal-cancel {
+    background: #6c757d;
+    color: white;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+
+.modal-cancel:hover {
+    background: #5a6268;
+}
+
+/* Save Slots Styles */
+.save-slots {
+    padding: 20px;
+}
+
+.save-slot {
+    background: #f8f9fa;
+    border: 2px solid #e9ecef;
+    border-radius: 10px;
+    padding: 15px;
+    margin-bottom: 15px;
+    transition: all 0.3s ease;
+    position: relative;
+}
+
+.save-slot:hover {
+    border-color: #667eea;
+    box-shadow: 0 4px 15px rgba(102, 126, 234, 0.2);
+}
+
+.save-slot.auto-save {
+    background: linear-gradient(135deg, #00b894 0%, #00a085 100%);
+    color: white;
+    border-color: #00a085;
+}
+
+.save-slot.auto-save .slot-header,
+.save-slot.auto-save .slot-name,
+.save-slot.auto-save .slot-scene,
+.save-slot.auto-save .slot-timestamp {
+    color: white;
+}
+
+.save-slot.empty {
+    opacity: 0.6;
+    border-style: dashed;
+}
+
+.slot-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.slot-number {
+    font-weight: bold;
+    font-size: 1.1em;
+    color: #667eea;
+}
+
+.slot-class {
+    font-size: 1.5em;
+}
+
+.slot-name {
+    font-weight: bold;
+    font-size: 1.2em;
+    margin-bottom: 5px;
+    color: #2d3436;
+}
+
+.slot-scene {
+    color: #636e72;
+    font-size: 0.9em;
+    margin-bottom: 8px;
+    line-height: 1.4;
+}
+
+.slot-timestamp {
+    color: #74b9ff;
+    font-size: 0.8em;
+    margin-bottom: 15px;
+    font-style: italic;
+}
+
+.save-slot button {
+    margin-right: 10px;
+    margin-bottom: 5px;
+    padding: 8px 16px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: all 0.3s ease;
+}
+
+.save-button {
+    background: linear-gradient(135deg, #00b894 0%, #00a085 100%);
+    color: white;
+}
+
+.save-button:hover {
+    background: linear-gradient(135deg, #00a085 0%, #019875 100%);
+    transform: translateY(-1px);
+}
+
+.load-button {
+    background: linear-gradient(135deg, #0984e3 0%, #74b9ff 100%);
+    color: white;
+}
+
+.load-button:hover {
+    background: linear-gradient(135deg, #74b9ff 0%, #0984e3 100%);
+    transform: translateY(-1px);
+}
+
+.delete-button {
+    background: linear-gradient(135deg, #e17055 0%, #d63031 100%);
+    color: white;
+}
+
+.delete-button:hover {
+    background: linear-gradient(135deg, #d63031 0%, #b71c1c 100%);
+    transform: translateY(-1px);
+}
+
+/* Notification Styles */
+.notification {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    padding: 15px 20px;
+    border-radius: 10px;
+    color: white;
+    font-weight: bold;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    z-index: 1001;
+    animation: slideInRight 0.3s ease-out, fadeOut 0.3s ease-in 2.7s;
+    max-width: 300px;
+}
+
+@keyframes slideInRight {
+    from {
+        opacity: 0;
+        transform: translateX(100%);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes fadeOut {
+    from {
+        opacity: 1;
+        transform: translateX(0);
+    }
+    to {
+        opacity: 0;
+        transform: translateX(100%);
+    }
+}
+
+.notification.success {
+    background: linear-gradient(135deg, #00b894 0%, #00a085 100%);
+}
+
+.notification.error {
+    background: linear-gradient(135deg, #e17055 0%, #d63031 100%);
+}
+
+.notification.info {
+    background: linear-gradient(135deg, #0984e3 0%, #74b9ff 100%);
 }
 
 .game-info {
