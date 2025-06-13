@@ -10,7 +10,15 @@ const scenePaths = [
     './scenes/misc-scenes.js',
     './scenes/combat-scenes.js',
     './scenes/final-battle-scenes.js',
-    './scenes/ending-scenes.js'
+    './scenes/ending-scenes.js',
+    './scenes/magical-scenes.js',
+    './scenes/tactical-scenes.js',
+    './scenes/nature-scenes.js',
+    './scenes/stealth-scenes.js',
+    './scenes/comprehensive-scenes.js',
+    './scenes/heroic-scenes.js',
+    './scenes/final-missing-scenes.js',
+    './scenes/completion-scenes.js'
 ];
 
 // Collect all existing scenes

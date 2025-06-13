@@ -9,6 +9,14 @@ import { FINAL_BATTLE_SCENES } from './scenes/final-battle-scenes.js';
 import { ENDING_SCENES } from './scenes/ending-scenes.js';
 import { QUEST_SCENES } from './scenes/quest-scenes.js';
 import { MISC_SCENES } from './scenes/misc-scenes.js';
+import { MAGICAL_SCENES } from './scenes/magical-scenes.js';
+import { TACTICAL_SCENES } from './scenes/tactical-scenes.js';
+import { NATURE_SCENES } from './scenes/nature-scenes.js';
+import { STEALTH_SCENES } from './scenes/stealth-scenes.js';
+import { COMPREHENSIVE_SCENES } from './scenes/comprehensive-scenes.js';
+import { HEROIC_SCENES } from './scenes/heroic-scenes.js';
+import { FINAL_MISSING_SCENES } from './scenes/final-missing-scenes.js';
+import { COMPLETION_SCENES } from './scenes/completion-scenes.js';
 
 // Combine all scene objects into one GAME_DATA structure
 const GAME_DATA = {
@@ -21,6 +29,14 @@ const GAME_DATA = {
         ...ENDING_SCENES,
         ...QUEST_SCENES,
         ...MISC_SCENES,
+        ...MAGICAL_SCENES,
+        ...TACTICAL_SCENES,
+        ...NATURE_SCENES,
+        ...STEALTH_SCENES,
+        ...COMPREHENSIVE_SCENES,
+        ...HEROIC_SCENES,
+        ...FINAL_MISSING_SCENES,
+        ...COMPLETION_SCENES,
 
         // Add any additional missing scenes that might be referenced
         // These are placeholder scenes that need to be implemented
