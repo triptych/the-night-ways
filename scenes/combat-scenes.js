@@ -857,5 +857,352 @@ export const COMBAT_SCENES = {
                 }
             }
         ]
+    },
+
+    // Additional missing combat scenes
+    heroic_last_stand: {
+        emojis: '🦸‍♂️⚔️💀',
+        text: 'Surrounded by overwhelming enemy forces, you make your final stand. With your back against the wall and nowhere to retreat, you fight with legendary courage, inspiring awe in both allies and enemies.',
+        choices: [
+            {
+                text: '⚔️ Fight until your very last breath',
+                nextScene: 'glorious_death',
+                effects: {
+                    health: -50,
+                    experience: 100,
+                    setFlag: { legendary_hero: true }
+                }
+            },
+            {
+                text: '🛡️ Focus on protecting others even as you fall',
+                nextScene: 'sacrificial_protection',
+                effects: {
+                    health: -40,
+                    experience: 80,
+                    setFlag: { selfless_martyr: true }
+                }
+            },
+            {
+                text: '🌟 Call upon all your remaining power',
+                nextScene: 'final_power_surge',
+                effects: {
+                    magical: true,
+                    health: -30,
+                    experience: 60
+                }
+            }
+        ]
+    },
+
+    tactical_victory: {
+        emojis: '🧠⚔️🏆',
+        text: 'Through brilliant tactical maneuvering, you turn the tide of battle despite being outnumbered. Your strategic mind finds weaknesses in enemy formations and exploits them perfectly.',
+        choices: [
+            {
+                text: '👑 Report your success to command',
+                nextScene: 'victory_report',
+                effects: {
+                    setFlag: { tactical_genius: true },
+                    experience: 40
+                }
+            },
+            {
+                text: '🔍 Study the battlefield for more intelligence',
+                nextScene: 'battlefield_investigation',
+                effects: {
+                    experience: 30
+                }
+            },
+            {
+                text: '👥 Rally troops for the next engagement',
+                nextScene: 'troop_rally',
+                effects: {
+                    setFlag: { inspiring_commander: true },
+                    experience: 35
+                }
+            }
+        ]
+    },
+
+    strategic_retreat: {
+        emojis: '🏃‍♂️🧠⚖️',
+        text: 'Recognizing when discretion is the better part of valor, you orchestrate a masterful strategic withdrawal. Your forces escape intact while inflicting maximum damage on the pursuing enemy.',
+        choices: [
+            {
+                text: '🗺️ Plan a counter-attack from a better position',
+                nextScene: 'counter_attack_planning',
+                effects: {
+                    setFlag: { strategic_mind: true },
+                    experience: 35
+                }
+            },
+            {
+                text: '🏰 Regroup at a defensive stronghold',
+                nextScene: 'stronghold_regrouping',
+                effects: {
+                    setFlag: { tactical_leader: true },
+                    experience: 30
+                }
+            },
+            {
+                text: '👥 Preserve your forces for the final battle',
+                nextScene: 'force_preservation',
+                effects: {
+                    setFlag: { wise_commander: true }
+                }
+            }
+        ]
+    },
+
+    victory_celebration: {
+        emojis: '🎉🏆🍻',
+        text: 'The hard-won victory deserves celebration! Your forces gather to honor the fallen, celebrate the living, and prepare for whatever challenges lie ahead. Morale soars after your triumph.',
+        choices: [
+            {
+                text: '🙏 Honor the fallen heroes',
+                nextScene: 'fallen_heroes_honored',
+                effects: {
+                    setFlag: { honorable_leader: true },
+                    experience: 25
+                }
+            },
+            {
+                text: '📋 Plan the next phase of the campaign',
+                nextScene: 'campaign_planning',
+                effects: {
+                    setFlag: { strategic_planner: true },
+                    experience: 30
+                }
+            },
+            {
+                text: '🛠️ Use the respite to improve equipment',
+                nextScene: 'equipment_improvement',
+                effects: {
+                    addItem: '⚔️',
+                    experience: 20
+                }
+            }
+        ]
+    },
+
+    battlefield_investigation: {
+        emojis: '🔍⚔️📊',
+        text: 'You systematically investigate the battlefield, gathering intelligence about enemy tactics, weapons, and weaknesses. Your thorough analysis reveals valuable information for future encounters.',
+        choices: [
+            {
+                text: '🗡️ Examine enemy weapons and equipment',
+                nextScene: 'enemy_equipment_analysis',
+                effects: {
+                    setFlag: { equipment_expert: true },
+                    experience: 25
+                }
+            },
+            {
+                text: '📈 Analyze combat patterns and tactics',
+                nextScene: 'tactical_analysis',
+                effects: {
+                    setFlag: { tactical_analyst: true },
+                    experience: 30
+                }
+            },
+            {
+                text: '🔮 Search for magical artifacts or traces',
+                nextScene: 'magical_investigation',
+                conditions: { playerClass: 'wizard' },
+                effects: {
+                    magical: true,
+                    experience: 35
+                }
+            }
+        ]
+    },
+
+    // Stealth and infiltration scenes
+    stealth_confrontation: {
+        emojis: '🤫👹🗡️',
+        text: 'Using stealth to your advantage, you confront the Shadow Lord when he least expects it. Your silent approach gives you the element of surprise in this crucial encounter.',
+        choices: [
+            {
+                text: '🗡️ Attempt an assassination strike',
+                nextScene: 'assassination_attempt',
+                effects: {
+                    setFlag: { assassin_approach: true },
+                    experience: 40
+                }
+            },
+            {
+                text: '💎 Try to steal the final Crystal Shard',
+                nextScene: 'stealth_shard_hunt',
+                effects: {
+                    experience: 35
+                }
+            },
+            {
+                text: '💬 Reveal yourself and challenge him directly',
+                nextScene: 'final_duel',
+                effects: {
+                    setFlag: { honorable_challenge: true }
+                }
+            }
+        ]
+    },
+
+    stealth_shard_hunt: {
+        emojis: '💎🤫🔍',
+        text: 'Moving like a shadow yourself, you search for the final Crystal Shard while avoiding detection. The fortress is filled with dark magic, but your stealth skills keep you hidden.',
+        choices: [
+            {
+                text: '💎 Locate and grab the Crystal Shard quickly',
+                nextScene: 'shard_grab',
+                effects: {
+                    addItem: '💎',
+                    experience: 35
+                }
+            },
+            {
+                text: '🔍 Search for prisoners to rescue first',
+                nextScene: 'prisoner_rescue',
+                effects: {
+                    setFlag: { rescuer: true },
+                    experience: 30
+                }
+            },
+            {
+                text: '👹 Confront the Shadow Lord directly',
+                nextScene: 'stealth_confrontation'
+            }
+        ]
+    },
+
+    prisoner_rescue: {
+        emojis: '🔓👥💪',
+        text: 'You discover prisoners being held in the fortress dungeons - captured villagers, knights, and even some elves. Rescuing them could provide valuable allies for the final confrontation.',
+        choices: [
+            {
+                text: '🗝️ Free all the prisoners quietly',
+                nextScene: 'mass_prisoner_liberation',
+                effects: {
+                    setFlag: { mass_liberator: true },
+                    experience: 40
+                }
+            },
+            {
+                text: '⚔️ Arm the prisoners for a revolt',
+                nextScene: 'prisoner_revolt',
+                effects: {
+                    setFlag: { revolt_leader: true },
+                    experience: 35
+                }
+            },
+            {
+                text: '🤫 Lead them to safety before continuing',
+                nextScene: 'prisoner_evacuation',
+                effects: {
+                    setFlag: { cautious_rescuer: true },
+                    experience: 30
+                }
+            }
+        ]
+    },
+
+    final_duel: {
+        emojis: '⚔️👹🌟',
+        text: 'The ultimate confrontation begins! You face the Shadow Lord in single combat, with the fate of the entire realm hanging in the balance. This is the moment all your training has led to.',
+        choices: [
+            {
+                text: '⚔️ Fight with pure martial skill',
+                nextScene: 'skill_based_duel',
+                effects: {
+                    health: -25,
+                    experience: 50
+                }
+            },
+            {
+                text: '💎 Use the Crystal Shards\' power',
+                nextScene: 'crystal_powered_duel',
+                conditions: { hasItem: '💎' },
+                effects: {
+                    magical: true,
+                    experience: 45
+                }
+            },
+            {
+                text: '💬 Try to reason with him during combat',
+                nextScene: 'diplomatic_duel',
+                effects: {
+                    setFlag: { diplomatic_warrior: true },
+                    experience: 40
+                }
+            }
+        ]
+    },
+
+    shard_grab: {
+        emojis: '💎⚡✋',
+        text: 'In a daring move, you make a desperate grab for the final Crystal Shard. The moment your hand closes around it, massive power surges through you, but also alerts every enemy in the fortress.',
+        choices: [
+            {
+                text: '🏃‍♂️ Escape immediately with the shard',
+                nextScene: 'shard_escape_attempt',
+                effects: {
+                    addItem: '💎',
+                    setFlag: { shard_thief: true },
+                    experience: 35
+                }
+            },
+            {
+                text: '⚔️ Stand and fight with the shard\'s power',
+                nextScene: 'shard_empowered_combat',
+                effects: {
+                    addItem: '💎',
+                    magical: true,
+                    experience: 40
+                }
+            },
+            {
+                text: '🌟 Use the shard to restore the Crystal immediately',
+                nextScene: 'emergency_crystal_restoration',
+                conditions: { hasItem: '💎' },
+                effects: {
+                    magical: true,
+                    experience: 50
+                }
+            }
+        ]
+    },
+
+    power_destruction: {
+        emojis: '💥🏰🔥',
+        text: 'You target the fortress\'s dark power source - a massive corruption nexus that feeds the Shadow Lord\'s strength. Destroying it will weaken him significantly but requires tremendous effort.',
+        choices: [
+            {
+                text: '💥 Use all your power to destroy it completely',
+                nextScene: 'complete_power_destruction',
+                effects: {
+                    health: -30,
+                    magical: true,
+                    setFlag: { power_destroyer: true },
+                    experience: 50
+                }
+            },
+            {
+                text: '🎯 Target specific weak points carefully',
+                nextScene: 'precise_power_sabotage',
+                effects: {
+                    health: -15,
+                    setFlag: { precise_saboteur: true },
+                    experience: 35
+                }
+            },
+            {
+                text: '💎 Use Crystal Shard power to purify it',
+                nextScene: 'power_source_purification',
+                conditions: { hasItem: '💎' },
+                effects: {
+                    magical: true,
+                    experience: 45
+                }
+            }
+        ]
     }
 };

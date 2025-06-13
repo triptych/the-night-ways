@@ -1490,5 +1490,165 @@ export const MISC_SCENES = {
                 }
             }
         ]
+    },
+
+    // Additional missing scenes
+    elf_curse_help: {
+        emojis: '🧝‍♀️🔮💫',
+        text: 'The forest elves reveal ancient knowledge about breaking curses, sharing their millennia of experience with dark magic. Their wisdom provides crucial insights into cleansing the shadow corruption.',
+        choices: [
+            {
+                text: '✨ Learn the elven curse-breaking ritual',
+                nextScene: 'elven_curse_breaking',
+                effects: {
+                    magical: true,
+                    setFlag: { elven_curse_knowledge: true },
+                    experience: 40
+                }
+            },
+            {
+                text: '🌿 Gather the required magical components',
+                nextScene: 'magical_component_gathering',
+                effects: {
+                    addItem: '🌿',
+                    experience: 25
+                }
+            },
+            {
+                text: '🤝 Form an alliance with the elves',
+                nextScene: 'elven_alliance_formed',
+                effects: {
+                    setFlag: { elven_ally: true },
+                    experience: 35
+                }
+            }
+        ]
+    },
+
+    shard_hunt: {
+        emojis: '💎🔍🏰',
+        text: 'Your search for the final Crystal Shard leads you through the Shadow Lord\'s fortress. Every shadow could hide the precious artifact, but danger lurks around every corner.',
+        choices: [
+            {
+                text: '🔮 Use magic to detect the shard\'s presence',
+                nextScene: 'magical_shard_detection',
+                conditions: { playerClass: 'wizard' },
+                effects: {
+                    magical: true,
+                    experience: 30
+                }
+            },
+            {
+                text: '🏹 Search methodically with keen eyes',
+                nextScene: 'systematic_shard_search',
+                effects: {
+                    experience: 25,
+                    setFlag: { thorough_searcher: true }
+                }
+            },
+            {
+                text: '⚔️ Fight through to the inner sanctum',
+                nextScene: 'fortress_inner_sanctum',
+                effects: {
+                    health: -20,
+                    experience: 35
+                }
+            }
+        ]
+    },
+
+    shadow_lord_story: {
+        emojis: '👹📖💔',
+        text: 'The Shadow Lord\'s tale unfolds: once the greatest guardian of the realm, he fell to darkness when he tried to prevent a catastrophe by taking absolute control. His love for the realm became its curse.',
+        choices: [
+            {
+                text: '💭 Try to understand his pain',
+                nextScene: 'empathic_understanding',
+                effects: {
+                    setFlag: { understands_shadow_lord: true },
+                    experience: 40
+                }
+            },
+            {
+                text: '🕊️ Offer him redemption',
+                nextScene: 'redemption_offered',
+                effects: {
+                    setFlag: { redemption_attempt: true },
+                    experience: 45
+                }
+            },
+            {
+                text: '⚔️ End his suffering through combat',
+                nextScene: 'merciful_combat',
+                effects: {
+                    setFlag: { merciful_warrior: true },
+                    experience: 35
+                }
+            }
+        ]
+    },
+
+    identity_restored: {
+        emojis: '👤✨💫',
+        text: 'Through the power of harmony magic, you help the Shadow Lord remember his true identity. The darkness begins to recede as he recalls who he once was - a protector, not a destroyer.',
+        choices: [
+            {
+                text: '🤝 Welcome him back to the light',
+                nextScene: 'redemption_completion',
+                effects: {
+                    setFlag: { shadow_lord_redeemed: true },
+                    experience: 60
+                }
+            },
+            {
+                text: '💎 Work together to restore the Crystal',
+                nextScene: 'cooperative_restoration',
+                effects: {
+                    magical: true,
+                    setFlag: { joint_restoration: true },
+                    experience: 55
+                }
+            },
+            {
+                text: '🌟 Help him find peace at last',
+                nextScene: 'peaceful_resolution',
+                effects: {
+                    setFlag: { peaceful_ending: true },
+                    experience: 50
+                }
+            }
+        ]
+    },
+
+    new_alliance: {
+        emojis: '🤝🌟👑',
+        text: 'With the Shadow Lord redeemed, a new alliance forms between all the forces of the realm. Former enemies unite under a banner of hope and renewal, ready to rebuild what was lost.',
+        choices: [
+            {
+                text: '👑 Accept leadership of the new council',
+                nextScene: 'council_leadership',
+                effects: {
+                    setFlag: { realm_leader: true },
+                    experience: 50
+                }
+            },
+            {
+                text: '🌍 Focus on healing the corrupted lands',
+                nextScene: 'land_restoration_project',
+                effects: {
+                    magical: true,
+                    setFlag: { land_healer: true },
+                    experience: 45
+                }
+            },
+            {
+                text: '🕊️ Choose a path of humble service',
+                nextScene: 'humble_service_path',
+                effects: {
+                    setFlag: { humble_servant: true },
+                    experience: 40
+                }
+            }
+        ]
     }
 };

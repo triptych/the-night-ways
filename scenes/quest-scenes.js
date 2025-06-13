@@ -1047,5 +1047,607 @@ export const QUEST_SCENES = {
                 }
             }
         ]
+    },
+
+    // Additional missing quest scenes
+    magical_recovery: {
+        emojis: '✨💚🔮',
+        text: 'You channel your magical energy to heal your wounds, drawing power from the ancient ley lines. The restoration magic flows through you, mending both body and spirit, though it leaves you magically drained.',
+        choices: [
+            {
+                text: '🧘‍♂️ Meditate to restore magical energy',
+                nextScene: 'meditation_recovery',
+                effects: {
+                    health: 40,
+                    magical: true,
+                    experience: 20
+                }
+            },
+            {
+                text: '🌿 Gather herbs to supplement the healing',
+                nextScene: 'herb_gathering',
+                effects: {
+                    health: 30,
+                    addItem: '🌿'
+                }
+            },
+            {
+                text: '⚡ Push forward despite the magical drain',
+                nextScene: 'exhausted_advance',
+                effects: {
+                    health: 20,
+                    setFlag: { magically_drained: true }
+                }
+            }
+        ]
+    },
+
+    dangerous_collection: {
+        emojis: '⚠️💎🔥',
+        text: 'Collecting this crystal fragment proves more hazardous than expected. The shard is surrounded by unstable magical energy that lashes out as you approach. Shadow magic has corrupted the area around it.',
+        choices: [
+            {
+                text: '🛡️ Use protective magic to safely extract it',
+                nextScene: 'protected_extraction',
+                effects: {
+                    magical: true,
+                    health: -10,
+                    addItem: '💎',
+                    experience: 30
+                }
+            },
+            {
+                text: '⚡ Risk direct contact despite the danger',
+                nextScene: 'risky_extraction',
+                effects: {
+                    health: -25,
+                    addItem: '💎',
+                    experience: 20,
+                    setFlag: { shadow_touched: true }
+                }
+            },
+            {
+                text: '🔍 Study the corruption before proceeding',
+                nextScene: 'corruption_study',
+                effects: {
+                    experience: 25,
+                    magical: true
+                }
+            }
+        ]
+    },
+
+    research_notes: {
+        emojis: '📚✍️🔍',
+        text: 'You carefully document your discoveries about the Crystal Shards and shadow corruption. Your notes reveal patterns - the corruption spreads from specific nexus points, and the shards seem to resonate with each other.',
+        choices: [
+            {
+                text: '🗺️ Use this knowledge to locate more shards',
+                nextScene: 'calculated_search',
+                effects: {
+                    setFlag: { research_completed: true },
+                    experience: 35
+                }
+            },
+            {
+                text: '📜 Share your findings with allies',
+                nextScene: 'knowledge_sharing',
+                effects: {
+                    setFlag: { shared_knowledge: true },
+                    experience: 25
+                }
+            },
+            {
+                text: '🔮 Apply your research to enhance magic',
+                nextScene: 'enhanced_magic_learned',
+                effects: {
+                    magical: true,
+                    setFlag: { enhanced_caster: true },
+                    experience: 40
+                }
+            }
+        ]
+    },
+
+    ruins_search: {
+        emojis: '🏛️🔍💎',
+        text: 'You methodically search through the ancient ruins, using your knowledge of magical resonance to locate hidden fragments. Your careful exploration reveals secret chambers and concealed Crystal Shards.',
+        choices: [
+            {
+                text: '💎 Collect the hidden Crystal Shard',
+                nextScene: 'shard_claimed',
+                effects: {
+                    addItem: '💎',
+                    experience: 30
+                }
+            },
+            {
+                text: '🗿 Examine the ancient inscriptions',
+                nextScene: 'symbol_study',
+                effects: {
+                    experience: 25,
+                    setFlag: { ancient_knowledge: true }
+                }
+            },
+            {
+                text: '🔍 Search for trap mechanisms',
+                nextScene: 'trap_detection',
+                effects: {
+                    experience: 20
+                }
+            }
+        ]
+    },
+
+    shard_study: {
+        emojis: '🔮💎📊',
+        text: 'Your magical analysis reveals fascinating properties of the Crystal Shard. It contains layered enchantments dating back millennia, and its resonance frequency matches ancient harmony magic. The knowledge enhances your understanding of magical theory.',
+        choices: [
+            {
+                text: '✨ Learn to attune with the shard\'s power',
+                nextScene: 'shard_attunement',
+                effects: {
+                    magical: true,
+                    setFlag: { shard_attuned: true },
+                    experience: 40
+                }
+            },
+            {
+                text: '📚 Record your findings for future research',
+                nextScene: 'research_notes'
+            },
+            {
+                text: '🔍 Use the shard to locate its siblings',
+                nextScene: 'shard_resonance_tracking',
+                effects: {
+                    setFlag: { can_track_shards: true },
+                    experience: 30
+                }
+            }
+        ]
+    },
+
+    symbol_study: {
+        emojis: '🗿📜🔍',
+        text: 'The ancient symbols tell a story of the realm\'s creation and the forging of the Crystal of Harmony. You learn that the Shadow Lord was once a guardian like yourself, but power corrupted him. The inscriptions reveal his true name and his weakness.',
+        choices: [
+            {
+                text: '💡 Memorize the Shadow Lord\'s true name',
+                nextScene: 'true_name_learned',
+                effects: {
+                    setFlag: { knows_true_name: true },
+                    experience: 35
+                }
+            },
+            {
+                text: '🛡️ Learn the ancient protection rituals',
+                nextScene: 'protection_ritual_learned',
+                effects: {
+                    setFlag: { ancient_protection: true },
+                    experience: 30
+                }
+            },
+            {
+                text: '📚 Copy all the inscriptions for study',
+                nextScene: 'ancient_knowledge',
+                effects: {
+                    addItem: '📜',
+                    experience: 25
+                }
+            }
+        ]
+    },
+
+    forest_reborn: {
+        emojis: '🌲🌺🦋',
+        text: 'Your combined magical energies transform the Enchanted Forest into something beyond its original glory. Ancient trees grow even mightier, magical creatures emerge from legend, and the very air shimmers with renewed life force.',
+        choices: [
+            {
+                text: '👑 Accept the title of Forest Champion',
+                nextScene: 'forest_champion_crowned',
+                effects: {
+                    setFlag: { forest_champion: true },
+                    experience: 50,
+                    health: 30
+                }
+            },
+            {
+                text: '🌟 Channel this power for the final battle',
+                nextScene: 'nature_magic_empowered',
+                effects: {
+                    setFlag: { nature_empowered: true },
+                    magical: true,
+                    experience: 40
+                }
+            },
+            {
+                text: '🕊️ Choose to remain as the forest\'s eternal guardian',
+                nextScene: 'ending_guardian'
+            }
+        ]
+    },
+
+    royal_audience: {
+        emojis: '👑🏰⚔️',
+        text: 'The King receives you in his throne room, his face grave with concern. "The reports of darkness spreading are troubling," he says. "What would you have us do, brave hero? Our kingdom\'s army stands ready."',
+        choices: [
+            {
+                text: '🛡️ Request troops for defending key locations',
+                nextScene: 'defense_preparation',
+                effects: {
+                    setFlag: { royal_army: true },
+                    experience: 25
+                }
+            },
+            {
+                text: '🗺️ Ask for maps and intelligence',
+                nextScene: 'intelligence_gathering',
+                effects: {
+                    addItem: '🗺️',
+                    setFlag: { royal_intel: true }
+                }
+            },
+            {
+                text: '🏹 Request training for the royal guard',
+                nextScene: 'light_combat_training'
+            }
+        ]
+    },
+
+    defense_preparation: {
+        emojis: '🛡️⚔️🏰',
+        text: 'Working with the royal strategists, you plan the kingdom\'s defense. Troops are positioned at key locations, supplies are distributed, and evacuation routes are established. The kingdom prepares for war.',
+        choices: [
+            {
+                text: '🎯 Focus on training elite archers',
+                nextScene: 'ranged_defense',
+                effects: {
+                    setFlag: { archer_corps: true },
+                    experience: 30
+                }
+            },
+            {
+                text: '🏰 Strengthen castle fortifications',
+                nextScene: 'fortress_reinforcement',
+                effects: {
+                    setFlag: { reinforced_defenses: true }
+                }
+            },
+            {
+                text: '👥 Organize civilian militias',
+                nextScene: 'militia_training',
+                effects: {
+                    setFlag: { civilian_army: true }
+                }
+            }
+        ]
+    },
+
+    light_combat_training: {
+        emojis: '⚔️🏹🛡️',
+        text: 'You train the royal guards in advanced combat techniques, sharing your knowledge of fighting shadow creatures. The training focuses on light-based weapons and protective formations.',
+        choices: [
+            {
+                text: '🏹 Specialize in ranged combat tactics',
+                nextScene: 'ranged_defense',
+                effects: {
+                    setFlag: { trained_archers: true },
+                    experience: 30
+                }
+            },
+            {
+                text: '🛡️ Focus on defensive formations',
+                nextScene: 'defensive_training',
+                effects: {
+                    setFlag: { trained_defenders: true },
+                    experience: 25
+                }
+            },
+            {
+                text: '⚖️ Provide balanced combat instruction',
+                nextScene: 'balanced_training',
+                effects: {
+                    setFlag: { well_trained_army: true },
+                    experience: 35
+                }
+            }
+        ]
+    },
+
+    defensive_training: {
+        emojis: '🛡️⚔️👥',
+        text: 'You organize intensive defensive training, teaching shield walls, protective magic, and coordinated resistance tactics. The guards learn to work as a unified force against shadow creatures.',
+        choices: [
+            {
+                text: '🏰 Prepare for castle defense',
+                nextScene: 'castle_fortification',
+                effects: {
+                    setFlag: { fortress_ready: true }
+                }
+            },
+            {
+                text: '👥 Train civilian volunteers as well',
+                nextScene: 'militia_expansion',
+                effects: {
+                    setFlag: { civilian_defenders: true },
+                    experience: 20
+                }
+            },
+            {
+                text: '⚔️ Focus on counter-attack strategies',
+                nextScene: 'offensive_training'
+            }
+        ]
+    },
+
+    moonwell_judgment: {
+        emojis: '🌙⚖️💧',
+        text: 'The Moonwell\'s waters swirl around you, ancient magic probing your very soul. The sacred pool weighs your deeds, your intentions, and your worthiness. The judgment will determine if you can claim the Crystal Shard.',
+        choices: [
+            {
+                text: '💖 Let your compassionate deeds speak',
+                nextScene: 'compassion_judgment',
+                conditions: { hasFlag: 'helped_others' },
+                effects: {
+                    addItem: '💎',
+                    experience: 35
+                }
+            },
+            {
+                text: '⚔️ Show your determination to save the realm',
+                nextScene: 'determination_judgment',
+                effects: {
+                    addItem: '💎',
+                    experience: 25
+                }
+            },
+            {
+                text: '🙏 Humbly accept whatever judgment comes',
+                nextScene: 'humble_judgment',
+                effects: {
+                    setFlag: { humble_heart: true }
+                }
+            }
+        ]
+    },
+
+    wisdom_test: {
+        emojis: '📚🧠🌙',
+        text: 'The Moonwell presents you with ancient riddles and mystical puzzles. Each correct answer causes the waters to glow brighter. "Wisdom illuminates the path to power," whispers an ethereal voice.',
+        choices: [
+            {
+                text: '🔮 Answer using magical knowledge',
+                nextScene: 'magical_wisdom_success',
+                conditions: { hasFlag: 'visited_library' },
+                effects: {
+                    addItem: '💎',
+                    experience: 30,
+                    setFlag: { moonwell_sage: true }
+                }
+            },
+            {
+                text: '🌿 Draw upon nature\'s wisdom',
+                nextScene: 'natural_wisdom_success',
+                conditions: { hasFlag: 'forest_ally' },
+                effects: {
+                    addItem: '💎',
+                    experience: 25
+                }
+            },
+            {
+                text: '💡 Use common sense and life experience',
+                nextScene: 'practical_wisdom_test'
+            }
+        ]
+    },
+
+    power_demonstration: {
+        emojis: '⚡🔮💪',
+        text: 'The Moonwell challenges you to demonstrate your magical prowess. Pillars of water rise from the pool, demanding you show the extent of your power while maintaining perfect control.',
+        choices: [
+            {
+                text: '🔥 Display offensive magic mastery',
+                nextScene: 'offensive_magic_demo',
+                effects: {
+                    magical: true,
+                    experience: 25
+                }
+            },
+            {
+                text: '💚 Show healing and protective magic',
+                nextScene: 'defensive_magic_demo',
+                effects: {
+                    magical: true,
+                    health: 20,
+                    experience: 30
+                }
+            },
+            {
+                text: '⚖️ Demonstrate perfect magical balance',
+                nextScene: 'balanced_magic_demo',
+                effects: {
+                    magical: true,
+                    experience: 35,
+                    addItem: '💎'
+                }
+            }
+        ]
+    },
+
+    moonwell_guidance: {
+        emojis: '🌙🗣️✨',
+        text: 'The Moonwell\'s ancient consciousness speaks directly to your mind: "The path ahead is treacherous, young seeker. The Shadow Lord\'s power grows with each passing hour. Seek the aid of the forest spirits and trust in the bonds you forge."',
+        choices: [
+            {
+                text: '🌲 Ask about the forest spirits',
+                nextScene: 'spirit_guidance_info',
+                effects: {
+                    setFlag: { knows_spirit_location: true }
+                }
+            },
+            {
+                text: '👹 Inquire about the Shadow Lord\'s weakness',
+                nextScene: 'shadow_weakness_revealed',
+                effects: {
+                    setFlag: { shadow_weakness_known: true },
+                    experience: 25
+                }
+            },
+            {
+                text: '💎 Ask about the remaining Crystal Shards',
+                nextScene: 'shard_locations_revealed'
+            }
+        ]
+    },
+
+    shard_research: {
+        emojis: '💎📚🔬',
+        text: 'You dedicate time to researching the Crystal Shards, studying their magical properties, resonance patterns, and the ancient texts that describe their creation. Your research reveals crucial insights about their power.',
+        choices: [
+            {
+                text: '🔮 Focus on the magical theory behind the shards',
+                nextScene: 'magical_theory_research',
+                effects: {
+                    setFlag: { shard_theorist: true },
+                    experience: 40
+                }
+            },
+            {
+                text: '📜 Study historical accounts of their use',
+                nextScene: 'historical_shard_research',
+                effects: {
+                    setFlag: { shard_historian: true },
+                    experience: 35
+                }
+            },
+            {
+                text: '⚗️ Experiment with shard interactions',
+                nextScene: 'shard_experimentation',
+                effects: {
+                    magical: true,
+                    setFlag: { shard_experimenter: true },
+                    experience: 45
+                }
+            }
+        ]
+    },
+
+    quest_begins: {
+        emojis: '🚀⚔️🌟',
+        text: 'Armed with knowledge from the ancient library, you step out into the world with clear purpose. The quest to restore the Crystal of Harmony begins in earnest. Three paths lie before you - each leading to a different Crystal Shard.',
+        choices: [
+            {
+                text: '🌲 Head to the Enchanted Forest first',
+                nextScene: 'forest_entrance',
+                effects: {
+                    setFlag: { quest_begun: true }
+                }
+            },
+            {
+                text: '🌙 Journey directly to the Sacred Moonwell',
+                nextScene: 'moonwell',
+                effects: {
+                    setFlag: { quest_begun: true }
+                }
+            },
+            {
+                text: '🗺️ Study your map to plan the optimal route',
+                nextScene: 'route_planning',
+                effects: {
+                    experience: 15
+                }
+            }
+        ]
+    },
+
+    map_study: {
+        emojis: '🗺️🔍📍',
+        text: 'Studying the magical map reveals hidden details: secret passages, ancient wards, and the optimal timing for approaching each location. The map also shows areas of heavy shadow corruption to avoid.',
+        choices: [
+            {
+                text: '🛤️ Plan the safest route to all shards',
+                nextScene: 'route_mapping',
+                effects: {
+                    setFlag: { optimal_route: true },
+                    experience: 25
+                }
+            },
+            {
+                text: '⚡ Identify the quickest path to power',
+                nextScene: 'speed_route',
+                effects: {
+                    setFlag: { hasty_approach: true }
+                }
+            },
+            {
+                text: '🕵️ Look for secret locations not marked',
+                nextScene: 'hidden_location_search',
+                effects: {
+                    experience: 30
+                }
+            }
+        ]
+    },
+
+    spell_learned: {
+        emojis: '✨📚🧙‍♂️',
+        text: 'The harmony spell flows into your consciousness - a powerful magic that can restore balance, heal corruption, and unite opposing forces. This ancient magic will be crucial in the final confrontation with the Shadow Lord.',
+        choices: [
+            {
+                text: '🌟 Practice the spell to master it',
+                nextScene: 'spell_mastery',
+                effects: {
+                    magical: true,
+                    setFlag: { harmony_master: true },
+                    experience: 45
+                }
+            },
+            {
+                text: '📚 Research complementary spells',
+                nextScene: 'spell_research',
+                effects: {
+                    experience: 30
+                }
+            },
+            {
+                text: '🔍 Use the spell to seek the Crystal Shards',
+                nextScene: 'magical_shard_search',
+                effects: {
+                    magical: true,
+                    setFlag: { magical_tracking: true }
+                }
+            }
+        ]
+    },
+
+    shadow_lore: {
+        emojis: '👹📖🔮',
+        text: 'The dark knowledge reveals the Shadow Lord\'s history: once a noble guardian corrupted by his desire to "protect" the realm through control. His weakness lies in his forgotten connection to the light he once served.',
+        choices: [
+            {
+                text: '💡 Learn to exploit this weakness',
+                nextScene: 'weakness_exploitation',
+                effects: {
+                    setFlag: { shadow_weakness_known: true },
+                    experience: 35
+                }
+            },
+            {
+                text: '💔 Understand his tragic fall from grace',
+                nextScene: 'shadow_lord_story',
+                effects: {
+                    setFlag: { knows_full_story: true },
+                    experience: 30
+                }
+            },
+            {
+                text: '🕊️ Seek a way to redeem rather than destroy',
+                nextScene: 'redemption_path',
+                effects: {
+                    setFlag: { redemption_seeker: true },
+                    experience: 40
+                }
+            }
+        ]
     }
 };
