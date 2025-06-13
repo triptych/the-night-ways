@@ -1873,6 +1873,1430 @@ const GAME_DATA = {
             emojis: '🌍🕊️✨',
             text: 'You establish a new golden age where light and shadow work in harmony. The realm flourishes under the protection of both heroes, proving that even the greatest enemies can become the truest allies.',
             choices: []
+        },
+
+        // Missing scenes - Forest and Nature related
+        trial_explanation: {
+            emojis: '🦌📚💡',
+            text: 'The deer explains the nature of the trials: "These tests measure not your strength, but your heart. Courage, wisdom, and compassion are the true keys to claiming the Crystal Shard."',
+            choices: [
+                {
+                    text: '💪 Accept the trials with confidence',
+                    nextScene: 'archery_trial',
+                    effects: {
+                        experience: 15
+                    }
+                },
+                {
+                    text: '🙏 Humbly request guidance',
+                    nextScene: 'deer_guidance'
+                },
+                {
+                    text: '🤝 Offer to help heal the forest first',
+                    nextScene: 'forest_healing'
+                }
+            ]
+        },
+
+        deer_guidance: {
+            emojis: '🦌🌟🗺️',
+            text: 'The deer shares ancient wisdom: "The forest remembers all who enter with pure intentions. Trust in your heart, and the path will reveal itself. The Crystal Shard awaits one who truly understands harmony."',
+            choices: [
+                {
+                    text: '✨ Begin the archery trial',
+                    nextScene: 'archery_trial',
+                    effects: {
+                        setFlag: { deer_blessed: true },
+                        experience: 20
+                    }
+                },
+                {
+                    text: '🌲 Ask about the forest\'s history',
+                    nextScene: 'forest_lore'
+                },
+                {
+                    text: '💎 Inquire about other Crystal Shards',
+                    nextScene: 'crystal_location'
+                }
+            ]
+        },
+
+        forest_lore: {
+            emojis: '🌲📖🌟',
+            text: 'The deer tells you of the forest\'s ancient past: "Long ago, this realm was one of perfect balance. The Crystal of Harmony was forged here, where nature and magic first learned to dance together in eternal unity."',
+            choices: [
+                {
+                    text: '🔮 Learn about the Crystal\'s creation',
+                    nextScene: 'crystal_origins'
+                },
+                {
+                    text: '🏹 Proceed with the archery trial',
+                    nextScene: 'archery_trial'
+                },
+                {
+                    text: '💎 Ask about the Crystal Shard\'s location',
+                    nextScene: 'crystal_location'
+                }
+            ]
+        },
+
+        crystal_origins: {
+            emojis: '💎🌟📜',
+            text: 'The deer reveals the Crystal\'s origin: "It was created by the first guardians who understood that true power comes from unity, not dominance. The Shadow Lord once knew this truth, before darkness consumed his heart."',
+            choices: [
+                {
+                    text: '💡 Gain insight into defeating the Shadow Lord',
+                    nextScene: 'shadow_weakness_learned',
+                    effects: {
+                        setFlag: { shadow_weakness_known: true },
+                        experience: 30
+                    }
+                },
+                {
+                    text: '🏹 Begin the archery trial with this knowledge',
+                    nextScene: 'archery_trial'
+                },
+                {
+                    text: '🌲 Explore more of the forest',
+                    nextScene: 'deep_forest'
+                }
+            ]
+        },
+
+        shadow_weakness_learned: {
+            emojis: '💡👹🛡️',
+            text: 'You now understand the Shadow Lord\'s weakness: he fears unity and harmony above all else. This knowledge will serve you well in the final confrontation.',
+            choices: [
+                {
+                    text: '🏹 Continue with the archery trial',
+                    nextScene: 'archery_trial'
+                },
+                {
+                    text: '🔍 Seek the Crystal Shards immediately',
+                    nextScene: 'shard_quest'
+                },
+                {
+                    text: '📚 Record this knowledge for later',
+                    nextScene: 'wisdom_recorded',
+                    effects: {
+                        addItem: '📜',
+                        experience: 15
+                    }
+                }
+            ]
+        },
+
+        wisdom_recorded: {
+            emojis: '📜✍️🧠',
+            text: 'You carefully record the ancient wisdom about the Shadow Lord\'s weakness and the Crystal\'s true nature. This knowledge may prove crucial in the battles ahead.',
+            choices: [
+                {
+                    text: '🏹 Proceed with the archery trial',
+                    nextScene: 'archery_trial'
+                },
+                {
+                    text: '🌲 Continue exploring the forest',
+                    nextScene: 'deep_forest'
+                }
+            ]
+        },
+
+        forest_reborn: {
+            emojis: '🌲🌸🦋',
+            text: 'Your powerful restoration magic transforms the entire forest into a paradise beyond imagination. Ancient trees bloom with flowers of every color, and magical creatures emerge from hiding to celebrate the forest\'s rebirth.',
+            choices: [
+                {
+                    text: '💎 Ask the grateful spirits for the Crystal Shard',
+                    nextScene: 'spirit_gift',
+                    effects: {
+                        addItem: '💎',
+                        experience: 50,
+                        setFlag: { forest_saint: true }
+                    }
+                },
+                {
+                    text: '🌟 Accept the role of Forest Guardian',
+                    nextScene: 'ending_guardian'
+                },
+                {
+                    text: '⚔️ Use this power to face the Shadow Lord',
+                    nextScene: 'empowered_confrontation'
+                }
+            ]
+        },
+
+        spirit_gift: {
+            emojis: '👻💎🌟',
+            text: 'The grateful forest spirits present you with a Crystal Shard that pulses with natural energy. "You have proven yourself the truest guardian of nature," they whisper. "May this shard guide you to victory."',
+            choices: [
+                {
+                    text: '🔍 Seek the remaining Crystal Shards',
+                    nextScene: 'shard_quest'
+                },
+                {
+                    text: '🏰 Challenge the Shadow Lord immediately',
+                    nextScene: 'fortress_approach'
+                }
+            ]
+        },
+
+        empowered_confrontation: {
+            emojis: '🌟⚔️💚',
+            text: 'Empowered by the forest\'s rebirth, you march toward the Shadow Lord\'s fortress. Nature itself seems to march with you - trees bend to clear your path, and flowers bloom in your footsteps.',
+            choices: [
+                {
+                    text: '🌲 Summon the force of nature against the fortress',
+                    nextScene: 'nature_assault',
+                    effects: {
+                        setFlag: { nature_army: true },
+                        magical: true
+                    }
+                },
+                {
+                    text: '🏰 Approach the fortress with natural allies',
+                    nextScene: 'fortress_approach'
+                }
+            ]
+        },
+
+        nature_assault: {
+            emojis: '🌲⚔️🏰',
+            text: 'The very forces of nature respond to your call! Vines tear at the fortress walls, ancient trees uproot themselves to become siege engines, and a army of forest creatures stands ready to fight.',
+            choices: [
+                {
+                    text: '🌟 Lead the nature army into battle',
+                    nextScene: 'nature_victory',
+                    effects: {
+                        experience: 60,
+                        magical: true
+                    }
+                },
+                {
+                    text: '🤝 Offer the Shadow Lord a chance to surrender',
+                    nextScene: 'nature_ultimatum'
+                }
+            ]
+        },
+
+        nature_victory: {
+            emojis: '🌲🏆🌟',
+            text: 'The power of nature overwhelms the Shadow Lord\'s fortress! As the walls crumble, the Shadow Lord emerges, forced to face you in direct combat with all his dark power spent.',
+            choices: [
+                {
+                    text: '⚔️ Face him in final combat',
+                    nextScene: 'final_battle_nature',
+                    effects: {
+                        magical: true
+                    }
+                },
+                {
+                    text: '🌿 Offer him redemption through nature\'s healing',
+                    nextScene: 'nature_redemption'
+                }
+            ]
+        },
+
+        final_battle_nature: {
+            emojis: '🌲👹⚔️',
+            text: 'In the final battle, you channel the power of the reborn forest against the Shadow Lord. Life energy clashes with darkness as the fate of all realms hangs in the balance.',
+            choices: [
+                {
+                    text: '🌟 Purify the Shadow Lord with nature\'s power',
+                    nextScene: 'nature_purification',
+                    effects: {
+                        magical: true
+                    }
+                },
+                {
+                    text: '⚔️ Defeat him with overwhelming natural force',
+                    nextScene: 'nature_triumph'
+                }
+            ]
+        },
+
+        nature_purification: {
+            emojis: '🌿💚👹',
+            text: 'Your nature magic doesn\'t destroy the Shadow Lord - it heals him! The corruption leaves his body as he remembers his true nature as a guardian of balance. The Crystal reforms through forgiveness and renewal.',
+            choices: [
+                {
+                    text: '🤝 Work together to heal all the realms',
+                    nextScene: 'ending_nature_harmony'
+                }
+            ]
+        },
+
+        ending_nature_harmony: {
+            emojis: '🌍🌲🤝',
+            text: 'You and the redeemed Shadow Lord become the Twin Guardians of Nature and Shadow, maintaining the balance between light and dark, growth and rest, in an eternal dance of harmony.',
+            choices: []
+        },
+
+        nature_triumph: {
+            emojis: '🌲🏆🌟',
+            text: 'The overwhelming power of nature defeats the Shadow Lord, but as he falls, you realize his corruption was caused by disconnection from the natural world. You vow to prevent such isolation from ever occurring again.',
+            choices: [
+                {
+                    text: '🌍 Establish a new order connecting all realms to nature',
+                    nextScene: 'ending_nature_order'
+                }
+            ]
+        },
+
+        ending_nature_order: {
+            emojis: '🌲🏛️🌍',
+            text: 'You establish the Order of Natural Harmony, ensuring that all future guardians remain connected to the living world. Never again will isolation and disconnection breed the darkness that threatened the realm.',
+            choices: []
+        },
+
+        nature_ultimatum: {
+            emojis: '🌲⚖️👹',
+            text: 'Surrounded by the army of nature, you call to the Shadow Lord: "The forest offers you one chance at redemption. Join us in healing the world, or face the wrath of all living things."',
+            choices: [
+                {
+                    text: '🤝 Extend a hand of friendship',
+                    nextScene: 'redemption_accepted',
+                    conditions: { hasFlag: 'forest_saint' }
+                },
+                {
+                    text: '⚔️ Prepare for battle if he refuses',
+                    nextScene: 'nature_battle_ready'
+                }
+            ]
+        },
+
+        redemption_accepted: {
+            emojis: '🤝💚🌟',
+            text: 'Overwhelmed by the pure power of nature and your genuine offer of friendship, the Shadow Lord\'s darkness begins to crack. "I... I remember," he whispers. "I remember what it was like to nurture life instead of destroy it."',
+            choices: [
+                {
+                    text: '🌱 Help him reconnect with nature',
+                    nextScene: 'shadow_healed',
+                    effects: {
+                        magical: true
+                    }
+                }
+            ]
+        },
+
+        shadow_healed: {
+            emojis: '👹➡️🌱',
+            text: 'Through your nature magic and compassion, the Shadow Lord transforms into the Grove Guardian he was meant to be. Together, you restore the Crystal of Harmony using the power of growth and renewal.',
+            choices: [
+                {
+                    text: '🌍 Establish a new age of natural harmony',
+                    nextScene: 'ending_nature_age'
+                }
+            ]
+        },
+
+        ending_nature_age: {
+            emojis: '🌍🌲🏛️',
+            text: 'You usher in the Age of Natural Harmony, where all realms are connected through the living network of nature. Magic and nature work as one, and the balance is maintained by the Grove Guardians.',
+            choices: []
+        },
+
+        nature_battle_ready: {
+            emojis: '🌲⚔️🔥',
+            text: 'The Shadow Lord refuses your offer, choosing to fight to the bitter end. The army of nature prepares for the final battle, with you as their champion against the forces of corruption.',
+            choices: [
+                {
+                    text: '⚔️ Lead the charge',
+                    nextScene: 'final_battle_nature'
+                }
+            ]
+        },
+
+        // Temple and magical scenes
+        magical_recovery: {
+            emojis: '🧪💚✨',
+            text: 'The healing potion restores your strength and clears the dark energy from your system. You feel refreshed and ready to continue your investigation of the temple ruins.',
+            choices: [
+                {
+                    text: '💎 Now collect the crystal fragment safely',
+                    nextScene: 'fragment_collected',
+                    effects: {
+                        addItem: '💎'
+                    }
+                },
+                {
+                    text: '🔍 Continue analyzing the dark energy',
+                    nextScene: 'advanced_analysis',
+                    effects: {
+                        experience: 20
+                    }
+                },
+                {
+                    text: '🚪 Explore the hidden passages',
+                    nextScene: 'hidden_passage'
+                }
+            ]
+        },
+
+        advanced_analysis: {
+            emojis: '🔮📊⚡',
+            text: 'With your strength restored, you perform a deeper analysis of the dark energy. You discover it\'s not random corruption - it\'s a deliberate seal designed to keep something trapped within the temple.',
+            choices: [
+                {
+                    text: '🔓 Attempt to break the seal',
+                    nextScene: 'seal_breaking',
+                    effects: {
+                        magical: true,
+                        health: -10
+                    }
+                },
+                {
+                    text: '📚 Research what might be trapped',
+                    nextScene: 'trapped_mystery'
+                },
+                {
+                    text: '🚶‍♂️ Leave the seal intact and explore elsewhere',
+                    nextScene: 'temple_ruins'
+                }
+            ]
+        },
+
+        dangerous_collection: {
+            emojis: '💎⚡💀',
+            text: 'You push through the dark energy to grab a crystal fragment. The shadow magic burns your hands and drains your life force, but you manage to secure a powerful shard pulsing with corrupted harmony magic.',
+            choices: [
+                {
+                    text: '🔮 Try to purify the corrupted shard',
+                    nextScene: 'shard_purification',
+                    conditions: { playerClass: 'wizard' },
+                    effects: {
+                        magical: true,
+                        health: -15
+                    }
+                },
+                {
+                    text: '🧪 Use a healing potion if available',
+                    nextScene: 'emergency_healing',
+                    conditions: { hasItem: '🧪' }
+                },
+                {
+                    text: '💪 Endure the pain and continue exploring',
+                    nextScene: 'pain_tolerance',
+                    effects: {
+                        setFlag: { shadow_resistant: true },
+                        experience: 20
+                    }
+                }
+            ]
+        },
+
+        shard_purification: {
+            emojis: '💎✨🔮',
+            text: 'Your purification magic clashes with the shadow corruption in an intense battle of wills. Slowly, the darkness is driven from the crystal shard, revealing its true harmonious light.',
+            choices: [
+                {
+                    text: '💎 Successfully purify the shard',
+                    nextScene: 'pure_shard_gained',
+                    effects: {
+                        addItem: '💎',
+                        experience: 40,
+                        setFlag: { purification_master: true }
+                    }
+                },
+                {
+                    text: '🔍 Study the purification process',
+                    nextScene: 'purification_knowledge',
+                    effects: {
+                        experience: 25,
+                        setFlag: { shadow_magic_understood: true }
+                    }
+                }
+            ]
+        },
+
+        pure_shard_gained: {
+            emojis: '💎🌟👑',
+            text: 'The purified Crystal Shard gleams with perfect harmony magic. You sense this fragment is more powerful than a regular shard - it carries the essence of the original Crystal\'s pure purpose.',
+            choices: [
+                {
+                    text: '🔍 Seek the remaining shards',
+                    nextScene: 'shard_quest'
+                },
+                {
+                    text: '🏰 Confront the Shadow Lord with this pure power',
+                    nextScene: 'pure_power_confrontation'
+                }
+            ]
+        },
+
+        pure_power_confrontation: {
+            emojis: '💎⚔️👹',
+            text: 'Armed with the purified Crystal Shard, you march directly to the Shadow Lord\'s fortress. The pure harmony magic creates a barrier that repels the fortress\'s dark energy.',
+            choices: [
+                {
+                    text: '✨ Use the pure shard to cleanse the fortress',
+                    nextScene: 'fortress_purification',
+                    effects: {
+                        magical: true
+                    }
+                },
+                {
+                    text: '⚔️ Challenge the Shadow Lord directly',
+                    nextScene: 'pure_shard_battle'
+                }
+            ]
+        },
+
+        research_notes: {
+            emojis: '📜🖋️🔍',
+            text: 'You carefully document your findings about the dark energy patterns and shadow magic corruption. These notes reveal that the Shadow Lord\'s power has specific weaknesses related to unity and harmony.',
+            choices: [
+                {
+                    text: '📚 Study the weaknesses more deeply',
+                    nextScene: 'weakness_research',
+                    effects: {
+                        experience: 25,
+                        setFlag: { enemy_weakness_known: true }
+                    }
+                },
+                {
+                    text: '💎 Continue searching for crystal fragments',
+                    nextScene: 'ruins_search'
+                },
+                {
+                    text: '🚪 Explore other areas of the temple',
+                    nextScene: 'temple_exploration'
+                }
+            ]
+        },
+
+        weakness_research: {
+            emojis: '📖💡🛡️',
+            text: 'Your research reveals crucial information: the Shadow Lord\'s power diminishes when faced with genuine cooperation and friendship. His greatest fear is being truly understood and forgiven.',
+            choices: [
+                {
+                    text: '💞 Plan a redemption approach',
+                    nextScene: 'redemption_planning',
+                    effects: {
+                        setFlag: { redemption_strategy: true }
+                    }
+                },
+                {
+                    text: '🤝 Seek allies who can help with this approach',
+                    nextScene: 'ally_gathering'
+                },
+                {
+                    text: '📜 Continue documenting your findings',
+                    nextScene: 'comprehensive_notes'
+                }
+            ]
+        },
+
+        ruins_search: {
+            emojis: '🔍🏛️💎',
+            text: 'You systematically search through the temple ruins, uncovering hidden alcoves and secret compartments. Your thorough investigation reveals several crystal fragments scattered throughout the debris.',
+            choices: [
+                {
+                    text: '💎 Collect all the fragments you can find',
+                    nextScene: 'multiple_shards',
+                    effects: {
+                        addItem: '💎',
+                        addItem: '💎',
+                        experience: 30
+                    }
+                },
+                {
+                    text: '🔮 Use magic to detect more hidden fragments',
+                    nextScene: 'magical_detection',
+                    conditions: { playerClass: 'wizard' }
+                },
+                {
+                    text: '📚 Look for ancient texts or inscriptions',
+                    nextScene: 'ancient_texts'
+                }
+            ]
+        },
+
+        multiple_shards: {
+            emojis: '💎💎💎',
+            text: 'You\'ve collected multiple crystal fragments! Together, they create a harmonious resonance that makes your entire inventory glow. You now have enough power to attempt major magical workings.',
+            choices: [
+                {
+                    text: '✨ Try to partially restore the Crystal of Harmony',
+                    nextScene: 'partial_restoration',
+                    effects: {
+                        magical: true,
+                        experience: 50
+                    }
+                },
+                {
+                    text: '🏰 Use this power to assault the Shadow Lord\'s fortress',
+                    nextScene: 'shard_powered_assault'
+                },
+                {
+                    text: '🔍 Search for the final missing pieces',
+                    nextScene: 'final_shard_hunt'
+                }
+            ]
+        },
+
+        shard_study: {
+            emojis: '🔮💎📊',
+            text: 'You study the crystal fragment\'s magical properties in detail. The shard contains harmonious frequencies that could be used to counteract shadow magic, but it needs to be properly attuned.',
+            choices: [
+                {
+                    text: '⚡ Attune the shard to your magical frequency',
+                    nextScene: 'shard_attunement',
+                    effects: {
+                        magical: true,
+                        experience: 30
+                    }
+                },
+                {
+                    text: '📚 Research attunement methods in your tome',
+                    nextScene: 'attunement_research'
+                },
+                {
+                    text: '🔍 Look for more shards to study together',
+                    nextScene: 'ruins_search'
+                }
+            ]
+        },
+
+        shard_attunement: {
+            emojis: '💎⚡🔮',
+            text: 'You successfully attune the crystal shard to resonate with your magical energy. The fragment now glows with personalized power, becoming significantly more effective in your hands.',
+            choices: [
+                {
+                    text: '✨ Test the enhanced shard\'s power',
+                    nextScene: 'enhanced_abilities',
+                    effects: {
+                        setFlag: { enhanced_shard: true },
+                        experience: 25
+                    }
+                },
+                {
+                    text: '🔍 Search for more shards to enhance',
+                    nextScene: 'shard_quest'
+                }
+            ]
+        },
+
+        underground_chamber: {
+            emojis: '🕯️🏛️💧',
+            text: 'The hidden passage leads to an ancient underground chamber. Water drips from crystal formations, and you see murals depicting the original creation of the Crystal of Harmony. An altar stands at the center.',
+            choices: [
+                {
+                    text: '🔍 Examine the murals for clues',
+                    nextScene: 'mural_study',
+                    effects: {
+                        experience: 20
+                    }
+                },
+                {
+                    text: '⛪ Investigate the central altar',
+                    nextScene: 'altar_investigation'
+                },
+                {
+                    text: '💧 Study the crystal formations',
+                    nextScene: 'crystal_formation_study'
+                }
+            ]
+        },
+
+        mural_study: {
+            emojis: '🎨📚🔍',
+            text: 'The murals tell the complete story of the Crystal\'s creation. You learn that it was forged by three ancient heroes working in perfect harmony - a wizard, an archer, and a knight, just like the current prophecy!',
+            choices: [
+                {
+                    text: '💡 Realize you\'re fulfilling the ancient prophecy',
+                    nextScene: 'prophecy_understanding',
+                    effects: {
+                        setFlag: { prophecy_fulfilled: true },
+                        experience: 35
+                    }
+                },
+                {
+                    text: '🔍 Look for more details about the original heroes',
+                    nextScene: 'hero_research'
+                },
+                {
+                    text: '⛪ Check the altar for more information',
+                    nextScene: 'altar_investigation'
+                }
+            ]
+        },
+
+        prophecy_understanding: {
+            emojis: '💡📜🌟',
+            text: 'The realization hits you like lightning - you are one of the three heroes destined to restore the Crystal! This knowledge fills you with purpose and unlocks latent powers within you.',
+            choices: [
+                {
+                    text: '✨ Embrace your prophetic destiny',
+                    nextScene: 'destiny_embraced',
+                    effects: {
+                        experience: 40,
+                        setFlag: { chosen_hero: true },
+                        magical: true
+                    }
+                },
+                {
+                    text: '🤝 Seek out the other two destined heroes',
+                    nextScene: 'hero_search'
+                },
+                {
+                    text: '💎 Focus on finding the Crystal Shards first',
+                    nextScene: 'empowered_shard_quest'
+                }
+            ]
+        },
+
+        symbol_study: {
+            emojis: '📚🔤✨',
+            text: 'The ancient symbols tell of binding rituals and protective wards. You decipher warnings about something powerful sealed beneath the temple - something that must not be released.',
+            choices: [
+                {
+                    text: '⚠️ Heed the warnings and avoid the sealed area',
+                    nextScene: 'cautious_exploration',
+                    effects: {
+                        setFlag: { wise_caution: true }
+                    }
+                },
+                {
+                    text: '🔍 Investigate what\'s sealed below',
+                    nextScene: 'sealed_investigation',
+                    effects: {
+                        experience: 25
+                    }
+                },
+                {
+                    text: '🚪 Enter the passage despite the warnings',
+                    nextScene: 'dangerous_descent'
+                }
+            ]
+        },
+
+        cautious_exploration: {
+            emojis: '🔍👁️🛡️',
+            text: 'Your cautious approach proves wise. You find safe paths through the ruins and discover hidden caches of crystal fragments without triggering any ancient traps or seals.',
+            choices: [
+                {
+                    text: '💎 Collect the safely accessible fragments',
+                    nextScene: 'safe_collection',
+                    effects: {
+                        addItem: '💎',
+                        experience: 30
+                    }
+                },
+                {
+                    text: '🗺️ Map the safe routes for future reference',
+                    nextScene: 'route_documentation'
+                }
+            ]
+        },
+
+        second_chance: {
+            emojis: '🙏🦌💫',
+            text: 'The deer is moved by your humility. "Humility is the foundation of wisdom," it says. "I will grant you another opportunity, but this time, the trial will test your heart as much as your skill."',
+            choices: [
+                {
+                    text: '💖 Accept the trial with an open heart',
+                    nextScene: 'heart_trial',
+                    effects: {
+                        setFlag: { humble_heart: true }
+                    }
+                },
+                {
+                    text: '🏹 Focus on perfect archery technique',
+                    nextScene: 'precision_trial'
+                },
+                {
+                    text: '🌲 Ask if you can help heal the forest instead',
+                    nextScene: 'forest_healing'
+                }
+            ]
+        },
+
+        heart_trial: {
+            emojis: '💖🏹🌟',
+            text: 'This trial is different - your arrows must be guided by compassion, not just skill. You must hit targets while protecting others, showing that true marksmanship serves to defend, not destroy.',
+            choices: [
+                {
+                    text: '🛡️ Prioritize protecting the innocent',
+                    nextScene: 'protective_archery',
+                    effects: {
+                        experience: 35,
+                        setFlag: { guardian_archer: true }
+                    }
+                },
+                {
+                    text: '⚖️ Balance offense and defense',
+                    nextScene: 'balanced_archery'
+                }
+            ]
+        },
+
+        protective_archery: {
+            emojis: '🏹🛡️💚',
+            text: 'Your arrows become shields of light, intercepting attacks aimed at woodland creatures while precisely striking at shadowy threats. The deer nods approvingly at your protective instincts.',
+            choices: [
+                {
+                    text: '💎 Receive the Crystal Shard as reward',
+                    nextScene: 'guardian_shard_received',
+                    effects: {
+                        addItem: '💎',
+                        experience: 40,
+                        setFlag: { guardian_blessed: true }
+                    }
+                }
+            ]
+        },
+
+        guardian_shard_received: {
+            emojis: '💎🛡️🌟',
+            text: 'The Crystal Shard you receive pulses with protective energy. This is not just any fragment - it\'s the Guardian\'s Shard, imbued with the power to shield others from harm.',
+            choices: [
+                {
+                    text: '🔍 Seek the remaining Crystal Shards',
+                    nextScene: 'shard_quest'
+                },
+                {
+                    text: '🌲 Use its power to heal the forest',
+                    nextScene: 'guardian_forest_healing'
+                }
+            ]
+        },
+
+        potion_request: {
+            emojis: '🧪🧝‍♀️✨',
+            text: 'Lyralei smiles and prepares additional potions. "A wise request," she says. "These vials contain forest essence that will protect you from corruption and enhance your natural abilities."',
+            choices: [
+                {
+                    text: '🧪 Accept the enhanced potions',
+                    nextScene: 'enhanced_potions_received',
+                    effects: {
+                        addItem: '🧪',
+                        addItem: '🧪',
+                        setFlag: { forest_potions: true }
+                    }
+                },
+                {
+                    text: '🌙 Now ask to be taken to the Moonwell',
+                    nextScene: 'moonwell',
+                    effects: {
+                        setFlag: { elf_guide: true }
+                    }
+                },
+                {
+                    text: '🤝 Offer to help with potion brewing',
+                    nextScene: 'potion_brewing_help'
+                }
+            ]
+        },
+
+        enhanced_potions_received: {
+            emojis: '🧪✨💪',
+            text: 'The enhanced potions glow with natural magic. Lyralei explains: "These will not only heal you but also strengthen your connection to nature and provide resistance to shadow magic."',
+            choices: [
+                {
+                    text: '🧪 Drink one potion now for immediate benefits',
+                    nextScene: 'immediate_enhancement',
+                    effects: {
+                        removeItem: '🧪',
+                        health: 30,
+                        setFlag: { nature_enhanced: true }
+                    }
+                },
+                {
+                    text: '💼 Save them for when you need them most',
+                    nextScene: 'potions_saved',
+                    effects: {
+                        experience: 15
+                    }
+                },
+                {
+                    text: '🌙 Head to the Moonwell',
+                    nextScene: 'moonwell'
+                }
+            ]
+        },
+
+        // Royal and kingdom scenes
+        royal_audience: {
+            emojis: '👑🏰📜',
+            text: 'You stand before the King in his throne room. The monarch looks older than his years, worn down by the crisis. "Hero, the realm\'s fate rests in your hands. What do you need from your kingdom?"',
+            choices: [
+                {
+                    text: '🏰 Request military support for your mission',
+                    nextScene: 'military_support',
+                    effects: {
+                        setFlag: { royal_army: true }
+                    }
+                },
+                {
+                    text: '📚 Ask for access to the Royal Archives',
+                    nextScene: 'royal_archives',
+                    effects: {
+                        experience: 25
+                    }
+                },
+                {
+                    text: '💎 Report your progress with the Crystal Shards',
+                    nextScene: 'progress_report'
+                },
+                {
+                    text: '🏃‍♂️ Respectfully decline aid and continue alone',
+                    nextScene: 'solo_path',
+                    effects: {
+                        setFlag: { lone_hero: true }
+                    }
+                }
+            ]
+        },
+
+        military_support: {
+            emojis: '⚔️🏰👥',
+            text: 'The King nods gravely. "Take my finest knights and guard units. They will follow you into darkness itself." A company of elite soldiers pledges their service to your cause.',
+            choices: [
+                {
+                    text: '🏰 Lead the army to attack the Shadow Lord\'s fortress',
+                    nextScene: 'army_assault',
+                    effects: {
+                        experience: 40
+                    }
+                },
+                {
+                    text: '🛡️ Use them to protect villages while you quest',
+                    nextScene: 'protective_deployment'
+                },
+                {
+                    text: '📊 Coordinate a strategic campaign',
+                    nextScene: 'strategic_planning'
+                }
+            ]
+        },
+
+        royal_archives: {
+            emojis: '📚👑🔍',
+            text: 'The Royal Archives contain centuries of knowledge about the Crystal of Harmony and previous shadow incursions. You discover detailed accounts of past heroes and their strategies.',
+            choices: [
+                {
+                    text: '📜 Study the accounts of previous heroes',
+                    nextScene: 'hero_studies',
+                    effects: {
+                        experience: 30,
+                        setFlag: { ancient_knowledge: true }
+                    }
+                },
+                {
+                    text: '🔍 Research the Shadow Lord\'s origins',
+                    nextScene: 'shadow_lord_research'
+                },
+                {
+                    text: '💎 Look for information about Crystal Shard locations',
+                    nextScene: 'shard_archive_research'
+                }
+            ]
+        },
+
+        defense_preparation: {
+            emojis: '🏰🛡️📊',
+            text: 'You work with the castle engineers and guards to strengthen the kingdom\'s defenses. New ward stones are placed, guard rotations optimized, and emergency evacuation plans created.',
+            choices: [
+                {
+                    text: '✨ Enhance the defenses with magic',
+                    nextScene: 'magical_fortification',
+                    conditions: { playerClass: 'wizard' },
+                    effects: {
+                        magical: true,
+                        experience: 35
+                    }
+                },
+                {
+                    text: '🏹 Set up archer towers and kill zones',
+                    nextScene: 'ranged_defenses',
+                    conditions: { playerClass: 'archer' }
+                },
+                {
+                    text: '⚔️ Train the guards in advanced combat',
+                    nextScene: 'combat_training',
+                    conditions: { playerClass: 'knight' }
+                },
+                {
+                    text: '🏰 Focus on overall strategic positioning',
+                    nextScene: 'strategic_defense'
+                }
+            ]
+        },
+
+        light_combat_training: {
+            emojis: '💡⚔️✨',
+            text: 'You master techniques for channeling light energy through your weapons. Your blade now gleams with holy power, and you learn to create blinding flashes and healing light during combat.',
+            choices: [
+                {
+                    text: '⚔️ Practice advanced light sword techniques',
+                    nextScene: 'light_sword_mastery',
+                    effects: {
+                        setFlag: { light_sword: true },
+                        experience: 30
+                    }
+                },
+                {
+                    text: '🛡️ Learn defensive light magic',
+                    nextScene: 'light_shield_mastery'
+                },
+                {
+                    text: '⚔️ Take your weapons and begin your quest',
+                    nextScene: 'armed_and_ready'
+                }
+            ]
+        },
+
+        light_sword_mastery: {
+            emojis: '⚔️✨🌟',
+            text: 'Your mastery of light-infused swordplay is complete! Your blade can cut through shadow magic itself, and your attacks carry the purifying power of starlight.',
+            choices: [
+                {
+                    text: '🏰 Challenge the Shadow Lord with your new abilities',
+                    nextScene: 'light_warrior_confrontation'
+                },
+                {
+                    text: '💎 Seek the Crystal Shards to enhance your power further',
+                    nextScene: 'shard_quest'
+                }
+            ]
+        },
+
+        defensive_training: {
+            emojis: '🛡️📚⚔️',
+            text: 'You study advanced defensive formations and protective techniques. You learn to create shield walls, coordinate group defenses, and protect multiple allies simultaneously.',
+            choices: [
+                {
+                    text: '🛡️ Master the art of perfect defense',
+                    nextScene: 'perfect_defense_learned',
+                    effects: {
+                        setFlag: { perfect_defense: true },
+                        experience: 35
+                    }
+                },
+                {
+                    text: '👥 Focus on group protection techniques',
+                    nextScene: 'group_protection_mastery'
+                },
+                {
+                    text: '⚔️ Balance offense and defense',
+                    nextScene: 'balanced_combat_training'
+                }
+            ]
+        },
+
+        // Moonwell continuation scenes
+        moonwell_judgment: {
+            emojis: '🌊⚖️✨',
+            text: 'The Moonwell\'s waters swirl around you, testing your very essence. Visions of your past deeds, both noble and questionable, play out in the silvery depths. The well weighs your worthiness.',
+            choices: [
+                {
+                    text: '💖 Accept judgment with humility',
+                    nextScene: 'humble_judgment',
+                    effects: {
+                        experience: 30,
+                        setFlag: { humble_soul: true }
+                    }
+                },
+                {
+                    text: '⚔️ Stand firm in your convictions',
+                    nextScene: 'conviction_judgment',
+                    effects: {
+                        experience: 25
+                    }
+                },
+                {
+                    text: '🌙 Appeal to the well\'s mercy',
+                    nextScene: 'mercy_appeal'
+                }
+            ]
+        },
+
+        humble_judgment: {
+            emojis: '🙏💎🌟',
+            text: 'Your humility touches the ancient magic of the Moonwell. "A truly noble heart acknowledges its flaws," the waters whisper. The Crystal Shard rises from the depths, glowing with pure moonlight.',
+            choices: [
+                {
+                    text: '💎 Accept the Crystal Shard with gratitude',
+                    nextScene: 'shard_received',
+                    effects: {
+                        addItem: '💎',
+                        experience: 35,
+                        setFlag: { moonwell_blessed: true }
+                    }
+                }
+            ]
+        },
+
+        conviction_judgment: {
+            emojis: '⚔️🌙💪',
+            text: 'The Moonwell acknowledges your unwavering resolve. Though your methods may be direct, your dedication to saving the realm is absolute. The waters grudgingly grant you passage.',
+            choices: [
+                {
+                    text: '💎 Claim the Crystal Shard',
+                    nextScene: 'shard_received',
+                    effects: {
+                        addItem: '💎',
+                        experience: 20
+                    }
+                },
+                {
+                    text: '🌙 Ask for the well\'s blessing',
+                    nextScene: 'moonwell_guidance'
+                }
+            ]
+        },
+
+        wisdom_test: {
+            emojis: '📚🌙🔮',
+            text: 'You demonstrate your magical knowledge to the Moonwell, reciting ancient theories about harmony magic and the balance of elemental forces. The waters glow brighter with each correct principle.',
+            choices: [
+                {
+                    text: '✨ Continue with advanced magical theory',
+                    nextScene: 'advanced_wisdom_test',
+                    effects: {
+                        addItem: '💎',
+                        experience: 35,
+                        setFlag: { master_scholar: true }
+                    }
+                },
+                {
+                    text: '🌙 Ask the well to judge your knowledge',
+                    nextScene: 'moonwell_judgment'
+                }
+            ]
+        },
+
+        power_demonstration: {
+            emojis: '🔮⚡💫',
+            text: 'You weave impressive displays of magical power above the Moonwell - creating illusions, manipulating elements, and channeling raw arcane energy. The waters respond with growing luminescence.',
+            choices: [
+                {
+                    text: '💎 The Moonwell grants you the Crystal Shard',
+                    nextScene: 'power_recognition',
+                    effects: {
+                        addItem: '💎',
+                        experience: 30,
+                        setFlag: { power_acknowledged: true }
+                    }
+                },
+                {
+                    text: '🌙 Ask for the well\'s guidance',
+                    nextScene: 'moonwell_guidance'
+                }
+            ]
+        },
+
+        moonwell_guidance: {
+            emojis: '🌙💬✨',
+            text: 'The Moonwell speaks in ethereal whispers: "The path ahead is treacherous. The Shadow Lord\'s power grows with each passing day. Seek the unity of all three shards quickly, for time grows short."',
+            choices: [
+                {
+                    text: '💎 Accept the Crystal Shard',
+                    nextScene: 'shard_received',
+                    effects: {
+                        addItem: '💎',
+                        experience: 25,
+                        setFlag: { moonwell_warned: true }
+                    }
+                },
+                {
+                    text: '❓ Ask about the Shadow Lord\'s growing power',
+                    nextScene: 'shadow_lord_warning'
+                },
+                {
+                    text: '🗺️ Request guidance to the final shard',
+                    nextScene: 'final_shard_guidance'
+                }
+            ]
+        },
+
+        elf_gratitude: {
+            emojis: '🧝‍♀️🙏💖',
+            text: 'Lyralei\'s eyes shine with tears of gratitude. "You have done more than rescue me - you have saved the entire forest. Please, accept this blessing of the ancient elven magic as a token of our eternal friendship."',
+            choices: [
+                {
+                    text: '🌟 Accept the elven blessing',
+                    nextScene: 'elven_blessing_received',
+                    effects: {
+                        setFlag: { elven_blessing: true },
+                        experience: 30,
+                        magical: true
+                    }
+                },
+                {
+                    text: '🌙 Head to the Moonwell together',
+                    nextScene: 'moonwell',
+                    effects: {
+                        setFlag: { elf_guide: true }
+                    }
+                },
+                {
+                    text: '🤝 Offer to help restore the entire forest',
+                    nextScene: 'forest_restoration'
+                }
+            ]
+        },
+
+        // Battle aftermath scenes
+        village_healer: {
+            emojis: '🏥💚🩹',
+            text: 'You tend to the wounded villagers with gentle care, using your skills and any healing supplies available. Your compassion in the aftermath of battle shows your true character as a protector.',
+            choices: [
+                {
+                    text: '💖 Continue helping until everyone is treated',
+                    nextScene: 'healing_complete',
+                    effects: {
+                        setFlag: { village_savior: true },
+                        experience: 25
+                    }
+                },
+                {
+                    text: '👥 Train villagers in basic first aid',
+                    nextScene: 'first_aid_training'
+                },
+                {
+                    text: '🔍 Investigate the shadow creatures\' origin',
+                    nextScene: 'beast_investigation'
+                }
+            ]
+        },
+
+        survivor_rally: {
+            emojis: '👥⚔️💪',
+            text: 'Your inspiring leadership rallies the survivors for the battles ahead. "We\'ve proven we can stand against the darkness!" you declare. "Together, we\'ll drive it back completely!" The crowd cheers with renewed hope.',
+            choices: [
+                {
+                    text: '🏰 Lead them in an assault on the Shadow Lord\'s fortress',
+                    nextScene: 'civilian_army_assault',
+                    effects: {
+                        setFlag: { survivor_army: true },
+                        experience: 40
+                    }
+                },
+                {
+                    text: '🛡️ Organize them into a defensive force',
+                    nextScene: 'survivor_defense_force'
+                },
+                {
+                    text: '📜 Send them to warn other villages',
+                    nextScene: 'warning_network'
+                }
+            ]
+        },
+
+        beast_investigation: {
+            emojis: '🔍👹📋',
+            text: 'Examining the fallen shadow beasts, you discover they were once normal creatures corrupted by dark magic. This corruption appears to be spreading from a central source - likely the Shadow Lord\'s fortress.',
+            choices: [
+                {
+                    text: '🔮 Use magic to trace the corruption\'s origin',
+                    nextScene: 'corruption_tracking',
+                    conditions: { playerClass: 'wizard' },
+                    effects: {
+                        magical: true,
+                        experience: 30
+                    }
+                },
+                {
+                    text: '💀 Study the corruption\'s effects',
+                    nextScene: 'corruption_study',
+                    effects: {
+                        experience: 20,
+                        setFlag: { corruption_expert: true }
+                    }
+                },
+                {
+                    text: '🏰 Head directly to confront the source',
+                    nextScene: 'fortress_approach'
+                }
+            ]
+        },
+
+        combat_recovery: {
+            emojis: '🧪💚⚡',
+            text: 'The healing potion works quickly, restoring your strength and easing the pain from your berserker rage. You feel refreshed and ready to continue your mission with renewed vigor.',
+            choices: [
+                {
+                    text: '💪 Channel your renewed strength wisely',
+                    nextScene: 'controlled_power',
+                    effects: {
+                        health: 30,
+                        experience: 20,
+                        setFlag: { balanced_warrior: true }
+                    }
+                },
+                {
+                    text: '⚔️ Prepare for the next battle',
+                    nextScene: 'battle_preparation'
+                },
+                {
+                    text: '🔍 Search for more enemies to face',
+                    nextScene: 'seeking_battle'
+                }
+            ]
+        },
+
+        pain_endurance: {
+            emojis: '💪⚡🔥',
+            text: 'You push through the pain with iron determination, turning your suffering into strength. The villagers watch in awe as you continue fighting despite your wounds, inspired by your incredible willpower.',
+            choices: [
+                {
+                    text: '🔥 Use your pain as fuel for greater strength',
+                    nextScene: 'pain_powered_strength',
+                    effects: {
+                        setFlag: { pain_warrior: true },
+                        experience: 30
+                    }
+                },
+                {
+                    text: '🏆 Lead by example through your endurance',
+                    nextScene: 'inspirational_endurance'
+                },
+                {
+                    text: '⚔️ Focus your pain into precise strikes',
+                    nextScene: 'focused_combat'
+                }
+            ]
+        },
+
+        rage_focus: {
+            emojis: '😤👹🎯',
+            text: 'You channel your berserker rage into a focused hatred for the Shadow Lord and all he represents. Your fury becomes a weapon as sharp as any blade, driving you toward your ultimate goal.',
+            choices: [
+                {
+                    text: '🏰 March directly to the Shadow Lord\'s fortress',
+                    nextScene: 'rage_driven_assault',
+                    effects: {
+                        setFlag: { fury_focused: true },
+                        experience: 35
+                    }
+                },
+                {
+                    text: '⚔️ Hunt down more shadow creatures',
+                    nextScene: 'shadow_hunting'
+                },
+                {
+                    text: '🧘‍♂️ Try to control your rage',
+                    nextScene: 'rage_control_attempt'
+                }
+            ]
+        },
+
+        soul_prayer: {
+            emojis: '🙏👻✨',
+            text: 'You offer prayers for the souls you\'ve freed from shadow corruption. As you pray, you feel a divine connection strengthening within you, and the freed souls bless you before departing to their eternal rest.',
+            choices: [
+                {
+                    text: '✨ Embrace your role as a soul guardian',
+                    nextScene: 'soul_guardian_path',
+                    effects: {
+                        setFlag: { soul_shepherd: true },
+                        experience: 45,
+                        magical: true
+                    }
+                },
+                {
+                    text: '🕊️ Dedicate yourself to freeing more trapped souls',
+                    nextScene: 'soul_liberation_mission'
+                },
+                {
+                    text: '💎 Use this divine connection to find the Crystal Shards',
+                    nextScene: 'divine_guidance'
+                }
+            ]
+        },
+
+        divine_empowerment: {
+            emojis: '✨👼⚡',
+            text: 'Divine power flows through you like liquid starlight. Your connection to higher powers grants you abilities beyond mortal ken. You feel chosen by the forces of good to restore balance to the realm.',
+            choices: [
+                {
+                    text: '🌟 Use divine power to purify the entire kingdom',
+                    nextScene: 'divine_purification',
+                    effects: {
+                        magical: true,
+                        experience: 50,
+                        setFlag: { divine_champion: true }
+                    }
+                },
+                {
+                    text: '⚔️ Confront the Shadow Lord with divine authority',
+                    nextScene: 'divine_confrontation'
+                },
+                {
+                    text: '🏰 Bless the kingdom\'s defenses',
+                    nextScene: 'kingdom_blessing'
+                }
+            ]
+        },
+
+        kingdom_blessing: {
+            emojis: '🏰✨🛡️',
+            text: 'You channel divine power into the kingdom\'s defenses, creating wards of holy light around every village and town. The blessed barriers will protect the innocent while you face the Shadow Lord.',
+            choices: [
+                {
+                    text: '👑 Report your success to the King',
+                    nextScene: 'divine_audience',
+                    effects: {
+                        setFlag: { kingdom_protected: true },
+                        experience: 40
+                    }
+                },
+                {
+                    text: '🏰 Lead a divine assault on the fortress',
+                    nextScene: 'blessed_army_assault'
+                },
+                {
+                    text: '💎 Seek the Crystal Shards with divine guidance',
+                    nextScene: 'divine_shard_quest'
+                }
+            ]
+        },
+
+        healing_offer: {
+            emojis: '🤝💚🔮',
+            text: 'You extend your hand toward the Shadow Lord, magical healing energy glowing around your fingers. "Your pain doesn\'t have to define you," you say gently. "Let me help heal the wounds that darkness has left on your soul."',
+            choices: [
+                {
+                    text: '💖 Pour healing magic into his corrupted form',
+                    nextScene: 'healing_attempt',
+                    effects: {
+                        magical: true,
+                        health: -20
+                    }
+                },
+                {
+                    text: '🌟 Offer to share your light with his darkness',
+                    nextScene: 'light_sharing'
+                },
+                {
+                    text: '📚 Teach him the healing magic you\'ve learned',
+                    nextScene: 'magic_teaching'
+                }
+            ]
+        },
+
+        justice_demand: {
+            emojis: '⚖️👹💥',
+            text: 'Your voice rings with righteous authority as you demand justice. "You have caused immense suffering! The realm cries out for justice against your crimes!" The Shadow Lord\'s eyes blaze with defiant fury.',
+            choices: [
+                {
+                    text: '⚔️ Enforce justice through combat',
+                    nextScene: 'justice_battle',
+                    effects: {
+                        setFlag: { justice_seeker: true },
+                        experience: 30
+                    }
+                },
+                {
+                    text: '⚖️ Offer a trial by combat',
+                    nextScene: 'trial_by_combat'
+                },
+                {
+                    text: '💎 Use the Crystal Shards to bind him for judgment',
+                    nextScene: 'crystal_binding'
+                }
+            ]
         }
     }
 };
