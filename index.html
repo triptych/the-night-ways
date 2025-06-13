@@ -73,10 +73,25 @@
         <script src="engine.js"></script>
         <script src="game-data.js"></script>
         <script>
-            // Initialize the game when the page loads
-            document.addEventListener('DOMContentLoaded', function () {
-                const game = new EmojiQuestEngine();
+            // Global game instance
+            let game;
+
+            // Function to initialize the game (called by game-data.js when ready)
+            window.initializeGame = function () {
+                game = new EmojiQuestEngine();
                 game.init();
+            };
+
+            // Fallback initialization if game data is already available
+            document.addEventListener('DOMContentLoaded', function () {
+                // Small delay to allow game-data.js to run first
+                setTimeout(() => {
+                    if (window.GAME_DATA && window.GAME_DATA.scenes && Object.keys(window.GAME_DATA.scenes).length > 0) {
+                        if (!game) {
+                            window.initializeGame();
+                        }
+                    }
+                }, 100);
             });
         </script>
     </body>
