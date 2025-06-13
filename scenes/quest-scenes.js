@@ -2173,5 +2173,208 @@ export const QUEST_SCENES = {
                 }
             }
         ]
+    },
+
+    // Batch 13: Crystal magic completion and wizard progression scenes
+    crystal_formation_study: {
+        emojis: '💎🔬📊',
+        text: 'You study the crystal formation patterns in detail, analyzing how the magical energy flows through the crystalline structure. Your research reveals that the crystals grow along ley lines and respond to emotional resonance.',
+        choices: [
+            {
+                text: '🗺️ Map the ley line connections',
+                nextScene: 'magical_reconnaissance',
+                effects: {
+                    magical: true,
+                    setFlag: { ley_line_mapper: true },
+                    experience: 40
+                }
+            },
+            {
+                text: '💫 Experiment with emotional resonance',
+                nextScene: 'shard_experimentation',
+                effects: {
+                    magical: true,
+                    setFlag: { emotion_crystalist: true },
+                    experience: 35
+                }
+            },
+            {
+                text: '📚 Document your crystal formation theories',
+                nextScene: 'knowledge_documentation',
+                effects: {
+                    setFlag: { crystal_formation_expert: true },
+                    experience: 30,
+                    addItem: '📜'
+                }
+            }
+        ]
+    },
+
+    crystal_true_purpose: {
+        emojis: '💎✨🌌',
+        text: 'Through deep meditation and magical analysis, you finally understand the Crystal of Harmony\'s true purpose. It wasn\'t meant to grant power, but to serve as a conduit connecting all living consciousness in perfect unity.',
+        choices: [
+            {
+                text: '🌍 Use this knowledge to heal the entire realm',
+                nextScene: 'realm_healing_attempt',
+                effects: {
+                    magical: true,
+                    setFlag: { realm_unifier: true },
+                    experience: 55
+                }
+            },
+            {
+                text: '🕊️ Seek to restore the Shadow Lord\'s connection',
+                nextScene: 'redemption_offer',
+                effects: {
+                    setFlag: { unity_seeker: true },
+                    experience: 50
+                }
+            },
+            {
+                text: '👑 Accept responsibility as the new Unity Guardian',
+                nextScene: 'guardian_order_founded',
+                effects: {
+                    setFlag: { unity_guardian: true },
+                    experience: 45
+                }
+            }
+        ]
+    },
+
+    magical_shard_detection: {
+        emojis: '🔮💎📡',
+        text: 'You develop a sophisticated magical detection spell that can sense Crystal Shard resonance from great distances. The spell reveals not just location, but also the shard\'s current state and any magical interference.',
+        choices: [
+            {
+                text: '🎯 Lock onto the nearest Crystal Shard',
+                nextScene: 'magical_shard_search',
+                effects: {
+                    magical: true,
+                    setFlag: { shard_detector: true },
+                    experience: 40
+                }
+            },
+            {
+                text: '🌐 Scan for all remaining shards simultaneously',
+                nextScene: 'systematic_shard_search',
+                effects: {
+                    magical: true,
+                    setFlag: { master_detector: true },
+                    experience: 45
+                }
+            },
+            {
+                text: '🛡️ Check for magical interference or traps',
+                nextScene: 'magical_investigation',
+                effects: {
+                    magical: true,
+                    setFlag: { trap_detector: true },
+                    experience: 35
+                }
+            }
+        ]
+    },
+
+    magical_shard_search: {
+        emojis: '🔍💎✨',
+        text: 'Following your detection spell, you embark on a magical search for the Crystal Shards. Your enhanced magical senses guide you through hidden paths and reveal concealed magical signatures.',
+        choices: [
+            {
+                text: '💎 Follow the strongest shard signature',
+                nextScene: 'shard_hunt',
+                effects: {
+                    magical: true,
+                    setFlag: { shard_hunter: true },
+                    experience: 40
+                }
+            },
+            {
+                text: '🌙 Investigate magical disturbances at the Moonwell',
+                nextScene: 'moonwell',
+                effects: {
+                    magical: true,
+                    setFlag: { moonwell_investigator: true },
+                    experience: 35
+                }
+            },
+            {
+                text: '👹 Track shadow-tainted magical signatures',
+                nextScene: 'shadow_tracking',
+                effects: {
+                    magical: true,
+                    setFlag: { shadow_tracker: true },
+                    experience: 30
+                }
+            }
+        ]
+    },
+
+    magical_investigation: {
+        emojis: '🔮🕵️📋',
+        text: 'You conduct a thorough magical investigation, analyzing residual enchantments, identifying spell components, and tracing magical energy patterns. Your wizard training proves invaluable for understanding complex magical phenomena.',
+        choices: [
+            {
+                text: '🧪 Analyze magical residue samples',
+                nextScene: 'magical_theory_research',
+                effects: {
+                    magical: true,
+                    setFlag: { magical_analyst: true },
+                    experience: 40
+                }
+            },
+            {
+                text: '📊 Map magical energy flow patterns',
+                nextScene: 'magical_reconnaissance',
+                effects: {
+                    magical: true,
+                    setFlag: { energy_mapper: true },
+                    experience: 35
+                }
+            },
+            {
+                text: '🔓 Attempt to dispel detected magical effects',
+                nextScene: 'magical_dispel',
+                effects: {
+                    magical: true,
+                    setFlag: { dispel_specialist: true },
+                    experience: 45
+                }
+            }
+        ]
+    },
+
+    magical_reconnaissance: {
+        emojis: '👁️🔮🗺️',
+        text: 'You use advanced scrying and detection magic to scout ahead, gathering crucial intelligence about magical threats, hidden enchantments, and the location of valuable magical resources without exposing yourself to danger.',
+        choices: [
+            {
+                text: '🏰 Scout the Shadow Lord\'s fortress magically',
+                nextScene: 'fortress_approach',
+                effects: {
+                    magical: true,
+                    setFlag: { magical_scout: true },
+                    experience: 40
+                }
+            },
+            {
+                text: '💎 Search for hidden Crystal Shard caches',
+                nextScene: 'hidden_location_search',
+                effects: {
+                    magical: true,
+                    setFlag: { hidden_cache_finder: true },
+                    experience: 35
+                }
+            },
+            {
+                text: '🌍 Survey the realm\'s overall magical condition',
+                nextScene: 'corruption_mapping',
+                effects: {
+                    magical: true,
+                    setFlag: { realm_surveyor: true },
+                    experience: 45
+                }
+            }
+        ]
     }
 };

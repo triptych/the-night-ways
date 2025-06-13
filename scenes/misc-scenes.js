@@ -2142,5 +2142,404 @@ export const MISC_SCENES = {
                 }
             }
         ]
+    },
+
+    // Batch 14: Elven alliance storylines and spirit progression scenes
+    elven_alliance: {
+        emojis: '🧝‍♀️🤝🌲',
+        text: 'You approach the elven council seeking an alliance against the Shadow Lord. Elder Silvanas studies you carefully before speaking: "The elves have watched your deeds. You show promise, but trust must be earned through action, not words."',
+        choices: [
+            {
+                text: '🌿 Offer to help heal the corrupted elven groves',
+                nextScene: 'forest_purification',
+                effects: {
+                    setFlag: { offered_grove_healing: true },
+                    experience: 35
+                }
+            },
+            {
+                text: '🛡️ Pledge to defend elven territory',
+                nextScene: 'elf_protection_offered',
+                effects: {
+                    setFlag: { promised_protection: true },
+                    experience: 30
+                }
+            },
+            {
+                text: '📚 Share your knowledge of the Shadow Lord',
+                nextScene: 'elven_lore_gathering',
+                effects: {
+                    setFlag: { shared_shadow_knowledge: true },
+                    experience: 40
+                }
+            }
+        ]
+    },
+
+    elven_army_recruitment: {
+        emojis: '🧝‍♀️⚔️🏹',
+        text: 'With the alliance secured, the elven council offers their finest warriors for the final battle. "These are our best archer-mages," Elder Silvanas explains. "They have fought shadow creatures for centuries and know their weaknesses."',
+        choices: [
+            {
+                text: '🏹 Accept the elven archer corps',
+                nextScene: 'precision_archer_corps',
+                effects: {
+                    setFlag: { elven_archers: true },
+                    experience: 40
+                }
+            },
+            {
+                text: '🔮 Request elven war-mages instead',
+                nextScene: 'magical_communications',
+                effects: {
+                    setFlag: { elven_mages: true },
+                    magical: true,
+                    experience: 45
+                }
+            },
+            {
+                text: '🌲 Ask for forest spirit summoners',
+                nextScene: 'warrior_spirits_summoned',
+                effects: {
+                    setFlag: { spirit_summoners: true },
+                    magical: true,
+                    experience: 50
+                }
+            }
+        ]
+    },
+
+    elven_curse_breaking: {
+        emojis: '🧝‍♀️💫🔓',
+        text: 'The elves teach you their ancient curse-breaking rituals, passed down through millennia of battling dark magic. "Curses are chains of negative energy," explains the elven priestess. "Break the chains, free the soul."',
+        choices: [
+            {
+                text: '✨ Master the full curse-breaking ritual',
+                nextScene: 'curse_breaking_learned',
+                effects: {
+                    magical: true,
+                    setFlag: { elven_curse_breaker: true },
+                    experience: 50
+                }
+            },
+            {
+                text: '🌿 Learn to identify curse sources',
+                nextScene: 'curse_origin_discovered',
+                effects: {
+                    setFlag: { curse_detective: true },
+                    experience: 40
+                }
+            },
+            {
+                text: '🛡️ Focus on curse protection techniques',
+                nextScene: 'curse_protection_learned',
+                effects: {
+                    magical: true,
+                    setFlag: { curse_protection_master: true },
+                    experience: 35
+                }
+            }
+        ]
+    },
+
+    elven_lore_gathering: {
+        emojis: '📚🧝‍♀️🌙',
+        text: 'The elves share their vast archives of knowledge spanning thousands of years. You learn about the realm\'s history, the original Crystal of Harmony, and the tragic tale of the Shadow Lord\'s fall from grace.',
+        choices: [
+            {
+                text: '💎 Study the Crystal\'s creation in detail',
+                nextScene: 'crystal_creation_knowledge',
+                effects: {
+                    setFlag: { crystal_historian: true },
+                    experience: 45
+                }
+            },
+            {
+                text: '👹 Research the Shadow Lord\'s original identity',
+                nextScene: 'shadow_lord_identity',
+                effects: {
+                    setFlag: { shadow_lord_scholar: true },
+                    experience: 40
+                }
+            },
+            {
+                text: '🌟 Learn about ancient harmony magic',
+                nextScene: 'harmony_learned',
+                effects: {
+                    magical: true,
+                    setFlag: { harmony_scholar: true },
+                    experience: 50
+                }
+            }
+        ]
+    },
+
+    spirit_ally_combat: {
+        emojis: '👻⚔️🌟',
+        text: 'The ancient spirits materialize beside you in battle, their ethereal forms wielding weapons of pure energy. Together you fight as one force, combining mortal determination with spiritual power.',
+        choices: [
+            {
+                text: '⚡ Channel spirit energy through your weapons',
+                nextScene: 'shard_empowered_combat',
+                effects: {
+                    magical: true,
+                    setFlag: { spirit_weapon_master: true },
+                    experience: 45
+                }
+            },
+            {
+                text: '🛡️ Let spirits enhance your defensive abilities',
+                nextScene: 'spirit_assisted_purification',
+                effects: {
+                    magical: true,
+                    setFlag: { spirit_guardian: true },
+                    experience: 40
+                }
+            },
+            {
+                text: '👥 Coordinate spirit and mortal forces',
+                nextScene: 'unified_army_formed',
+                effects: {
+                    setFlag: { spirit_general: true },
+                    experience: 50
+                }
+            }
+        ]
+    },
+
+    spirit_crystal_knowledge: {
+        emojis: '👻💎🧠',
+        text: 'The ancient spirits share their profound knowledge about the Crystal Shards, revealing secrets lost to mortal memory. They speak of the crystal\'s true nature as a bridge between the physical and spiritual realms.',
+        choices: [
+            {
+                text: '🌉 Learn to use crystals as spiritual bridges',
+                nextScene: 'crystal_restoration_vision',
+                effects: {
+                    magical: true,
+                    setFlag: { crystal_bridge_master: true },
+                    experience: 55
+                }
+            },
+            {
+                text: '👻 Commune with spirits trapped in the shards',
+                nextScene: 'guardian_communion',
+                effects: {
+                    magical: true,
+                    setFlag: { spirit_communer: true },
+                    experience: 50
+                }
+            },
+            {
+                text: '💫 Learn the crystal creation process',
+                nextScene: 'crystal_formation_study',
+                effects: {
+                    magical: true,
+                    setFlag: { crystal_creator: true },
+                    experience: 45
+                }
+            }
+        ]
+    },
+
+    // Batch 15: Curse system completion and guardian progression scenes
+    curse_breaking_learned: {
+        emojis: '💫🔓✨',
+        text: 'You master the ancient art of curse-breaking, learning to unravel the dark energies that bind corrupted souls and tainted lands. The knowledge fills you with power to free others from shadow magic\'s grip.',
+        choices: [
+            {
+                text: '🧝‍♀️ Use your skills to help the cursed elves',
+                nextScene: 'elven_curse_breaking',
+                effects: {
+                    magical: true,
+                    setFlag: { curse_breaker_master: true },
+                    experience: 45
+                }
+            },
+            {
+                text: '🌿 Break the curse on corrupted forest creatures',
+                nextScene: 'creature_purification',
+                effects: {
+                    magical: true,
+                    setFlag: { creature_healer: true },
+                    experience: 40
+                }
+            },
+            {
+                text: '🏰 Attempt to break curses on the Shadow Lord\'s fortress',
+                nextScene: 'fortress_inner_sanctum',
+                effects: {
+                    magical: true,
+                    setFlag: { fortress_purifier: true },
+                    experience: 50
+                }
+            }
+        ]
+    },
+
+    curse_origin_discovered: {
+        emojis: '🔍👹📜',
+        text: 'Through careful investigation, you uncover the true origin of the realm\'s curses. They stem from the Shadow Lord\'s initial corruption - his pain and anger infected the magical ley lines, spreading darkness across the land.',
+        choices: [
+            {
+                text: '💡 Use this knowledge to target the source',
+                nextScene: 'curse_protection_learned',
+                effects: {
+                    setFlag: { curse_source_known: true },
+                    experience: 45
+                }
+            },
+            {
+                text: '🕊️ Seek to heal the Shadow Lord\'s original pain',
+                nextScene: 'empathic_understanding',
+                effects: {
+                    setFlag: { understands_curse_origin: true },
+                    experience: 50
+                }
+            },
+            {
+                text: '🗺️ Map the spread of curse energy',
+                nextScene: 'corruption_mapping',
+                effects: {
+                    setFlag: { curse_mapper: true },
+                    experience: 35
+                }
+            }
+        ]
+    },
+
+    curse_protection_learned: {
+        emojis: '🛡️✨🔮',
+        text: 'You develop powerful protective techniques against curse magic, creating wards that can shield both yourself and others from the corrupting influence of shadow energy. The protection feels warm and reassuring.',
+        choices: [
+            {
+                text: '🏰 Create protective wards around key locations',
+                nextScene: 'permanent_ward_created',
+                effects: {
+                    magical: true,
+                    setFlag: { ward_specialist: true },
+                    experience: 40
+                }
+            },
+            {
+                text: '👥 Teach protection techniques to others',
+                nextScene: 'protection_magic_learned',
+                effects: {
+                    setFlag: { protection_teacher: true },
+                    experience: 35
+                }
+            },
+            {
+                text: '🌟 Combine protection with purification magic',
+                nextScene: 'purification_study',
+                effects: {
+                    magical: true,
+                    setFlag: { protection_purifier: true },
+                    experience: 45
+                }
+            }
+        ]
+    },
+
+    creature_purification: {
+        emojis: '🐺💚✨',
+        text: 'You attempt to purify a corrupted forest creature, channeling healing energy into its twisted form. The process is dangerous as shadow magic fights back, but slowly the creature\'s true nature begins to emerge.',
+        choices: [
+            {
+                text: '💫 Complete the purification with full power',
+                nextScene: 'forest_purification',
+                effects: {
+                    magical: true,
+                    health: -20,
+                    setFlag: { creature_purifier: true },
+                    experience: 50
+                }
+            },
+            {
+                text: '⚖️ Use careful, measured purification',
+                nextScene: 'balanced_purification',
+                effects: {
+                    magical: true,
+                    health: -10,
+                    setFlag: { careful_purifier: true },
+                    experience: 35
+                }
+            },
+            {
+                text: '🤝 Ask the forest spirits for assistance',
+                nextScene: 'spirit_assisted_purification',
+                conditions: { hasFlag: 'spirit_ally' },
+                effects: {
+                    magical: true,
+                    setFlag: { spirit_aided_purification: true },
+                    experience: 40
+                }
+            }
+        ]
+    },
+
+    empathic_understanding: {
+        emojis: '💭💔🤝',
+        text: 'Through deep empathy and magical insight, you begin to understand the Shadow Lord\'s pain. You feel the weight of his centuries of loneliness, the burden of power, and the corruption of good intentions gone wrong.',
+        choices: [
+            {
+                text: '🕊️ Offer genuine compassion for his suffering',
+                nextScene: 'redemption_offered',
+                effects: {
+                    setFlag: { compassionate_hero: true },
+                    experience: 55
+                }
+            },
+            {
+                text: '🔮 Use this understanding to find his weakness',
+                nextScene: 'shadow_lord_understanding',
+                effects: {
+                    setFlag: { psychological_advantage: true },
+                    experience: 45
+                }
+            },
+            {
+                text: '💎 Channel understanding into harmony magic',
+                nextScene: 'harmony_learned',
+                effects: {
+                    magical: true,
+                    setFlag: { empathic_magic: true },
+                    experience: 50
+                }
+            }
+        ]
+    },
+
+    forest_purification: {
+        emojis: '🌲💚🌟',
+        text: 'You perform a large-scale purification of the Enchanted Forest, channeling immense magical energy to cleanse the shadow corruption from every tree, stream, and creature. The forest responds with overwhelming gratitude.',
+        choices: [
+            {
+                text: '🌺 Allow the forest to be reborn in new glory',
+                nextScene: 'forest_reborn',
+                effects: {
+                    magical: true,
+                    setFlag: { forest_purifier: true },
+                    experience: 60,
+                    health: -25
+                }
+            },
+            {
+                text: '🤝 Share the purification energy with allies',
+                nextScene: 'forest_army',
+                effects: {
+                    magical: true,
+                    setFlag: { shared_purification: true },
+                    experience: 45
+                }
+            },
+            {
+                text: '👑 Accept the forest\'s crown as its champion',
+                nextScene: 'forest_champion_crowned',
+                effects: {
+                    setFlag: { forest_crown_bearer: true },
+                    experience: 50
+                }
+            }
+        ]
     }
 };
