@@ -1941,5 +1941,206 @@ export const MISC_SCENES = {
                 }
             }
         ]
+    },
+
+    // Batch 12: Elven alliances, magical research, and spiritual guidance
+    elven_alliance_formed: {
+        emojis: '🧝‍♀️🤝🌟',
+        text: 'After proving your worth and dedication to protecting the forest, the elven council formally offers you a sacred alliance. "You have shown the heart of a true guardian," Elder Silvanas declares. "The elves stand with you."',
+        choices: [
+            {
+                text: '🙏 Accept the alliance with deep gratitude',
+                nextScene: 'elven_blessing_received',
+                effects: {
+                    setFlag: { elven_alliance: true },
+                    experience: 45,
+                    magical: true
+                }
+            },
+            {
+                text: '⚔️ Request elven warriors for the final battle',
+                nextScene: 'elven_army_recruitment',
+                effects: {
+                    setFlag: { elven_army: true },
+                    experience: 40
+                }
+            },
+            {
+                text: '📚 Ask for ancient elven knowledge',
+                nextScene: 'elven_lore_gathering',
+                effects: {
+                    setFlag: { elven_knowledge: true },
+                    experience: 50
+                }
+            }
+        ]
+    },
+
+    elven_blessing_received: {
+        emojis: '✨🧝‍♀️🌙',
+        text: 'The elven blessing flows through you like moonlight through crystal. Your connection to nature deepens, your magical abilities strengthen, and you gain the gift of speaking with all forest creatures.',
+        choices: [
+            {
+                text: '🌿 Use the blessing to communicate with nature',
+                nextScene: 'forest_patrol',
+                effects: {
+                    setFlag: { nature_speaker: true },
+                    magical: true,
+                    experience: 35
+                }
+            },
+            {
+                text: '🔮 Channel the blessing into magical research',
+                nextScene: 'magical_theory_research',
+                effects: {
+                    setFlag: { elven_enhanced_magic: true },
+                    magical: true,
+                    experience: 40
+                }
+            },
+            {
+                text: '💎 Apply the blessing to Crystal Shard work',
+                nextScene: 'shard_attunement',
+                effects: {
+                    setFlag: { blessed_attunement: true },
+                    magical: true,
+                    experience: 45
+                }
+            }
+        ]
+    },
+
+    magical_theory_research: {
+        emojis: '📚🔮⚗️',
+        text: 'You delve deep into advanced magical theory, studying the fundamental forces that govern magic itself. Your research reveals new possibilities for combining different magical disciplines and amplifying their effects.',
+        choices: [
+            {
+                text: '💎 Apply the theory to Crystal Shard magic',
+                nextScene: 'shard_experimentation',
+                effects: {
+                    magical: true,
+                    setFlag: { crystal_theorist: true },
+                    experience: 50
+                }
+            },
+            {
+                text: '⚔️ Develop new combat applications',
+                nextScene: 'enhanced_magic_learned',
+                effects: {
+                    magical: true,
+                    setFlag: { combat_theorist: true },
+                    experience: 45
+                }
+            },
+            {
+                text: '🌟 Research harmony magic fundamentals',
+                nextScene: 'harmony_learned',
+                effects: {
+                    magical: true,
+                    setFlag: { harmony_theorist: true },
+                    experience: 55
+                }
+            }
+        ]
+    },
+
+    shard_attunement: {
+        emojis: '💎🧘‍♂️✨',
+        text: 'You enter deep meditation with the Crystal Shard, learning to synchronize your life force with its ancient power. The attunement process is intense but reveals the shard\'s true potential and hidden abilities.',
+        choices: [
+            {
+                text: '🔗 Form a permanent bond with the shard',
+                nextScene: 'crystal_binding',
+                effects: {
+                    magical: true,
+                    setFlag: { shard_bonded: true },
+                    experience: 50,
+                    health: -10
+                }
+            },
+            {
+                text: '🔍 Use attunement to locate other shards',
+                nextScene: 'shard_resonance_tracking',
+                effects: {
+                    magical: true,
+                    setFlag: { shard_tracker: true },
+                    experience: 40
+                }
+            },
+            {
+                text: '🌟 Learn to amplify the shard\'s power',
+                nextScene: 'shard_power_unleashed',
+                effects: {
+                    magical: true,
+                    setFlag: { shard_amplifier: true },
+                    experience: 45
+                }
+            }
+        ]
+    },
+
+    shard_experimentation: {
+        emojis: '💎⚗️🔬',
+        text: 'Your careful experiments with Crystal Shard interactions reveal fascinating properties. When brought close together, the shards resonate and amplify each other\'s power exponentially, but the process is dangerous.',
+        choices: [
+            {
+                text: '⚡ Push the experiment to its limits',
+                nextScene: 'shard_power_unleashed',
+                effects: {
+                    magical: true,
+                    setFlag: { shard_master: true },
+                    experience: 55,
+                    health: -20
+                }
+            },
+            {
+                text: '📊 Document your findings carefully',
+                nextScene: 'research_notes',
+                effects: {
+                    setFlag: { shard_researcher: true },
+                    experience: 35
+                }
+            },
+            {
+                text: '🛡️ Focus on safe, controlled interactions',
+                nextScene: 'shard_harmony_practice',
+                effects: {
+                    magical: true,
+                    setFlag: { careful_experimenter: true },
+                    experience: 40
+                }
+            }
+        ]
+    },
+
+    spirit_guidance_info: {
+        emojis: '👻📋🗺️',
+        text: 'The forest spirits provide crucial guidance about your quest. They reveal hidden paths, warn of dangerous areas, and share knowledge about the Crystal Shards\' locations and the Shadow Lord\'s weaknesses.',
+        choices: [
+            {
+                text: '🗺️ Learn about hidden paths and secret routes',
+                nextScene: 'hidden_passage',
+                effects: {
+                    setFlag: { spirit_paths_known: true },
+                    experience: 35
+                }
+            },
+            {
+                text: '💎 Ask about the remaining Crystal Shards',
+                nextScene: 'shard_locations_revealed',
+                effects: {
+                    setFlag: { spirit_shard_knowledge: true },
+                    experience: 40
+                }
+            },
+            {
+                text: '👹 Inquire about the Shadow Lord\'s vulnerabilities',
+                nextScene: 'shadow_weakness_revealed',
+                effects: {
+                    setFlag: { spirit_tactical_knowledge: true },
+                    experience: 45
+                }
+            }
+        ]
     }
 };

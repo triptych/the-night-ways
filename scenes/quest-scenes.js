@@ -1968,5 +1968,210 @@ export const QUEST_SCENES = {
                 }
             }
         ]
+    },
+
+    // Batch 11: Critical crystal and divine scenes
+    crystal_binding: {
+        emojis: '💎🔗✨',
+        text: 'You perform the ancient ritual of crystal binding, forging a mystical connection between yourself and the Crystal Shard. The process is intense - your life force intertwines with the crystal\'s power, creating a permanent bond.',
+        choices: [
+            {
+                text: '🌟 Embrace the full binding with complete trust',
+                nextScene: 'crystal_powered_duel',
+                effects: {
+                    magical: true,
+                    setFlag: { crystal_bound: true },
+                    experience: 50,
+                    health: -20
+                }
+            },
+            {
+                text: '⚖️ Maintain some personal independence in the bond',
+                nextScene: 'crystal_restoration_vision',
+                effects: {
+                    magical: true,
+                    setFlag: { balanced_crystal_bond: true },
+                    experience: 40,
+                    health: -10
+                }
+            },
+            {
+                text: '🛡️ Create protective barriers during the binding',
+                nextScene: 'divine_protection_granted',
+                effects: {
+                    magical: true,
+                    setFlag: { protected_binding: true },
+                    experience: 35
+                }
+            }
+        ]
+    },
+
+    crystal_powered_duel: {
+        emojis: '💎⚔️⚡',
+        text: 'The crystal binding empowers you with incredible abilities as you face your opponent. Crystalline energy courses through your weapons and magic, making every strike devastatingly effective against shadow forces.',
+        choices: [
+            {
+                text: '💥 Unleash the crystal\'s full power in combat',
+                nextScene: 'final_battle_magic',
+                effects: {
+                    magical: true,
+                    setFlag: { crystal_warrior: true },
+                    experience: 55,
+                    health: -15
+                }
+            },
+            {
+                text: '🎯 Focus the power for precise, strategic strikes',
+                nextScene: 'tactical_victory',
+                effects: {
+                    magical: true,
+                    setFlag: { precise_crystal_combat: true },
+                    experience: 45
+                }
+            },
+            {
+                text: '🛡️ Use the power primarily for defense and protection',
+                nextScene: 'defensive_victory',
+                effects: {
+                    magical: true,
+                    setFlag: { crystal_defender: true },
+                    experience: 40,
+                    health: 20
+                }
+            }
+        ]
+    },
+
+    crystal_restoration_vision: {
+        emojis: '💎👁️🌟',
+        text: 'Through your crystal bond, you experience a profound vision of the realm\'s restoration. You see how the Crystal of Harmony once unified all living things, and understand the true nature of the healing needed.',
+        choices: [
+            {
+                text: '🌍 Focus the vision on healing the entire realm',
+                nextScene: 'realm_healing_mission',
+                effects: {
+                    magical: true,
+                    setFlag: { realm_healer: true },
+                    experience: 50
+                }
+            },
+            {
+                text: '🕊️ See a path to redeeming the Shadow Lord',
+                nextScene: 'redemption_path',
+                effects: {
+                    setFlag: { redemption_visionary: true },
+                    experience: 45
+                }
+            },
+            {
+                text: '📚 Gain wisdom about the crystal\'s true purpose',
+                nextScene: 'crystal_true_purpose',
+                effects: {
+                    setFlag: { crystal_sage: true },
+                    experience: 40
+                }
+            }
+        ]
+    },
+
+    divine_protector_role: {
+        emojis: '👼🛡️⚖️',
+        text: 'You accept the sacred calling to become a Divine Protector, charged with safeguarding the innocent and maintaining cosmic balance. This role grants you divine powers but also great responsibility.',
+        choices: [
+            {
+                text: '⚖️ Dedicate yourself to maintaining balance in all things',
+                nextScene: 'divine_wisdom_granted',
+                effects: {
+                    setFlag: { balance_keeper: true },
+                    experience: 50,
+                    magical: true
+                }
+            },
+            {
+                text: '🛡️ Focus on protecting the innocent and defenseless',
+                nextScene: 'guardian_order_founded',
+                effects: {
+                    setFlag: { guardian_protector: true },
+                    experience: 45
+                }
+            },
+            {
+                text: '⚔️ Become a divine warrior against evil',
+                nextScene: 'spirit_empowerment',
+                effects: {
+                    setFlag: { divine_warrior: true },
+                    experience: 40,
+                    magical: true
+                }
+            }
+        ]
+    },
+
+    divine_wisdom_granted: {
+        emojis: '✨🧠👼',
+        text: 'Divine wisdom flows into your mind, granting you understanding of cosmic truths and the interconnectedness of all things. You gain insight into the true nature of good, evil, and the balance between them.',
+        choices: [
+            {
+                text: '📚 Use this wisdom to guide others',
+                nextScene: 'knowledge_sharing',
+                effects: {
+                    setFlag: { divine_teacher: true },
+                    experience: 45
+                }
+            },
+            {
+                text: '🔮 Apply the wisdom to magical understanding',
+                nextScene: 'magical_theory_research',
+                effects: {
+                    magical: true,
+                    setFlag: { divine_scholar: true },
+                    experience: 50
+                }
+            },
+            {
+                text: '👑 Accept leadership responsibilities',
+                nextScene: 'council_leadership',
+                effects: {
+                    setFlag: { wise_ruler: true },
+                    experience: 55
+                }
+            }
+        ]
+    },
+
+    spirit_empowerment: {
+        emojis: '👻✨💪',
+        text: 'Ancient spirits of the realm recognize your pure intentions and grant you their power. You become a conduit for their collective strength, able to channel their abilities in times of great need.',
+        choices: [
+            {
+                text: '⚔️ Channel spirit power for combat',
+                nextScene: 'spirit_ally_combat',
+                effects: {
+                    magical: true,
+                    setFlag: { spirit_warrior: true },
+                    experience: 45
+                }
+            },
+            {
+                text: '🌿 Use spirit energy for healing and restoration',
+                nextScene: 'spirit_restoration_offer',
+                effects: {
+                    magical: true,
+                    setFlag: { spirit_healer: true },
+                    experience: 40,
+                    health: 30
+                }
+            },
+            {
+                text: '🔮 Seek deeper spiritual knowledge',
+                nextScene: 'spirit_crystal_knowledge',
+                effects: {
+                    magical: true,
+                    setFlag: { spirit_sage: true },
+                    experience: 50
+                }
+            }
+        ]
     }
 };
