@@ -1775,5 +1775,198 @@ export const QUEST_SCENES = {
                 }
             }
         ]
+    },
+
+    // Batch 10: Next 6 missing scenes
+    council_leadership: {
+        emojis: '👑🏛️📜',
+        text: 'With the Shadow Lord redeemed and the realm saved, the people look to you for leadership. You accept the role of leading the new Council of Harmony, dedicated to ensuring balance and peace endure.',
+        choices: [
+            {
+                text: '⚖️ Establish laws to prevent future corruption',
+                nextScene: 'justice_maintained',
+                effects: {
+                    setFlag: { wise_lawgiver: true },
+                    experience: 50
+                }
+            },
+            {
+                text: '🤝 Create alliances with neighboring realms',
+                nextScene: 'kingdom_alliance',
+                effects: {
+                    setFlag: { diplomatic_leader: true },
+                    experience: 45
+                }
+            },
+            {
+                text: '📚 Focus on preserving knowledge and wisdom',
+                nextScene: 'knowledge_documentation',
+                effects: {
+                    setFlag: { knowledge_keeper: true },
+                    experience: 40
+                }
+            }
+        ]
+    },
+
+    covering_fire_support: {
+        emojis: '🏹🎯🛡️',
+        text: 'You provide crucial covering fire for the assault team, your arrows finding their marks with deadly precision. From your strategic position, you can see the entire battlefield and direct the flow of combat.',
+        choices: [
+            {
+                text: '🎯 Focus on eliminating key enemy targets',
+                nextScene: 'tactical_victory',
+                effects: {
+                    setFlag: { precision_marksman: true },
+                    experience: 35
+                }
+            },
+            {
+                text: '🛡️ Prioritize protecting advancing allies',
+                nextScene: 'protective_archery',
+                effects: {
+                    setFlag: { guardian_archer: true },
+                    experience: 30
+                }
+            },
+            {
+                text: '📡 Coordinate with other ranged units',
+                nextScene: 'ranged_defense',
+                effects: {
+                    setFlag: { archer_commander: true },
+                    experience: 40
+                }
+            }
+        ]
+    },
+
+    crystal_creation_knowledge: {
+        emojis: '💎🔬📚',
+        text: 'You uncover ancient texts describing the original creation of the Crystal of Harmony. The knowledge reveals how the crystal was forged from pure emotional energy and the willing sacrifice of the realm\'s greatest mages.',
+        choices: [
+            {
+                text: '🔮 Study the magical formulae in detail',
+                nextScene: 'magical_theory_research',
+                effects: {
+                    magical: true,
+                    setFlag: { crystal_scholar: true },
+                    experience: 45
+                }
+            },
+            {
+                text: '💎 Attempt to create a new crystal fragment',
+                nextScene: 'crystal_binding',
+                effects: {
+                    magical: true,
+                    setFlag: { crystal_crafter: true },
+                    experience: 50
+                }
+            },
+            {
+                text: '📖 Document the knowledge for future generations',
+                nextScene: 'knowledge_documentation',
+                effects: {
+                    setFlag: { crystal_historian: true },
+                    experience: 35
+                }
+            }
+        ]
+    },
+
+    divine_protection_granted: {
+        emojis: '✨🛡️👼',
+        text: 'A divine blessing descends upon you, surrounding you with an aura of pure protective light. This sacred ward will shield you from harm and strengthen your resolve in the battles ahead.',
+        choices: [
+            {
+                text: '🌟 Share the protection with your allies',
+                nextScene: 'blessing_shared',
+                effects: {
+                    setFlag: { divine_guardian: true },
+                    experience: 40,
+                    magical: true
+                }
+            },
+            {
+                text: '⚔️ Use the protection to face greater dangers',
+                nextScene: 'heroic_charge',
+                effects: {
+                    setFlag: { divinely_protected: true },
+                    experience: 35
+                }
+            },
+            {
+                text: '🙏 Dedicate yourself to a divine mission',
+                nextScene: 'divine_protector_role',
+                effects: {
+                    setFlag: { holy_champion: true },
+                    experience: 45
+                }
+            }
+        ]
+    },
+
+    enemy_equipment_analysis: {
+        emojis: '🔍⚔️📊',
+        text: 'You carefully analyze the weapons and equipment used by shadow forces, studying their construction, materials, and magical properties. This intelligence reveals vulnerabilities you can exploit.',
+        choices: [
+            {
+                text: '🛡️ Develop countermeasures based on your findings',
+                nextScene: 'equipment_improvement',
+                effects: {
+                    setFlag: { equipment_analyst: true },
+                    experience: 35
+                }
+            },
+            {
+                text: '🎯 Identify weak points in enemy armor',
+                nextScene: 'weakness_exploitation',
+                effects: {
+                    setFlag: { tactical_expert: true },
+                    experience: 40
+                }
+            },
+            {
+                text: '📚 Record your analysis for military training',
+                nextScene: 'tactical_manual_created',
+                effects: {
+                    setFlag: { military_scholar: true },
+                    experience: 30
+                }
+            }
+        ]
+    },
+
+    equipment_improvement: {
+        emojis: '🔧⚔️✨',
+        text: 'Using your analysis of enemy equipment and ancient knowledge, you work to improve your weapons and armor. Enhanced gear will provide significant advantages in the battles ahead.',
+        choices: [
+            {
+                text: '⚔️ Focus on weapon enhancement',
+                nextScene: 'tactical_victory',
+                effects: {
+                    addItem: '⚔️',
+                    setFlag: { enhanced_weapons: true },
+                    experience: 30
+                }
+            },
+            {
+                text: '🛡️ Prioritize defensive improvements',
+                nextScene: 'defensive_training',
+                effects: {
+                    addItem: '🛡️',
+                    setFlag: { enhanced_armor: true },
+                    experience: 25
+                }
+            },
+            {
+                text: '🔮 Integrate magical enhancements',
+                nextScene: 'magical_theory_research',
+                effects: {
+                    magical: true,
+                    setFlag: { magical_equipment: true },
+                    experience: 35
+                }
+            }
+        ]
     }
 };
