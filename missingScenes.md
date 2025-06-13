@@ -72,17 +72,17 @@
 - purification_ritual ✓ (exists)
 - shadow_tracking ✓ (exists)
 - great_oak ✓ (exists)
-- trial_explanation ❌ (MISSING)
-- deer_guidance ❌ (MISSING)
+- trial_explanation ✓ (exists)
+- deer_guidance ✓ (exists)
 - magical_recovery ❌ (MISSING)
 - dangerous_collection ❌ (MISSING)
 - research_notes ❌ (MISSING)
 - ruins_search ❌ (MISSING)
 - shard_study ❌ (MISSING)
-- underground_chamber ❌ (MISSING)
+- underground_chamber ✓ (exists)
 - symbol_study ❌ (MISSING)
-- second_chance ❌ (MISSING)
-- potion_request ❌ (MISSING)
+- second_chance ✓ (exists)
+- potion_request ✓ (exists)
 - balanced_approach ✓ (exists)
 - forest_reborn ❌ (MISSING)
 - royal_audience ❌ (MISSING)
@@ -93,18 +93,18 @@
 - wisdom_test ❌ (MISSING)
 - power_demonstration ❌ (MISSING)
 - moonwell_guidance ❌ (MISSING)
-- elf_gratitude ❌ (MISSING)
+- elf_gratitude ✓ (exists)
 - village_healer ❌ (MISSING)
 - survivor_rally ❌ (MISSING)
 - beast_investigation ❌ (MISSING)
-- combat_recovery ❌ (MISSING)
-- pain_endurance ❌ (MISSING)
-- rage_focus ❌ (MISSING)
+- combat_recovery ✓ (exists)
+- pain_endurance ✓ (exists)
+- rage_focus ✓ (exists)
 - soul_prayer ❌ (MISSING)
 - divine_empowerment ❌ (MISSING)
 - kingdom_blessing ❌ (MISSING)
-- healing_offer ❌ (MISSING)
-- justice_demand ❌ (MISSING)
+- healing_offer ✓ (exists)
+- justice_demand ✓ (exists)
 - ending_champion ✓ (exists)
 - ending_teacher ✓ (exists)
 - ending_peaceful ✓ (exists)
@@ -166,94 +166,83 @@
 - identity_restored ❌ (MISSING)
 - new_alliance ❌ (MISSING)
 
-## MISSING SCENES COUNT: 84
+## MISSING SCENES COUNT: 77
 
 ## Complete List of Missing Scenes:
-1. trial_explanation
-2. deer_guidance
-3. magical_recovery
-4. dangerous_collection
-5. research_notes
-6. ruins_search
-7. shard_study
-8. underground_chamber
-9. symbol_study
-10. second_chance
-11. potion_request
-12. forest_reborn
-13. royal_audience
-14. defense_preparation
-15. light_combat_training
-16. defensive_training
-17. moonwell_judgment
-18. wisdom_test
-19. power_demonstration
-20. moonwell_guidance
-21. elf_gratitude
-22. village_healer
-23. survivor_rally
-24. beast_investigation
-25. combat_recovery
-26. pain_endurance
-27. rage_focus
-28. soul_prayer
-29. divine_empowerment
-30. kingdom_blessing
-31. healing_offer
-32. justice_demand
-33. shard_research
-34. quest_begins
-35. map_study
-36. spell_learned
-37. shadow_lore
-38. ranged_defense
-39. entrance_defense
-40. battle_search
-41. route_mapping
-42. forest_combat
-43. elf_search
-44. alliance_assault
-45. defense_network
-46. intelligence_gathering
-47. shard_retrieval
-48. ranged_combat
-49. wraith_shot
-50. quick_grab
-51. wraith_analysis
-52. evacuation_leader
-53. rear_guard_action
-54. warning_spread
-55. heroic_last_stand
-56. tactical_victory
-57. strategic_retreat
-58. victory_celebration
-59. battlefield_investigation
-60. wound_treatment
-61. refugee_care
-62. castle_defender
-63. curse_research
-64. elf_curse_help
-65. spirit_guidance
-66. spirit_wisdom
-67. spirit_pact
-68. purification_learned
-69. light_shield_learned
-70. harmony_learned
-71. elf_summoning
-72. spirit_revelation
-73. forest_army
-74. oak_blessing
-75. oak_communion
-76. shard_claimed
-77. gratitude_ritual
-78. ancient_knowledge
-79. shard_hunt
-80. power_destruction
-81. stealth_confrontation
-82. stealth_shard_hunt
-83. prisoner_rescue
-84. final_duel
-85. shard_grab
-86. shadow_lord_story
-87. identity_restored
-88. new_alliance
+1. magical_recovery
+2. dangerous_collection
+3. research_notes
+4. ruins_search
+5. shard_study
+6. symbol_study
+7. forest_reborn
+8. royal_audience
+9. defense_preparation
+10. light_combat_training
+11. defensive_training
+12. moonwell_judgment
+13. wisdom_test
+14. power_demonstration
+15. moonwell_guidance
+16. village_healer
+17. survivor_rally
+18. beast_investigation
+19. soul_prayer
+20. divine_empowerment
+21. kingdom_blessing
+22. shard_research
+23. quest_begins
+24. map_study
+25. spell_learned
+26. shadow_lore
+27. ranged_defense
+28. entrance_defense
+29. battle_search
+30. route_mapping
+31. forest_combat
+32. elf_search
+33. alliance_assault
+34. defense_network
+35. intelligence_gathering
+36. shard_retrieval
+37. ranged_combat
+38. wraith_shot
+39. quick_grab
+40. wraith_analysis
+41. evacuation_leader
+42. rear_guard_action
+43. warning_spread
+44. heroic_last_stand
+45. tactical_victory
+46. strategic_retreat
+47. victory_celebration
+48. battlefield_investigation
+49. wound_treatment
+50. refugee_care
+51. castle_defender
+52. curse_research
+53. elf_curse_help
+54. spirit_guidance
+55. spirit_wisdom
+56. spirit_pact
+57. purification_learned
+58. light_shield_learned
+59. harmony_learned
+60. elf_summoning
+61. spirit_revelation
+62. forest_army
+63. oak_blessing
+64. oak_communion
+65. shard_claimed
+66. gratitude_ritual
+67. ancient_knowledge
+68. shard_hunt
+69. power_destruction
+70. stealth_confrontation
+71. stealth_shard_hunt
+72. prisoner_rescue
+73. final_duel
+74. shard_grab
+75. shadow_lord_story
+76. identity_restored
+77. new_alliance
