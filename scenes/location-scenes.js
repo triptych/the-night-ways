@@ -432,5 +432,204 @@ export const LOCATION_SCENES = {
                 }
             }
         ]
+    },
+
+    // Batch 18: Location and exploration scenes
+    fortified_position: {
+        emojis: '🏰🛡️⛰️',
+        text: 'You establish a fortified position on high ground, using natural terrain and constructed defenses to create an impregnable stronghold. From this vantage point, you can control the surrounding area and coordinate your forces.',
+        choices: [
+            {
+                text: '🏹 Set up archer towers for maximum range',
+                nextScene: 'archer_positions_set',
+                effects: {
+                    setFlag: { fortified_archers: true },
+                    experience: 35
+                }
+            },
+            {
+                text: '🔮 Install magical defensive wards',
+                nextScene: 'permanent_ward_created',
+                conditions: { playerClass: 'wizard' },
+                effects: {
+                    magical: true,
+                    setFlag: { warded_fortress: true },
+                    experience: 40
+                }
+            },
+            {
+                text: '👥 Train the garrison in defensive tactics',
+                nextScene: 'guard_training_program',
+                effects: {
+                    setFlag: { elite_garrison: true },
+                    experience: 30
+                }
+            }
+        ]
+    },
+
+    fortress_architect: {
+        emojis: '🏗️🏰📐',
+        text: 'You design and oversee the construction of a massive fortress, applying your strategic knowledge to create an impregnable defensive structure. Every wall, tower, and gateway is positioned for maximum tactical advantage.',
+        choices: [
+            {
+                text: '🏰 Focus on creating multiple defensive layers',
+                nextScene: 'layered_defense',
+                effects: {
+                    setFlag: { master_architect: true },
+                    experience: 50
+                }
+            },
+            {
+                text: '🎯 Design specialized archer positions',
+                nextScene: 'precision_archer_corps',
+                effects: {
+                    setFlag: { archer_fortress: true },
+                    experience: 40
+                }
+            },
+            {
+                text: '🔮 Integrate magical defenses into the structure',
+                nextScene: 'castle_ward_creation',
+                conditions: { playerClass: 'wizard' },
+                effects: {
+                    magical: true,
+                    setFlag: { magical_fortress: true },
+                    experience: 45
+                }
+            }
+        ]
+    },
+
+    fortress_inner_sanctum: {
+        emojis: '🏰👑💎',
+        text: 'You reach the heart of the Shadow Lord\'s fortress - the inner sanctum where he keeps his most precious possessions and darkest secrets. The final Crystal Shard pulses with corrupted energy at the chamber\'s center.',
+        choices: [
+            {
+                text: '💎 Attempt to claim the Crystal Shard directly',
+                nextScene: 'shard_grab',
+                effects: {
+                    setFlag: { sanctum_infiltrator: true },
+                    experience: 45
+                }
+            },
+            {
+                text: '🔮 Try to purify the shard\'s corruption first',
+                nextScene: 'shard_purification',
+                conditions: { playerClass: 'wizard' },
+                effects: {
+                    magical: true,
+                    setFlag: { purification_master: true },
+                    experience: 50
+                }
+            },
+            {
+                text: '👹 Confront the Shadow Lord in his seat of power',
+                nextScene: 'final_duel',
+                effects: {
+                    setFlag: { direct_challenger: true },
+                    experience: 55
+                }
+            }
+        ]
+    },
+
+    hidden_location_search: {
+        emojis: '🔍🗺️🏔️',
+        text: 'Following ancient maps and cryptic clues, you search for hidden locations where Crystal Shards might be concealed. Your investigation leads you through forgotten paths and secret places known only to legends.',
+        choices: [
+            {
+                text: '🗿 Search among ancient ruins and burial sites',
+                nextScene: 'ruins_search',
+                effects: {
+                    setFlag: { ruin_explorer: true },
+                    experience: 35
+                }
+            },
+            {
+                text: '🌲 Explore deep forest sanctuaries',
+                nextScene: 'forest_investigation',
+                effects: {
+                    setFlag: { forest_explorer: true },
+                    experience: 30
+                }
+            },
+            {
+                text: '🔮 Use magical detection to locate hidden caches',
+                nextScene: 'magical_shard_detection',
+                conditions: { playerClass: 'wizard' },
+                effects: {
+                    magical: true,
+                    setFlag: { magical_seeker: true },
+                    experience: 40
+                }
+            }
+        ]
+    },
+
+    hidden_passage: {
+        emojis: '🚪🕯️🗝️',
+        text: 'You discover a hidden passage behind crumbling temple walls. The secret corridor is lit by mystical torches that flicker with eternal flame, leading deeper into the ancient structure\'s forgotten chambers.',
+        choices: [
+            {
+                text: '🔍 Explore the passage cautiously',
+                nextScene: 'underground_chamber',
+                effects: {
+                    setFlag: { secret_explorer: true },
+                    experience: 30
+                }
+            },
+            {
+                text: '🔮 Use magic to detect traps or dangers',
+                nextScene: 'trap_detection',
+                conditions: { playerClass: 'wizard' },
+                effects: {
+                    magical: true,
+                    setFlag: { trap_spotter: true },
+                    experience: 35
+                }
+            },
+            {
+                text: '💨 Move quickly through the passage',
+                nextScene: 'speed_route',
+                effects: {
+                    setFlag: { quick_explorer: true },
+                    experience: 25
+                }
+            }
+        ]
+    },
+
+    root_chamber: {
+        emojis: '🌳🏛️💎',
+        text: 'The root chamber beneath the Great Oak is a sacred space where nature\'s power has crystallized over millennia. Ancient root systems form natural pillars, and in the center lies a Crystal Shard pulsing with pure life energy.',
+        choices: [
+            {
+                text: '💎 Carefully extract the Crystal Shard',
+                nextScene: 'careful_extraction',
+                effects: {
+                    addItem: '💎',
+                    setFlag: { nature_blessed: true },
+                    experience: 40
+                }
+            },
+            {
+                text: '🌿 Commune with the life energy first',
+                nextScene: 'nature_magic_fusion',
+                effects: {
+                    magical: true,
+                    setFlag: { life_energy_touched: true },
+                    experience: 45
+                }
+            },
+            {
+                text: '🙏 Perform a ritual of gratitude to the Oak',
+                nextScene: 'oak_blessing',
+                effects: {
+                    setFlag: { oak_ritualist: true },
+                    experience: 35
+                }
+            }
+        ]
     }
 };

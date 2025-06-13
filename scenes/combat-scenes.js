@@ -1595,5 +1595,204 @@ export const COMBAT_SCENES = {
                 }
             }
         ]
+    },
+
+    // Batch 17: Final battle completion and tactical scenes
+    final_battle_wisdom: {
+        emojis: '🧠⚔️🌟',
+        text: 'Drawing upon all the wisdom you\'ve gained throughout your journey, you approach the final battle with deep understanding of strategy, magic, and the true nature of the conflict. Your accumulated knowledge becomes your greatest weapon.',
+        choices: [
+            {
+                text: '💎 Use wisdom to properly channel Crystal Shard power',
+                nextScene: 'crystal_powered_duel',
+                conditions: { hasItem: '💎' },
+                effects: {
+                    magical: true,
+                    setFlag: { wise_crystal_user: true },
+                    experience: 60
+                }
+            },
+            {
+                text: '🕊️ Apply wisdom to seek a peaceful resolution',
+                nextScene: 'diplomatic_duel',
+                effects: {
+                    setFlag: { wise_peacemaker: true },
+                    experience: 55
+                }
+            },
+            {
+                text: '⚖️ Use tactical wisdom to outmaneuver the enemy',
+                nextScene: 'tactical_analysis',
+                effects: {
+                    setFlag: { wise_tactician: true },
+                    experience: 50
+                }
+            }
+        ]
+    },
+
+    final_power_surge: {
+        emojis: '⚡💥🌟',
+        text: 'In the climactic moment of battle, you tap into reserves of power you never knew existed. All your training, all your experiences, and all your determination coalesce into an overwhelming surge of pure energy.',
+        choices: [
+            {
+                text: '💎 Channel the surge through the Crystal Shards',
+                nextScene: 'shard_power_unleashed',
+                conditions: { hasItem: '💎' },
+                effects: {
+                    magical: true,
+                    setFlag: { power_master: true },
+                    experience: 70,
+                    health: -20
+                }
+            },
+            {
+                text: '⚔️ Focus all power into a decisive strike',
+                nextScene: 'ultimate_sacrifice',
+                effects: {
+                    setFlag: { ultimate_warrior: true },
+                    experience: 65,
+                    health: -30
+                }
+            },
+            {
+                text: '🛡️ Use the power to protect others',
+                nextScene: 'sacrificial_protection',
+                effects: {
+                    setFlag: { ultimate_protector: true },
+                    experience: 60,
+                    health: -25
+                }
+            }
+        ]
+    },
+
+    final_shard_hunt: {
+        emojis: '💎🏰🔍',
+        text: 'The search for the final Crystal Shard leads you deep into the Shadow Lord\'s fortress. This last piece of the Crystal of Harmony is heavily guarded and protected by the most dangerous traps and creatures.',
+        choices: [
+            {
+                text: '🤫 Use stealth to avoid detection',
+                nextScene: 'stealth_shard_hunt',
+                effects: {
+                    setFlag: { shadow_infiltrator: true },
+                    experience: 45
+                }
+            },
+            {
+                text: '⚔️ Fight through all opposition',
+                nextScene: 'shard_empowered_combat',
+                effects: {
+                    health: -20,
+                    setFlag: { relentless_hunter: true },
+                    experience: 50
+                }
+            },
+            {
+                text: '🔮 Use magical detection to locate it quickly',
+                nextScene: 'magical_shard_search',
+                conditions: { playerClass: 'wizard' },
+                effects: {
+                    magical: true,
+                    setFlag: { magical_hunter: true },
+                    experience: 40
+                }
+            }
+        ]
+    },
+
+    focused_combat: {
+        emojis: '🎯⚔️💫',
+        text: 'You enter a state of perfect combat focus, your mind crystal clear and your movements precise. Every strike is calculated, every defense optimal. This level of concentration makes you nearly unstoppable.',
+        choices: [
+            {
+                text: '🗡️ Execute a series of perfect strikes',
+                nextScene: 'skill_based_duel',
+                effects: {
+                    setFlag: { combat_master: true },
+                    experience: 50
+                }
+            },
+            {
+                text: '🛡️ Focus on perfect defensive positioning',
+                nextScene: 'defensive_victory',
+                effects: {
+                    setFlag: { defense_master: true },
+                    experience: 45
+                }
+            },
+            {
+                text: '💎 Channel focus through Crystal Shard power',
+                nextScene: 'crystal_powered_duel',
+                conditions: { hasItem: '💎' },
+                effects: {
+                    magical: true,
+                    setFlag: { focused_crystal_warrior: true },
+                    experience: 55
+                }
+            }
+        ]
+    },
+
+    force_preservation: {
+        emojis: '🛡️👥💪',
+        text: 'Recognizing the importance of keeping your forces intact for the final battle, you make strategic decisions to preserve strength while still accomplishing objectives. Every soldier saved could make the difference.',
+        choices: [
+            {
+                text: '🏰 Withdraw to fortified positions',
+                nextScene: 'fortified_position',
+                effects: {
+                    setFlag: { force_preserver: true },
+                    experience: 35
+                }
+            },
+            {
+                text: '🤝 Coordinate with allies to share the burden',
+                nextScene: 'unified_army_formed',
+                effects: {
+                    setFlag: { alliance_coordinator: true },
+                    experience: 40
+                }
+            },
+            {
+                text: '🧠 Use superior tactics to minimize losses',
+                nextScene: 'tactical_analysis',
+                effects: {
+                    setFlag: { loss_minimizer: true },
+                    experience: 45
+                }
+            }
+        ]
+    },
+
+    tactical_analysis: {
+        emojis: '🧠📊⚔️',
+        text: 'You conduct a thorough tactical analysis of the battlefield, enemy positions, terrain advantages, and available resources. Your strategic mind processes every variable to find the optimal approach to victory.',
+        choices: [
+            {
+                text: '🎯 Identify and exploit enemy weaknesses',
+                nextScene: 'weakness_exploitation',
+                effects: {
+                    setFlag: { tactical_genius: true },
+                    experience: 50
+                }
+            },
+            {
+                text: '🏰 Plan the optimal fortress assault',
+                nextScene: 'fortress_architect',
+                effects: {
+                    setFlag: { siege_master: true },
+                    experience: 45
+                }
+            },
+            {
+                text: '👥 Coordinate multiple force movements',
+                nextScene: 'tactical_command',
+                effects: {
+                    setFlag: { supreme_commander: true },
+                    experience: 55
+                }
+            }
+        ]
     }
 };

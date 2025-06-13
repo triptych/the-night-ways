@@ -2541,5 +2541,202 @@ export const MISC_SCENES = {
                 }
             }
         ]
+    },
+
+    // Batch 16: Guardian progression and protection magic scenes
+    guardian_battle: {
+        emojis: '🛡️⚔️👼',
+        text: 'As a newly appointed Guardian, you face your first major battle defending the innocent. Your duty is clear - protect those who cannot protect themselves, even at the cost of your own life.',
+        choices: [
+            {
+                text: '🛡️ Focus entirely on defense and protection',
+                nextScene: 'guardian_communion',
+                effects: {
+                    setFlag: { pure_guardian: true },
+                    experience: 45,
+                    health: -10
+                }
+            },
+            {
+                text: '⚔️ Balance protection with strategic offense',
+                nextScene: 'tactical_victory',
+                effects: {
+                    setFlag: { tactical_guardian: true },
+                    experience: 40
+                }
+            },
+            {
+                text: '🌟 Channel divine power to overwhelm evil',
+                nextScene: 'divine_empowerment',
+                effects: {
+                    magical: true,
+                    setFlag: { divine_guardian: true },
+                    experience: 50
+                }
+            }
+        ]
+    },
+
+    guardian_communion: {
+        emojis: '👼💬✨',
+        text: 'You commune with the spirits of past Guardians, learning from their wisdom and experiences. They share the sacred knowledge of protection, sacrifice, and the true meaning of guardianship.',
+        choices: [
+            {
+                text: '🛡️ Learn advanced protection techniques',
+                nextScene: 'protection_magic_learned',
+                effects: {
+                    magical: true,
+                    setFlag: { guardian_protector: true },
+                    experience: 45
+                }
+            },
+            {
+                text: '💎 Discover guardian secrets about Crystal Shards',
+                nextScene: 'guardian_forest_healing',
+                effects: {
+                    setFlag: { guardian_knowledge: true },
+                    experience: 40
+                }
+            },
+            {
+                text: '🏛️ Accept the call to found a new Guardian Order',
+                nextScene: 'guardian_order_founded',
+                effects: {
+                    setFlag: { order_founder: true },
+                    experience: 55
+                }
+            }
+        ]
+    },
+
+    guardian_order_founded: {
+        emojis: '🏛️👥⚖️',
+        text: 'With the wisdom of ancient Guardians and your own experiences, you establish a new Guardian Order dedicated to protecting the realm. Heroes from across the land pledge to join your noble cause.',
+        choices: [
+            {
+                text: '📚 Establish the Guardian Code and training protocols',
+                nextScene: 'knowledge_documentation',
+                effects: {
+                    setFlag: { guardian_lawgiver: true },
+                    experience: 50
+                }
+            },
+            {
+                text: '🏰 Create Guardian sanctuaries across the realm',
+                nextScene: 'permanent_ward_created',
+                effects: {
+                    magical: true,
+                    setFlag: { sanctuary_builder: true },
+                    experience: 45
+                }
+            },
+            {
+                text: '⚔️ Train the first generation of new Guardians',
+                nextScene: 'guard_training_program',
+                effects: {
+                    setFlag: { guardian_trainer: true },
+                    experience: 40
+                }
+            }
+        ]
+    },
+
+    protection_magic_learned: {
+        emojis: '🛡️✨🔮',
+        text: 'You master advanced protection magic, learning to weave shields of pure energy that can deflect any attack and protect multiple allies simultaneously. The magic feels warm and comforting.',
+        choices: [
+            {
+                text: '🏰 Create permanent protective wards',
+                nextScene: 'permanent_ward_created',
+                effects: {
+                    magical: true,
+                    setFlag: { ward_creator: true },
+                    experience: 45
+                }
+            },
+            {
+                text: '👥 Teach protection magic to others',
+                nextScene: 'magic_teaching',
+                effects: {
+                    setFlag: { protection_teacher: true },
+                    experience: 40
+                }
+            },
+            {
+                text: '💎 Enhance Crystal Shards with protection magic',
+                nextScene: 'shard_harmony_practice',
+                conditions: { hasItem: '💎' },
+                effects: {
+                    magical: true,
+                    setFlag: { crystal_protector: true },
+                    experience: 50
+                }
+            }
+        ]
+    },
+
+    permanent_ward_created: {
+        emojis: '🔮🏰✨',
+        text: 'You successfully create permanent magical wards of incredible power. These mystical barriers will protect key locations from shadow magic indefinitely, serving as beacons of hope in the darkness.',
+        choices: [
+            {
+                text: '🏘️ Extend the wards to protect all villages',
+                nextScene: 'village_protection_force',
+                effects: {
+                    magical: true,
+                    setFlag: { village_protector: true },
+                    experience: 50
+                }
+            },
+            {
+                text: '🌲 Connect the wards to the forest\'s natural magic',
+                nextScene: 'forest_bond_permanent',
+                effects: {
+                    magical: true,
+                    setFlag: { nature_ward_master: true },
+                    experience: 45
+                }
+            },
+            {
+                text: '🏰 Make the castle an impregnable fortress',
+                nextScene: 'fortress_reinforcement',
+                effects: {
+                    setFlag: { fortress_ward_master: true },
+                    experience: 40
+                }
+            }
+        ]
+    },
+
+    guardian_forest_healing: {
+        emojis: '🌲🛡️💚',
+        text: 'As a Guardian, you channel your protective powers into healing the forest itself. Your guardianship extends beyond people to encompass all living things, restoring the natural balance.',
+        choices: [
+            {
+                text: '🌿 Become the forest\'s eternal protector',
+                nextScene: 'forest_bond_permanent',
+                effects: {
+                    magical: true,
+                    setFlag: { forest_guardian: true },
+                    experience: 55
+                }
+            },
+            {
+                text: '🦌 Form alliances with all forest creatures',
+                nextScene: 'forest_army',
+                effects: {
+                    setFlag: { creature_ally: true },
+                    experience: 45
+                }
+            },
+            {
+                text: '👑 Accept the crown as Nature\'s Champion',
+                nextScene: 'nature_champion_crowned',
+                effects: {
+                    setFlag: { nature_guardian: true },
+                    experience: 50
+                }
+            }
+        ]
     }
 };
