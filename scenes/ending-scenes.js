@@ -129,5 +129,130 @@ export const ENDING_SCENES = {
         emojis: '🌍🌲🏛️',
         text: 'You usher in the Age of Natural Harmony, where all realms are connected through the living network of nature. Magic and nature work as one, and the balance is maintained by the Grove Guardians.',
         choices: []
+    },
+
+    // Batch 6: Next 4 missing scenes
+    complete_power_destruction: {
+        emojis: '💥🔥🏰',
+        text: 'With tremendous effort, you completely destroy the fortress\'s dark power source. The explosion rocks the entire structure as shadow magic dissipates in brilliant flashes of light. The Shadow Lord\'s strength visibly diminishes.',
+        choices: [
+            {
+                text: '⚔️ Press the advantage and attack immediately',
+                nextScene: 'final_duel',
+                effects: {
+                    setFlag: { shadow_lord_weakened: true },
+                    experience: 50
+                }
+            },
+            {
+                text: '💎 Use this moment to secure the Crystal Shard',
+                nextScene: 'shard_grab',
+                effects: {
+                    setFlag: { power_destroyed: true },
+                    experience: 40
+                }
+            },
+            {
+                text: '🏃‍♂️ Escape before the fortress collapses',
+                nextScene: 'hasty_escape',
+                effects: {
+                    health: -15,
+                    experience: 30
+                }
+            }
+        ]
+    },
+
+    controlled_power: {
+        emojis: '⚖️💪✨',
+        text: 'You successfully channel your renewed strength with wisdom and restraint. Rather than rushing into battle, you focus your energy strategically, making every action count. Your balanced approach inspires allies.',
+        choices: [
+            {
+                text: '🧙‍♂️ Use this power to enhance your magic',
+                nextScene: 'enhanced_magic_learned',
+                effects: {
+                    magical: true,
+                    setFlag: { power_mastery: true },
+                    experience: 40
+                }
+            },
+            {
+                text: '🛡️ Focus on protecting others',
+                nextScene: 'divine_protector_role',
+                effects: {
+                    setFlag: { wise_protector: true },
+                    experience: 35
+                }
+            },
+            {
+                text: '👥 Share your strength with allies',
+                nextScene: 'power_sharing_ceremony',
+                effects: {
+                    setFlag: { power_shared: true },
+                    experience: 45
+                }
+            }
+        ]
+    },
+
+    determination_judgment: {
+        emojis: '⚔️⚖️💪',
+        text: 'The Moonwell acknowledges your unwavering determination to save the realm. Though your methods may be forceful, your resolve to protect the innocent shines through the sacred waters like steel.',
+        choices: [
+            {
+                text: '💎 Claim the Crystal Shard',
+                nextScene: 'shard_received',
+                effects: {
+                    addItem: '💎',
+                    setFlag: { determined_hero: true },
+                    experience: 30
+                }
+            },
+            {
+                text: '🔍 Ask about the other Crystal Shards',
+                nextScene: 'shard_quest',
+                effects: {
+                    experience: 25
+                }
+            },
+            {
+                text: '🌙 Seek the Moonwell\'s guidance',
+                nextScene: 'moonwell_guidance',
+                effects: {
+                    setFlag: { moonwell_wisdom: true }
+                }
+            }
+        ]
+    },
+
+    cooperative_restoration: {
+        emojis: '🤝💎🌟',
+        text: 'Working together with the redeemed Shadow Lord, you combine your powers to restore the Crystal of Harmony. The unity between former enemies creates a more powerful crystal than ever before.',
+        choices: [
+            {
+                text: '🌟 Celebrate the new era of cooperation',
+                nextScene: 'ending_peace_era',
+                effects: {
+                    setFlag: { cooperative_victory: true },
+                    experience: 100
+                }
+            },
+            {
+                text: '🏛️ Establish a new order of balance',
+                nextScene: 'ending_nature_harmony',
+                effects: {
+                    setFlag: { balance_keeper: true },
+                    experience: 90
+                }
+            },
+            {
+                text: '🌍 Focus on healing the realm together',
+                nextScene: 'ending_healer',
+                effects: {
+                    setFlag: { joint_healer: true },
+                    experience: 85
+                }
+            }
+        ]
     }
 };

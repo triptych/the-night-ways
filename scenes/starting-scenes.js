@@ -105,5 +105,136 @@ export const STARTING_SCENES = {
                 nextScene: 'royal_armory'
             }
         ]
+    },
+
+    // Batch 7: Next 4 missing scenes
+    hasty_escape: {
+        emojis: '🏃‍♂️💨⚡',
+        text: 'You make a quick escape from the collapsing area, dodging falling debris and dangerous magical discharge. Your speed saves you from serious harm, but you\'re left breathless and slightly injured.',
+        choices: [
+            {
+                text: '🏥 Find a safe place to tend your wounds',
+                nextScene: 'wound_treatment',
+                effects: {
+                    health: 10,
+                    experience: 15
+                }
+            },
+            {
+                text: '📍 Regroup and plan your next move',
+                nextScene: 'tactical_victory',
+                effects: {
+                    experience: 20
+                }
+            },
+            {
+                text: '🔍 Search for survivors in the area',
+                nextScene: 'survivor_rally',
+                effects: {
+                    setFlag: { rescue_mission: true },
+                    experience: 25
+                }
+            }
+        ]
+    },
+
+    herb_gathering: {
+        emojis: '🌿🍃💚',
+        text: 'You search the forest for medicinal herbs, using your knowledge of nature\'s healing properties. The ancient trees provide powerful remedies, but you must be careful not to take too much.',
+        choices: [
+            {
+                text: '🌿 Gather a variety of healing herbs',
+                nextScene: 'natural_healing_path',
+                effects: {
+                    addItem: '🌿',
+                    health: 15,
+                    setFlag: { herbalist: true },
+                    experience: 20
+                }
+            },
+            {
+                text: '⚗️ Look for rare magical components',
+                nextScene: 'magical_component_gathering',
+                effects: {
+                    addItem: '🔮',
+                    setFlag: { component_collector: true },
+                    experience: 25
+                }
+            },
+            {
+                text: '🧪 Create healing potions on the spot',
+                nextScene: 'potion_brewing_help',
+                effects: {
+                    addItem: '🧪',
+                    health: 25,
+                    experience: 30
+                }
+            }
+        ]
+    },
+
+    hero_inspiration: {
+        emojis: '🌟💪👥',
+        text: 'Your heroic actions and noble words inspire others to overcome their fears and join the fight against darkness. People who had given up hope now stand ready to defend their homes.',
+        choices: [
+            {
+                text: '⚔️ Lead them into battle immediately',
+                nextScene: 'heroic_alliance_charge',
+                effects: {
+                    setFlag: { inspiring_leader: true },
+                    experience: 35
+                }
+            },
+            {
+                text: '🛡️ Train them for the battles ahead',
+                nextScene: 'civilian_combat_training',
+                effects: {
+                    setFlag: { mentor: true },
+                    experience: 30
+                }
+            },
+            {
+                text: '🏰 Organize them to defend their homes',
+                nextScene: 'village_defense_organized',
+                effects: {
+                    setFlag: { community_organizer: true },
+                    experience: 25
+                }
+            }
+        ]
+    },
+
+    enhanced_magic_learned: {
+        emojis: '✨🔮⚡',
+        text: 'Through intense study and practice, you master enhanced magical techniques that surpass ordinary spellcasting. Your newfound power allows you to manipulate magical energies with unprecedented precision.',
+        choices: [
+            {
+                text: '🔥 Master elemental manipulation',
+                nextScene: 'offensive_magic_demo',
+                effects: {
+                    magical: true,
+                    setFlag: { elemental_master: true },
+                    experience: 40
+                }
+            },
+            {
+                text: '🛡️ Focus on protective enchantments',
+                nextScene: 'permanent_ward_created',
+                effects: {
+                    magical: true,
+                    setFlag: { ward_specialist: true },
+                    experience: 35
+                }
+            },
+            {
+                text: '💎 Use magic to enhance Crystal Shard power',
+                nextScene: 'shard_empowered_combat',
+                effects: {
+                    magical: true,
+                    setFlag: { shard_enhancer: true },
+                    experience: 45
+                }
+            }
+        ]
     }
 };

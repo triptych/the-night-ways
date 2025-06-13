@@ -239,5 +239,198 @@ export const LOCATION_SCENES = {
                 nextScene: 'crystal_formation_study'
             }
         ]
+    },
+
+    // Batch 5: Next 6 missing scenes
+    chokepoint_training: {
+        emojis: '🏰⚔️🛡️',
+        text: 'You organize intensive chokepoint combat training, teaching defenders how to maximize their advantage in narrow passages and doorways. The training focuses on coordinated defense and tactical positioning.',
+        choices: [
+            {
+                text: '🛡️ Emphasize shield wall formations',
+                nextScene: 'defensive_training',
+                effects: {
+                    setFlag: { shield_tactics: true },
+                    experience: 30
+                }
+            },
+            {
+                text: '🏹 Train coordinated archer support',
+                nextScene: 'ranged_defense',
+                effects: {
+                    setFlag: { chokepoint_archers: true },
+                    experience: 25
+                }
+            },
+            {
+                text: '⚔️ Practice quick strike tactics',
+                nextScene: 'tactical_victory',
+                effects: {
+                    setFlag: { chokepoint_master: true },
+                    experience: 35
+                }
+            }
+        ]
+    },
+
+    civilian_combat_training: {
+        emojis: '👥⚔️🛡️',
+        text: 'You train ordinary villagers in basic combat skills, teaching them to defend themselves and their homes. Though they lack military experience, their determination and courage make up for their inexperience.',
+        choices: [
+            {
+                text: '🛡️ Focus on basic defensive techniques',
+                nextScene: 'militia_training',
+                effects: {
+                    setFlag: { trained_civilians: true },
+                    experience: 25
+                }
+            },
+            {
+                text: '🏹 Teach simple ranged combat',
+                nextScene: 'archer_positions_set',
+                effects: {
+                    setFlag: { civilian_archers: true },
+                    experience: 20
+                }
+            },
+            {
+                text: '👥 Organize them into effective units',
+                nextScene: 'militia_confederation',
+                effects: {
+                    setFlag: { organized_militia: true },
+                    experience: 30
+                }
+            }
+        ]
+    },
+
+    compassion_judgment: {
+        emojis: '💖⚖️🌙',
+        text: 'The Moonwell weighs your acts of compassion and kindness. Every life you\'ve saved, every moment of mercy you\'ve shown, and every sacrifice you\'ve made for others shines like starlight in the sacred waters.',
+        choices: [
+            {
+                text: '💎 Accept the Crystal Shard with humility',
+                nextScene: 'shard_received',
+                effects: {
+                    addItem: '💎',
+                    setFlag: { compassionate_hero: true },
+                    experience: 40
+                }
+            },
+            {
+                text: '🙏 Thank the Moonwell for its wisdom',
+                nextScene: 'moonwell_guidance',
+                effects: {
+                    setFlag: { moonwell_blessed: true },
+                    experience: 30
+                }
+            },
+            {
+                text: '🌟 Pledge to continue helping others',
+                nextScene: 'compassion_pledge',
+                effects: {
+                    setFlag: { compassion_sworn: true },
+                    experience: 35
+                }
+            }
+        ]
+    },
+
+    combat_analysis: {
+        emojis: '📊⚔️🧠',
+        text: 'You systematically analyze the combat patterns and tactics you\'ve observed, identifying strengths and weaknesses in both ally and enemy forces. This tactical knowledge will prove invaluable in future battles.',
+        choices: [
+            {
+                text: '📈 Focus on enemy weaknesses',
+                nextScene: 'weakness_exploitation',
+                effects: {
+                    setFlag: { enemy_analysis: true },
+                    experience: 35
+                }
+            },
+            {
+                text: '🛡️ Improve allied defensive strategies',
+                nextScene: 'defensive_training',
+                effects: {
+                    setFlag: { tactical_advisor: true },
+                    experience: 30
+                }
+            },
+            {
+                text: '📚 Document findings for training others',
+                nextScene: 'tactical_manual_created',
+                effects: {
+                    setFlag: { combat_scholar: true },
+                    experience: 40
+                }
+            }
+        ]
+    },
+
+    combat_magic_learned: {
+        emojis: '⚔️🔮⚡',
+        text: 'You master advanced combat magic techniques, learning to weave offensive spells seamlessly with defensive maneuvers. Your magical prowess in battle becomes a formidable weapon against the forces of darkness.',
+        choices: [
+            {
+                text: '⚡ Focus on lightning-based attack spells',
+                nextScene: 'magical_investigation',
+                effects: {
+                    magical: true,
+                    setFlag: { lightning_mage: true },
+                    experience: 35
+                }
+            },
+            {
+                text: '🔥 Master fire magic for area attacks',
+                nextScene: 'offensive_magic_demo',
+                effects: {
+                    magical: true,
+                    setFlag: { fire_mage: true },
+                    experience: 30
+                }
+            },
+            {
+                text: '🧊 Learn ice magic for crowd control',
+                nextScene: 'tactical_victory',
+                effects: {
+                    magical: true,
+                    setFlag: { ice_mage: true },
+                    experience: 40
+                }
+            }
+        ]
+    },
+
+    combat_retrieval: {
+        emojis: '🏃‍♂️💎⚔️',
+        text: 'You execute a daring combat retrieval mission, fighting your way through enemy forces to secure a vital Crystal Shard. The mission requires quick thinking, precise strikes, and perfect timing.',
+        choices: [
+            {
+                text: '💎 Secure the Crystal Shard and retreat',
+                nextScene: 'shard_secured',
+                effects: {
+                    addItem: '💎',
+                    health: -20,
+                    experience: 40
+                }
+            },
+            {
+                text: '⚔️ Clear out all enemies in the area',
+                nextScene: 'tactical_victory',
+                effects: {
+                    health: -30,
+                    experience: 45,
+                    setFlag: { area_cleared: true }
+                }
+            },
+            {
+                text: '🤝 Rally any survivors to join the fight',
+                nextScene: 'survivor_rally',
+                effects: {
+                    setFlag: { rescue_leader: true },
+                    experience: 35
+                }
+            }
+        ]
     }
 };

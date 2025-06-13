@@ -1749,5 +1749,197 @@ export const MISC_SCENES = {
                 }
             }
         ]
+    },
+
+    // Batch 8: Next 6 missing scenes
+    compassion_pledge: {
+        emojis: '💖🤝🌟',
+        text: 'You make a solemn pledge to always act with compassion, even toward your enemies. This sacred vow resonates through your very being, strengthening your resolve to find peaceful solutions wherever possible.',
+        choices: [
+            {
+                text: '🕊️ Seek to redeem rather than destroy',
+                nextScene: 'redemption_path',
+                effects: {
+                    setFlag: { compassionate_oath: true },
+                    experience: 40
+                }
+            },
+            {
+                text: '💚 Dedicate yourself to healing',
+                nextScene: 'natural_healing_path',
+                effects: {
+                    setFlag: { healer_path: true },
+                    experience: 35
+                }
+            },
+            {
+                text: '🌍 Protect all living beings',
+                nextScene: 'guardian_battle',
+                effects: {
+                    setFlag: { life_guardian: true },
+                    experience: 45
+                }
+            }
+        ]
+    },
+
+    complete_purification: {
+        emojis: '✨🌟💫',
+        text: 'You channel immense purifying energy, completely cleansing the area of all shadow corruption. The transformation is dramatic - darkness gives way to brilliant light, and the very air seems to sparkle with renewed life.',
+        choices: [
+            {
+                text: '🌱 Help new life flourish in the cleansed area',
+                nextScene: 'forest_restoration',
+                effects: {
+                    setFlag: { master_purifier: true },
+                    experience: 50
+                }
+            },
+            {
+                text: '🔮 Study the purification process',
+                nextScene: 'purification_study',
+                effects: {
+                    magical: true,
+                    setFlag: { purification_scholar: true },
+                    experience: 45
+                }
+            },
+            {
+                text: '👥 Teach others the purification technique',
+                nextScene: 'magic_teaching',
+                effects: {
+                    setFlag: { purification_teacher: true },
+                    experience: 40
+                }
+            }
+        ]
+    },
+
+    containment_wards: {
+        emojis: '⚡🔒🛡️',
+        text: 'You create powerful containment wards to trap dangerous shadow magic and prevent it from spreading. The complex magical barriers require constant concentration but successfully isolate the threat.',
+        choices: [
+            {
+                text: '🔮 Reinforce the wards with Crystal Shard power',
+                nextScene: 'permanent_ward_created',
+                conditions: { hasItem: '💎' },
+                effects: {
+                    magical: true,
+                    setFlag: { crystal_enhanced_ward: true },
+                    experience: 45
+                }
+            },
+            {
+                text: '🏰 Extend the wards to protect the castle',
+                nextScene: 'castle_ward_creation',
+                effects: {
+                    magical: true,
+                    setFlag: { ward_network: true },
+                    experience: 35
+                }
+            },
+            {
+                text: '📚 Document the ward creation process',
+                nextScene: 'magical_theory_research',
+                effects: {
+                    setFlag: { ward_scholar: true },
+                    experience: 30
+                }
+            }
+        ]
+    },
+
+    coordinated_village_defense: {
+        emojis: '🏘️🛡️⚔️',
+        text: 'You coordinate the defense of multiple villages, creating a network of mutual protection. Each village supports the others, sharing resources, information, and fighters as needed.',
+        choices: [
+            {
+                text: '📡 Establish communication networks',
+                nextScene: 'warning_network',
+                effects: {
+                    setFlag: { village_network: true },
+                    experience: 35
+                }
+            },
+            {
+                text: '🚚 Organize supply lines between villages',
+                nextScene: 'supply_line_established',
+                effects: {
+                    setFlag: { logistics_master: true },
+                    experience: 30
+                }
+            },
+            {
+                text: '⚔️ Train a mobile response force',
+                nextScene: 'rapid_response_formed',
+                effects: {
+                    setFlag: { rapid_response_leader: true },
+                    experience: 40
+                }
+            }
+        ]
+    },
+
+    corruption_analysis: {
+        emojis: '🔬👹📊',
+        text: 'You carefully study the shadow corruption, analyzing its patterns, weaknesses, and methods of spread. Your research reveals crucial information about how to counter and prevent the corruption.',
+        choices: [
+            {
+                text: '💡 Develop countermeasures against corruption',
+                nextScene: 'corruption_research',
+                effects: {
+                    setFlag: { corruption_expert: true },
+                    experience: 40
+                }
+            },
+            {
+                text: '🗺️ Map the corruption\'s spread patterns',
+                nextScene: 'corruption_mapping',
+                effects: {
+                    setFlag: { corruption_tracker: true },
+                    experience: 35
+                }
+            },
+            {
+                text: '🔍 Search for the corruption\'s source',
+                nextScene: 'corruption_source_search',
+                effects: {
+                    setFlag: { source_seeker: true },
+                    experience: 45
+                }
+            }
+        ]
+    },
+
+    corruption_investigation: {
+        emojis: '🔍🧪👹',
+        text: 'Your investigation into the corruption reveals disturbing patterns. The shadow magic isn\'t random - it\'s following ley lines and targeting specific magical sites, suggesting a deliberate plan.',
+        choices: [
+            {
+                text: '🗺️ Map the targeted ley lines',
+                nextScene: 'corruption_mapping',
+                effects: {
+                    setFlag: { ley_line_knowledge: true },
+                    experience: 35
+                }
+            },
+            {
+                text: '🔮 Study the corruption\'s magical signature',
+                nextScene: 'magical_theory_research',
+                effects: {
+                    magical: true,
+                    setFlag: { signature_analyst: true },
+                    experience: 40
+                }
+            },
+            {
+                text: '👹 Try to determine the Shadow Lord\'s plan',
+                nextScene: 'shadow_lord_observation',
+                effects: {
+                    setFlag: { strategic_analyst: true },
+                    experience: 45
+                }
+            }
+        ]
     }
 };

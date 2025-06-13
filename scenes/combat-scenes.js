@@ -1399,5 +1399,201 @@ export const COMBAT_SCENES = {
                 }
             }
         ]
+    },
+
+    // Batch 9: Next 6 missing scenes
+    corruption_mapping: {
+        emojis: '🗺️👹📍',
+        text: 'You carefully map the spread of shadow corruption across the realm, identifying patterns and key locations. Your detailed charts reveal the corruption follows ancient ley lines, providing crucial intelligence.',
+        choices: [
+            {
+                text: '🔍 Focus on the corruption\'s source points',
+                nextScene: 'corruption_source_search',
+                effects: {
+                    setFlag: { corruption_mapper: true },
+                    experience: 40
+                }
+            },
+            {
+                text: '📊 Analyze the spread patterns',
+                nextScene: 'corruption_study',
+                effects: {
+                    setFlag: { pattern_analyst: true },
+                    experience: 35
+                }
+            },
+            {
+                text: '🚨 Share findings with allies',
+                nextScene: 'intelligence_report',
+                effects: {
+                    setFlag: { intelligence_officer: true },
+                    experience: 30
+                }
+            }
+        ]
+    },
+
+    corruption_origins: {
+        emojis: '👹📚🔍',
+        text: 'Through intensive research and investigation, you uncover the true origins of the corruption. It began when the Shadow Lord\'s grief and rage first poisoned the Crystal of Harmony centuries ago.',
+        choices: [
+            {
+                text: '💔 Study the emotional catalyst behind the corruption',
+                nextScene: 'empathic_understanding',
+                effects: {
+                    setFlag: { corruption_origins_known: true },
+                    experience: 45
+                }
+            },
+            {
+                text: '🔮 Research ways to reverse the ancient corruption',
+                nextScene: 'corruption_research',
+                effects: {
+                    magical: true,
+                    setFlag: { corruption_reversal: true },
+                    experience: 40
+                }
+            },
+            {
+                text: '📖 Document your findings for future generations',
+                nextScene: 'knowledge_documentation',
+                effects: {
+                    setFlag: { corruption_scholar: true },
+                    experience: 35
+                }
+            }
+        ]
+    },
+
+    corruption_research: {
+        emojis: '🧪👹🔬',
+        text: 'You conduct extensive research into countermeasures against shadow corruption, experimenting with various magical and natural remedies. Your work yields promising results for cleansing techniques.',
+        choices: [
+            {
+                text: '✨ Develop a purification spell',
+                nextScene: 'purification_study',
+                effects: {
+                    magical: true,
+                    setFlag: { purification_researcher: true },
+                    experience: 45
+                }
+            },
+            {
+                text: '🌿 Create herbal remedies',
+                nextScene: 'potion_brewing_help',
+                effects: {
+                    addItem: '🧪',
+                    setFlag: { herbal_researcher: true },
+                    experience: 35
+                }
+            },
+            {
+                text: '🛡️ Design protective wards',
+                nextScene: 'containment_wards',
+                effects: {
+                    magical: true,
+                    setFlag: { ward_researcher: true },
+                    experience: 40
+                }
+            }
+        ]
+    },
+
+    corruption_source_found: {
+        emojis: '🎯👹💀',
+        text: 'You discover the primary source of corruption - an ancient altar where the Shadow Lord first channeled his rage into dark magic. The site pulses with malevolent energy, but destroying it could break the corruption\'s hold.',
+        choices: [
+            {
+                text: '💥 Destroy the corruption source immediately',
+                nextScene: 'power_source_destroyed',
+                effects: {
+                    health: -25,
+                    setFlag: { source_destroyer: true },
+                    experience: 50
+                }
+            },
+            {
+                text: '🔮 Attempt to purify the source instead',
+                nextScene: 'power_source_purification',
+                effects: {
+                    magical: true,
+                    health: -15,
+                    setFlag: { source_purifier: true },
+                    experience: 45
+                }
+            },
+            {
+                text: '📚 Study the source to understand its power',
+                nextScene: 'corruption_study',
+                effects: {
+                    setFlag: { corruption_expert: true },
+                    experience: 35
+                }
+            }
+        ]
+    },
+
+    corruption_source_search: {
+        emojis: '🔍👹🗺️',
+        text: 'Following the corruption patterns you\'ve mapped, you search for the primary source of the shadow magic. Your investigation leads you through dangerous territory where the corruption is strongest.',
+        choices: [
+            {
+                text: '🎯 Follow the strongest corruption trail',
+                nextScene: 'corruption_source_found',
+                effects: {
+                    health: -10,
+                    setFlag: { corruption_tracker: true },
+                    experience: 40
+                }
+            },
+            {
+                text: '🔮 Use magic to detect the source',
+                nextScene: 'magical_shard_detection',
+                conditions: { playerClass: 'wizard' },
+                effects: {
+                    magical: true,
+                    experience: 35
+                }
+            },
+            {
+                text: '🛡️ Approach with maximum caution',
+                nextScene: 'careful_extraction',
+                effects: {
+                    setFlag: { cautious_approach: true },
+                    experience: 30
+                }
+            }
+        ]
+    },
+
+    corruption_study: {
+        emojis: '📚👹🔬',
+        text: 'You conduct a thorough study of the shadow corruption, analyzing its magical properties, spread patterns, and effects on the environment. Your research provides valuable insights for combating it.',
+        choices: [
+            {
+                text: '💡 Develop countermeasures based on your findings',
+                nextScene: 'corruption_research',
+                effects: {
+                    setFlag: { corruption_scholar: true },
+                    experience: 40
+                }
+            },
+            {
+                text: '🗺️ Create a comprehensive corruption map',
+                nextScene: 'corruption_mapping',
+                effects: {
+                    setFlag: { corruption_cartographer: true },
+                    experience: 35
+                }
+            },
+            {
+                text: '📖 Document your research for others',
+                nextScene: 'knowledge_documentation',
+                effects: {
+                    setFlag: { knowledge_keeper: true },
+                    experience: 30
+                }
+            }
+        ]
     }
 };
