@@ -1649,5 +1649,131 @@ export const QUEST_SCENES = {
                 }
             }
         ]
+    },
+
+    // Batch 2: Next 10 missing scenes
+    balanced_purification: {
+        emojis: '⚖️✨🌿',
+        text: 'You carefully balance your magical energy, purifying the corruption while maintaining your own strength. Your measured approach proves more effective than raw power, cleansing the taint without exhausting yourself.',
+        choices: [
+            {
+                text: '🌟 Continue the balanced purification',
+                nextScene: 'forest_restoration',
+                effects: {
+                    health: -10,
+                    magical: true,
+                    setFlag: { balanced_purifier: true },
+                    experience: 35
+                }
+            },
+            {
+                text: '🌲 Work with the forest spirits',
+                nextScene: 'spirit_revelation',
+                effects: {
+                    setFlag: { spirit_cooperation: true },
+                    experience: 30
+                }
+            },
+            {
+                text: '💎 Focus your energy on finding Crystal Shards',
+                nextScene: 'shard_quest',
+                effects: {
+                    experience: 25
+                }
+            }
+        ]
+    },
+
+    balanced_training: {
+        emojis: '⚔️🛡️📚',
+        text: 'You provide comprehensive training that balances offensive techniques, defensive strategies, and tactical thinking. Your well-rounded approach creates versatile fighters capable of adapting to any situation.',
+        choices: [
+            {
+                text: '🏰 Apply this training to castle defense',
+                nextScene: 'defense_preparation',
+                effects: {
+                    setFlag: { balanced_trainers: true },
+                    experience: 30
+                }
+            },
+            {
+                text: '⚔️ Test the training in real combat',
+                nextScene: 'tactical_victory',
+                effects: {
+                    setFlag: { proven_training: true },
+                    experience: 35
+                }
+            },
+            {
+                text: '📚 Document your training methods',
+                nextScene: 'research_notes',
+                effects: {
+                    setFlag: { training_manual: true },
+                    experience: 25
+                }
+            }
+        ]
+    },
+
+    battle_knowledge: {
+        emojis: '📚⚔️🧠',
+        text: 'You study ancient battle tactics and legendary military strategies, learning from the greatest commanders in history. This knowledge of warfare proves invaluable for understanding both offense and defense.',
+        choices: [
+            {
+                text: '🏰 Apply this knowledge to kingdom defense',
+                nextScene: 'defense_preparation',
+                effects: {
+                    setFlag: { strategic_knowledge: true },
+                    experience: 30
+                }
+            },
+            {
+                text: '👨‍🏫 Teach these tactics to others',
+                nextScene: 'light_combat_training',
+                effects: {
+                    setFlag: { tactical_instructor: true },
+                    experience: 25
+                }
+            },
+            {
+                text: '🗺️ Plan strategic approaches to the Shadow Lord',
+                nextScene: 'fortress_approach',
+                effects: {
+                    setFlag: { strategic_planning: true },
+                    experience: 35
+                }
+            }
+        ]
+    },
+
+    battle_preparation: {
+        emojis: '⚔️🛡️📋',
+        text: 'You oversee comprehensive battle preparations - checking weapons, organizing supplies, positioning troops, and ensuring everyone knows their role. Your thorough preparation could mean the difference between victory and defeat.',
+        choices: [
+            {
+                text: '🏹 Focus on ranged combat readiness',
+                nextScene: 'ranged_defense',
+                effects: {
+                    setFlag: { ranged_prepared: true },
+                    experience: 25
+                }
+            },
+            {
+                text: '🛡️ Ensure defensive positions are strong',
+                nextScene: 'defensive_training',
+                effects: {
+                    setFlag: { defensive_prepared: true },
+                    experience: 30
+                }
+            },
+            {
+                text: '⚔️ Ready the troops for immediate combat',
+                nextScene: 'tactical_victory',
+                effects: {
+                    setFlag: { combat_ready: true },
+                    experience: 35
+                }
+            }
+        ]
     }
 };

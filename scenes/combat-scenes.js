@@ -1204,5 +1204,200 @@ export const COMBAT_SCENES = {
                 }
             }
         ]
+    },
+
+    // Batch 3: Next 6 missing scenes
+    battlefield_salvage: {
+        emojis: '⚔️📦🔍',
+        text: 'You search the battlefield for useful equipment and supplies. Among the debris, you find weapons, armor, and magical items dropped by fallen warriors. These resources could prove valuable in the battles ahead.',
+        choices: [
+            {
+                text: '⚔️ Collect the best weapons',
+                nextScene: 'tactical_victory',
+                effects: {
+                    addItem: '⚔️',
+                    setFlag: { battlefield_weapons: true },
+                    experience: 20
+                }
+            },
+            {
+                text: '🛡️ Gather protective equipment',
+                nextScene: 'equipment_improvement',
+                effects: {
+                    addItem: '🛡️',
+                    setFlag: { battlefield_armor: true },
+                    experience: 25
+                }
+            },
+            {
+                text: '🔮 Search for magical artifacts',
+                nextScene: 'magical_investigation',
+                effects: {
+                    setFlag: { artifact_hunter: true },
+                    experience: 30
+                }
+            }
+        ]
+    },
+
+    blessing_shared: {
+        emojis: '✨🤝💚',
+        text: 'You share the divine blessing you received with your allies, spreading its protective power among your companions. The blessing multiplies rather than diminishes when shared with pure hearts.',
+        choices: [
+            {
+                text: '🛡️ Focus the blessing on protection',
+                nextScene: 'divine_protection_granted',
+                effects: {
+                    setFlag: { divine_protector: true },
+                    experience: 30,
+                    magical: true
+                }
+            },
+            {
+                text: '⚔️ Channel the blessing into combat prowess',
+                nextScene: 'divine_empowerment',
+                effects: {
+                    setFlag: { blessed_warrior: true },
+                    experience: 35
+                }
+            },
+            {
+                text: '🌟 Spread the blessing to all who need it',
+                nextScene: 'group_blessing_requested',
+                effects: {
+                    setFlag: { blessing_spreader: true },
+                    experience: 40
+                }
+            }
+        ]
+    },
+
+    calculated_search: {
+        emojis: '🧮🔍📊',
+        text: 'Using your research and analytical skills, you conduct a methodical search for Crystal Shards based on magical resonance patterns and historical data. Your scientific approach yields promising results.',
+        choices: [
+            {
+                text: '🔮 Use magical detection techniques',
+                nextScene: 'magical_shard_detection',
+                conditions: { playerClass: 'wizard' },
+                effects: {
+                    magical: true,
+                    setFlag: { magical_tracker: true },
+                    experience: 35
+                }
+            },
+            {
+                text: '📚 Cross-reference historical records',
+                nextScene: 'historical_shard_research',
+                effects: {
+                    setFlag: { thorough_researcher: true },
+                    experience: 30
+                }
+            },
+            {
+                text: '🗺️ Map out potential shard locations',
+                nextScene: 'systematic_shard_search',
+                effects: {
+                    setFlag: { systematic_searcher: true },
+                    experience: 25
+                }
+            }
+        ]
+    },
+
+    campaign_planning: {
+        emojis: '🗺️📋⚔️',
+        text: 'You develop a comprehensive military campaign to reclaim territory from shadow forces. Your strategic planning coordinates multiple armies, supply lines, and coordinated strikes against enemy strongholds.',
+        choices: [
+            {
+                text: '🏰 Focus on liberating major fortresses',
+                nextScene: 'fortress_architect',
+                effects: {
+                    setFlag: { fortress_strategist: true },
+                    experience: 35
+                }
+            },
+            {
+                text: '🌲 Coordinate forest and rural operations',
+                nextScene: 'forest_army_assault',
+                effects: {
+                    setFlag: { wilderness_commander: true },
+                    experience: 30
+                }
+            },
+            {
+                text: '👥 Unite all allied forces for one decisive strike',
+                nextScene: 'unified_army_formed',
+                effects: {
+                    setFlag: { grand_strategist: true },
+                    experience: 40
+                }
+            }
+        ]
+    },
+
+    careful_extraction: {
+        emojis: '💎🔧⚗️',
+        text: 'You carefully extract the Crystal Shard using protective magical techniques and specialized tools. Your methodical approach prevents triggering any dangerous magical traps or corruption.',
+        choices: [
+            {
+                text: '🛡️ Apply additional protective wards',
+                nextScene: 'protected_extraction',
+                effects: {
+                    addItem: '💎',
+                    setFlag: { cautious_collector: true },
+                    experience: 30
+                }
+            },
+            {
+                text: '🔍 Study the shard before moving it',
+                nextScene: 'shard_study',
+                effects: {
+                    setFlag: { careful_researcher: true },
+                    experience: 25
+                }
+            },
+            {
+                text: '⚡ Quickly complete the extraction',
+                nextScene: 'shard_secured',
+                effects: {
+                    addItem: '💎',
+                    experience: 20
+                }
+            }
+        ]
+    },
+
+    castle_defense_improved: {
+        emojis: '🏰🛡️🔧',
+        text: 'You oversee major improvements to the castle\'s defenses - reinforcing walls, installing magical wards, positioning siege weapons, and training the garrison in advanced defensive tactics.',
+        choices: [
+            {
+                text: '🏹 Focus on ranged defensive capabilities',
+                nextScene: 'archer_positions_set',
+                effects: {
+                    setFlag: { archer_commander: true },
+                    experience: 30
+                }
+            },
+            {
+                text: '🔮 Enhance magical protections',
+                nextScene: 'castle_ward_creation',
+                conditions: { playerClass: 'wizard' },
+                effects: {
+                    magical: true,
+                    setFlag: { ward_master: true },
+                    experience: 35
+                }
+            },
+            {
+                text: '⚔️ Strengthen close-quarters defenses',
+                nextScene: 'chokepoint_training',
+                effects: {
+                    setFlag: { defensive_tactician: true },
+                    experience: 25
+                }
+            }
+        ]
     }
 };

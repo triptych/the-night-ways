@@ -1650,5 +1650,104 @@ export const MISC_SCENES = {
                 }
             }
         ]
+    },
+
+    // Batch 4: Next 3 missing scenes
+    castle_fortification: {
+        emojis: '🏰🔨🛡️',
+        text: 'You oversee the strengthening of the castle\'s fortifications. Walls are reinforced, battlements improved, and defensive positions optimized. The castle becomes a true fortress capable of withstanding any siege.',
+        choices: [
+            {
+                text: '🏹 Install defensive archer towers',
+                nextScene: 'archer_positions_set',
+                effects: {
+                    setFlag: { fortified_castle: true },
+                    experience: 30
+                }
+            },
+            {
+                text: '🔮 Add magical protective wards',
+                nextScene: 'castle_ward_creation',
+                conditions: { playerClass: 'wizard' },
+                effects: {
+                    magical: true,
+                    setFlag: { magical_fortress: true },
+                    experience: 35
+                }
+            },
+            {
+                text: '⚔️ Train the garrison in siege defense',
+                nextScene: 'chokepoint_training',
+                effects: {
+                    setFlag: { trained_garrison: true },
+                    experience: 25
+                }
+            }
+        ]
+    },
+
+    castle_sanctuary: {
+        emojis: '🏰🛡️👥',
+        text: 'The castle becomes a sanctuary for refugees and survivors from across the realm. You organize safe quarters, food distribution, and protection protocols to shelter all who seek refuge from the darkness.',
+        choices: [
+            {
+                text: '🏥 Set up medical facilities for the wounded',
+                nextScene: 'medical_network_established',
+                effects: {
+                    setFlag: { sanctuary_healer: true },
+                    experience: 30
+                }
+            },
+            {
+                text: '⚔️ Train refugees in self-defense',
+                nextScene: 'civilian_combat_training',
+                effects: {
+                    setFlag: { refugee_trainer: true },
+                    experience: 25
+                }
+            },
+            {
+                text: '🌟 Create a beacon of hope',
+                nextScene: 'hero_inspiration',
+                effects: {
+                    setFlag: { beacon_of_hope: true },
+                    experience: 35
+                }
+            }
+        ]
+    },
+
+    castle_ward_creation: {
+        emojis: '🔮🏰✨',
+        text: 'You weave powerful magical wards around the castle, creating layers of protection against shadow magic and evil creatures. The wards shimmer with protective energy, making the castle a true sanctuary.',
+        choices: [
+            {
+                text: '🛡️ Focus on defensive protection',
+                nextScene: 'permanent_ward_created',
+                effects: {
+                    magical: true,
+                    setFlag: { ward_master: true },
+                    experience: 35
+                }
+            },
+            {
+                text: '⚡ Add offensive countermeasures',
+                nextScene: 'magical_investigation',
+                effects: {
+                    magical: true,
+                    setFlag: { offensive_ward: true },
+                    experience: 30
+                }
+            },
+            {
+                text: '🌟 Create a beacon that repels all darkness',
+                nextScene: 'light_based_attack',
+                effects: {
+                    magical: true,
+                    setFlag: { light_beacon: true },
+                    experience: 40
+                }
+            }
+        ]
     }
 };

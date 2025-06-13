@@ -745,5 +745,324 @@ export const FINAL_BATTLE_SCENES = {
                 }
             }
         ]
+    },
+
+    // Batch 1: First 10 missing scenes
+    all_out_assault: {
+        emojis: '⚔️💥🔥',
+        text: 'You unleash every ounce of your power in a devastating assault! Your weapons blur with speed as you attack relentlessly, overwhelming the Shadow Lord with sheer force and determination. This is your moment - victory or nothing!',
+        choices: [
+            {
+                text: '⚔️ Continue the relentless assault',
+                nextScene: 'victory_determination',
+                effects: {
+                    health: -15,
+                    experience: 50
+                }
+            },
+            {
+                text: '🛡️ Switch to a more defensive approach',
+                nextScene: 'defensive_duel_strategy',
+                effects: {
+                    experience: 30
+                }
+            },
+            {
+                text: '🌟 Channel your life force for ultimate power',
+                nextScene: 'ultimate_sacrifice',
+                effects: {
+                    health: -30,
+                    setFlag: { final_sacrifice: true },
+                    experience: 80
+                }
+            }
+        ]
+    },
+
+    altar_investigation: {
+        emojis: '⛪🔍✨',
+        text: 'You approach the ancient altar at the center of the underground chamber. Strange symbols glow faintly on its surface, and you sense powerful magic emanating from within. This altar may hold secrets about the Crystal\'s creation.',
+        choices: [
+            {
+                text: '🔮 Use magic to activate the altar',
+                nextScene: 'crystal_restoration_vision',
+                conditions: { playerClass: 'wizard' },
+                effects: {
+                    magical: true,
+                    experience: 35
+                }
+            },
+            {
+                text: '📜 Study the symbols carefully',
+                nextScene: 'ancient_knowledge',
+                effects: {
+                    experience: 25,
+                    setFlag: { altar_knowledge: true }
+                }
+            },
+            {
+                text: '💎 Place a Crystal Shard on the altar',
+                nextScene: 'crystal_convergence',
+                conditions: { hasItem: '💎' },
+                effects: {
+                    experience: 40
+                }
+            }
+        ]
+    },
+
+    ancient_weapons_found: {
+        emojis: '⚔️🏛️✨',
+        text: 'Among the ancient artifacts, you discover legendary weapons from the realm\'s golden age - a sword that glows with inner light, a bow that never misses its mark, and a staff crackling with pure magic.',
+        choices: [
+            {
+                text: '⚔️ Take the legendary sword',
+                nextScene: 'royal_armory',
+                conditions: { playerClass: 'knight' },
+                effects: {
+                    addItem: '⚔️',
+                    setFlag: { legendary_sword: true },
+                    experience: 30
+                }
+            },
+            {
+                text: '🏹 Take the perfect bow',
+                nextScene: 'shard_quest',
+                conditions: { playerClass: 'archer' },
+                effects: {
+                    addItem: '🏹',
+                    setFlag: { perfect_bow: true },
+                    experience: 30
+                }
+            },
+            {
+                text: '🔮 Take the magical staff',
+                nextScene: 'magical_communion',
+                conditions: { playerClass: 'wizard' },
+                effects: {
+                    addItem: '🔮',
+                    setFlag: { ancient_staff: true },
+                    experience: 30
+                }
+            }
+        ]
+    },
+
+    archer_positions_set: {
+        emojis: '🏹🎯🏰',
+        text: 'You strategically position archers at key vantage points around the battlefield. From towers, rooftops, and hidden alcoves, your marksmen can rain arrows down on enemies while staying protected.',
+        choices: [
+            {
+                text: '🎯 Focus on precision shooting',
+                nextScene: 'ranged_combat',
+                effects: {
+                    setFlag: { precision_archers: true },
+                    experience: 25
+                }
+            },
+            {
+                text: '⚔️ Coordinate with ground troops',
+                nextScene: 'tactical_victory',
+                effects: {
+                    setFlag: { coordinated_attack: true },
+                    experience: 30
+                }
+            },
+            {
+                text: '🛡️ Provide covering fire for retreating allies',
+                nextScene: 'strategic_retreat',
+                effects: {
+                    setFlag: { covering_fire: true },
+                    experience: 20
+                }
+            }
+        ]
+    },
+
+    armed_and_ready: {
+        emojis: '⚔️🛡️💪',
+        text: 'Equipped with legendary weapons and blessed armor, you stand ready to face whatever challenges await. Your equipment gleams with holy light, and you feel the weight of destiny on your shoulders.',
+        choices: [
+            {
+                text: '🏰 Head to defend the kingdom',
+                nextScene: 'village_defense',
+                effects: {
+                    setFlag: { fully_equipped: true },
+                    experience: 20
+                }
+            },
+            {
+                text: '💎 Seek out the Crystal Shards',
+                nextScene: 'shard_quest',
+                effects: {
+                    experience: 25
+                }
+            },
+            {
+                text: '👹 March directly to face the Shadow Lord',
+                nextScene: 'fortress_approach',
+                effects: {
+                    setFlag: { direct_approach: true },
+                    experience: 30
+                }
+            }
+        ]
+    },
+
+    assassination_attempt: {
+        emojis: '🗡️🌙💀',
+        text: 'You strike from the shadows with deadly precision! Your blade finds its mark, but the Shadow Lord\'s dark magic shields him from the worst of the damage. He whirls around, eyes blazing with fury.',
+        choices: [
+            {
+                text: '⚔️ Continue the attack while he\'s surprised',
+                nextScene: 'final_duel',
+                effects: {
+                    health: -10,
+                    setFlag: { assassination_attempted: true },
+                    experience: 40
+                }
+            },
+            {
+                text: '🏃‍♂️ Retreat and try a different approach',
+                nextScene: 'stealth_shard_hunt',
+                effects: {
+                    experience: 25
+                }
+            },
+            {
+                text: '💬 Use the surprise to demand answers',
+                nextScene: 'shadow_lord_story',
+                effects: {
+                    setFlag: { forced_revelation: true },
+                    experience: 35
+                }
+            }
+        ]
+    },
+
+    balance_restored: {
+        emojis: '⚖️🌟💎',
+        text: 'Your light merges with his darkness, creating perfect balance. The Shadow Lord\'s corruption dissolves as harmony is restored. Light and shadow dance together in beautiful unity, healing both your souls and the realm itself.',
+        choices: [
+            {
+                text: '🤝 Work together to restore the Crystal',
+                nextScene: 'joint_restoration',
+                effects: {
+                    setFlag: { perfect_balance: true },
+                    experience: 60,
+                    magical: true
+                }
+            },
+            {
+                text: '🌍 Use this balance to heal the entire realm',
+                nextScene: 'ending_peace_era',
+                effects: {
+                    setFlag: { realm_healed: true },
+                    experience: 80
+                }
+            },
+            {
+                text: '👑 Establish a new order based on balance',
+                nextScene: 'new_alliance',
+                effects: {
+                    setFlag: { balance_order: true },
+                    experience: 70
+                }
+            }
+        ]
+    },
+
+    balanced_approach: {
+        emojis: '⚖️🌱💚',
+        text: 'You maintain perfect balance between helping the forest and preserving your own strength. Your measured approach allows you to contribute meaningfully while ensuring you remain capable for the greater challenges ahead.',
+        choices: [
+            {
+                text: '🌲 Continue working with the forest spirits',
+                nextScene: 'spirit_revelation',
+                effects: {
+                    setFlag: { balanced_helper: true },
+                    experience: 30
+                }
+            },
+            {
+                text: '💎 Focus on your main quest',
+                nextScene: 'shard_quest',
+                effects: {
+                    experience: 25
+                }
+            },
+            {
+                text: '🤝 Seek allies for the final battle',
+                nextScene: 'forest_army',
+                effects: {
+                    setFlag: { forest_alliance: true },
+                    experience: 35
+                }
+            }
+        ]
+    },
+
+    balanced_archery: {
+        emojis: '🏹⚖️🎯',
+        text: 'You demonstrate both offensive precision and defensive protection, showing that true archery mastery serves multiple purposes. Your arrows can strike down threats while also creating barriers of light to shield others.',
+        choices: [
+            {
+                text: '🛡️ Focus on protective techniques',
+                nextScene: 'protective_archery',
+                effects: {
+                    setFlag: { defensive_archer: true },
+                    experience: 30
+                }
+            },
+            {
+                text: '💎 Earn the Crystal Shard through balance',
+                nextScene: 'trial_success',
+                effects: {
+                    addItem: '💎',
+                    setFlag: { balanced_master: true },
+                    experience: 35
+                }
+            },
+            {
+                text: '🌟 Become a true master of archery',
+                nextScene: 'ending_master_archer',
+                effects: {
+                    setFlag: { archery_perfection: true },
+                    experience: 40
+                }
+            }
+        ]
+    },
+
+    balanced_magic_demo: {
+        emojis: '🔮⚖️✨',
+        text: 'You weave together offensive and defensive magic in perfect harmony, creating a dazzling display of balanced power. The Moonwell recognizes your mastery and wisdom, glowing brighter with each perfectly controlled spell.',
+        choices: [
+            {
+                text: '💎 Accept the Crystal Shard as your reward',
+                nextScene: 'moonwell_success',
+                effects: {
+                    addItem: '💎',
+                    setFlag: { magic_master: true },
+                    experience: 40
+                }
+            },
+            {
+                text: '📚 Request knowledge instead of power',
+                nextScene: 'moonwell_guidance',
+                effects: {
+                    setFlag: { wisdom_seeker: true },
+                    experience: 35
+                }
+            },
+            {
+                text: '🌟 Use this mastery to help others',
+                nextScene: 'ending_teacher',
+                effects: {
+                    setFlag: { balanced_teacher: true },
+                    experience: 50
+                }
+            }
+        ]
     }
 };
