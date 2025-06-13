@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>🧙 Emoji Quest: The Crystal Kingdom 💎</title>
+        <link rel="stylesheet" href="styles.css">
+    </head>
+    <body>
+        <div class="game-container">
+            <header class="game-header">
+                <h1>🧙 Emoji Quest: The Crystal Kingdom 💎</h1>
+                <div class="player-stats">
+                    <div class="stat">
+                        <span class="stat-label">❤️ Health:</span>
+                        <span id="health">100</span>
+                    </div>
+                    <div class="stat">
+                        <span class="stat-label">⭐ Experience:</span>
+                        <span id="experience">0</span>
+                    </div>
+                    <div class="stat">
+                        <span class="stat-label">💰 Gold:</span>
+                        <span id="gold">50</span>
+                    </div>
+                </div>
+            </header>
+
+            <main class="game-main">
+                <div class="scene-display">
+                    <div class="scene-emojis" id="scene-emojis">
+                        🏰✨🌟
+                    </div>
+                    <div class="scene-text" id="scene-text">
+                        Welcome to the Crystal Kingdom! The land where emojis once lived in harmony is now in danger. The great Crystal of Harmony has been shattered, and emojis are beginning to fade away. You must choose your path and restore balance to the realm!
+                    </div>
+                </div>
+
+                <div class="choices-container" id="choices-container">
+                    <div class="choice-button" data-choice="0">
+                        🧙‍♂️ Begin as a Wizard
+                    </div>
+                    <div class="choice-button" data-choice="1">
+                        🏹 Begin as an Archer
+                    </div>
+                    <div class="choice-button" data-choice="2">
+                        🛡️ Begin as a Knight
+                    </div>
+                </div>
+
+                <div class="inventory-container">
+                    <h3>🎒 Inventory</h3>
+                    <div class="inventory-grid" id="inventory">
+                        <div class="inventory-slot empty">📦</div>
+                        <div class="inventory-slot empty">📦</div>
+                        <div class="inventory-slot empty">📦</div>
+                        <div class="inventory-slot empty">📦</div>
+                        <div class="inventory-slot empty">📦</div>
+                        <div class="inventory-slot empty">📦</div>
+                    </div>
+                </div>
+            </main>
+
+            <footer class="game-footer">
+                <button id="restart-button" class="restart-button">🔄 Restart Game</button>
+                <div class="game-info">
+                    <span>Current Scene:
+                        <span id="current-scene">start</span></span>
+                </div>
+            </footer>
+        </div>
+
+        <script src="engine.js"></script>
+        <script src="game-data.js"></script>
+        <script>
+            // Initialize the game when the page loads
+            document.addEventListener('DOMContentLoaded', function () {
+                const game = new EmojiQuestEngine();
+                game.init();
+            });
+        </script>
+    </body>
+</html>
