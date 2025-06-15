@@ -77,6 +77,23 @@ class EmojiQuestEngine {
             }
         });
 
+        // Item dialog close buttons
+        document.addEventListener('click', (e) => {
+            if (e.target.id === 'dialog-close-btn' || e.target.id === 'dialog-ok-btn') {
+                const dialog = document.getElementById('item-info-dialog');
+                if (dialog) {
+                    dialog.close();
+                }
+            }
+        });
+
+        // Close dialog when clicking outside (on backdrop)
+        document.addEventListener('click', (e) => {
+            if (e.target.id === 'item-info-dialog') {
+                e.target.close();
+            }
+        });
+
         // Keyboard shortcuts
         document.addEventListener('keydown', (e) => {
             if (e.ctrlKey || e.metaKey) {
@@ -359,18 +376,35 @@ class EmojiQuestEngine {
     // Get item description
     getItemDescription(item) {
         const descriptions = {
-            '🗡️': 'Ancient Sword - A blade forged in dragon fire',
-            '🧪': 'Health Potion - Restores vitality',
-            '🔮': 'Crystal Orb - Holds mysterious power',
-            '🗝️': 'Golden Key - Opens locked doors',
-            '💎': 'Crystal Shard - Fragment of the Crystal of Harmony',
-            '📜': 'Ancient Scroll - Contains forgotten knowledge',
-            '🏹': 'Elven Bow - Crafted by forest elves',
-            '🛡️': 'Dragon Scale Shield - Protects against fire',
-            '🧿': 'Amulet of Protection - Wards off evil',
-            '💰': 'Gold Pouch - Contains precious coins'
+            '🗡️': 'A blade forged in dragon fire, incredibly sharp and powerful',
+            '🧪': 'Restores vitality when consumed, healing wounds instantly',
+            '🔮': 'Holds mysterious power, pulsing with arcane energy',
+            '🗝️': 'Opens locked doors and hidden passages',
+            '💎': 'Fragment of the Crystal of Harmony, glowing with pure light',
+            '📜': 'Contains forgotten knowledge and ancient spells',
+            '🏹': 'Crafted by forest elves, never misses its target',
+            '🛡️': 'Protects against fire and magical attacks',
+            '🧿': 'Wards off evil spirits and dark magic',
+            '💰': 'Contains precious coins from distant lands'
         };
-        return descriptions[item] || 'Mysterious item';
+        return descriptions[item] || 'A mysterious item with unknown properties';
+    }
+
+    // Get item name
+    getItemName(item) {
+        const names = {
+            '🗡️': 'Ancient Sword',
+            '🧪': 'Health Potion',
+            '🔮': 'Crystal Orb',
+            '🗝️': 'Golden Key',
+            '💎': 'Crystal Shard',
+            '📜': 'Ancient Scroll',
+            '🏹': 'Elven Bow',
+            '🛡️': 'Dragon Scale Shield',
+            '🧿': 'Amulet of Protection',
+            '💰': 'Gold Pouch'
+        };
+        return names[item] || 'Mysterious Item';
     }
 
     // Add transition effect
@@ -399,9 +433,23 @@ class EmojiQuestEngine {
     showItemInfo(itemElement) {
         const item = itemElement.textContent;
         const description = this.getItemDescription(item);
+        const itemName = this.getItemName(item);
 
-        // Simple alert for now - could be enhanced with a modal
-        alert(`${item}\n\n${description}`);
+        // Get dialog elements
+        const dialog = document.getElementById('item-info-dialog');
+        const dialogItemName = document.getElementById('dialog-item-name');
+        const dialogItemEmoji = document.getElementById('dialog-item-emoji');
+        const dialogItemDescription = document.getElementById('dialog-item-description');
+
+        if (dialog && dialogItemName && dialogItemEmoji && dialogItemDescription) {
+            // Populate dialog content
+            dialogItemName.textContent = itemName;
+            dialogItemEmoji.textContent = item;
+            dialogItemDescription.textContent = description;
+
+            // Show the dialog
+            dialog.showModal();
+        }
     }
 
     // Handle game end scenarios
